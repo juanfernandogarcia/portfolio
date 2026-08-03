@@ -24,7 +24,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
 .pf{max-width:720px;margin:0 auto;background:#f3f2f2;border-left:2px solid #201e1d;border-right:2px solid #201e1d;min-height:100vh}
 @media (max-width:760px){.pf{border-left:0;border-right:0}}
 @media (min-width:900px){
-.pf{max-width:1100px}
+.pf{max-width:none;border-left:0;border-right:0}
 .pphero{height:420px !important}
 .ppbody{max-width:760px}
 .ppgal{margin-left:28px !important;margin-right:28px !important}
@@ -73,7 +73,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
   </div>
   </sc-if>
 
-  <div class="gs pphero" style="height:250px;border-bottom:2px solid #201e1d;overflow:hidden"><image-slot id="pp-hero" shape="rect" fit="cover" placeholder="Project hero image"></image-slot></div>
+  <div class="gs pphero" style="height:250px;border-bottom:2px solid #201e1d;overflow:hidden"><image-slot id="pp-hero" shape="rect" fit="cover" placeholder="Hero image — double-click to reframe"></image-slot></div>
 
   <div style="background:#ffd100;padding:20px 18px 22px;border-bottom:2px solid #201e1d">
     <div style="font:600 10px/1 'Archivo';letter-spacing:.2em;text-transform:uppercase">{{ kicker }}</div>
@@ -92,7 +92,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
 
   <div class="ppgal" style="position:relative;margin:18px 18px 0;border:2px solid #201e1d;background:#201e1d">
     <div ref="{{ galRef }}" onScroll="{{ onGalScroll }}" class="strip" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth">
-      <div class="gs" style="flex:none;width:100%;aspect-ratio:4/2.6;scroll-snap-align:start;overflow:hidden"><image-slot id="pp-g1" shape="rect" fit="cover" placeholder="Slide 1 — drop an image"></image-slot></div>
+      <div class="gs" style="flex:none;width:100%;aspect-ratio:4/2.6;scroll-snap-align:start;overflow:hidden"><image-slot id="pp-g1" shape="rect" fit="cover" placeholder="Slide 1 — drop an image, double-click to reframe"></image-slot></div>
       <div class="gs" style="flex:none;width:100%;aspect-ratio:4/2.6;scroll-snap-align:start;overflow:hidden"><image-slot id="pp-g2" shape="rect" fit="cover" placeholder="Slide 2"></image-slot></div>
       <div class="gs" style="flex:none;width:100%;aspect-ratio:4/2.6;scroll-snap-align:start;overflow:hidden"><image-slot id="pp-g3" shape="rect" fit="cover" placeholder="Slide 3"></image-slot></div>
       <div class="gs" style="flex:none;width:100%;aspect-ratio:4/2.6;scroll-snap-align:start;overflow:hidden"><image-slot id="pp-g4" shape="rect" fit="cover" placeholder="Slide 4"></image-slot></div>
