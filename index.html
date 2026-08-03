@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&amp;display=swap">
+<link rel="stylesheet" href="_ds/modernist-18f78c01-60db-465f-9d67-dca81d30df1b/styles.css">
+<script src="_ds/modernist-18f78c01-60db-465f-9d67-dca81d30df1b/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+@keyframes omflash{0%{opacity:1}22%{opacity:.32}100%{opacity:1}}
+body{margin:0;background:#c9c6c2;font-family:"Archivo",system-ui,sans-serif;color:#201e1d;-webkit-font-smoothing:antialiased}
+a{color:#201e1d}
+a:hover{color:#7a5c00}
+section[id]{scroll-margin-top:100px}
+::selection{background:#ffd100;color:#201e1d}
+button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2px}
+.pf{max-width:720px;margin:0 auto;background:#f3f2f2;border-left:2px solid #201e1d;border-right:2px solid #201e1d;min-height:100vh;position:relative}
+@media (max-width:760px){.pf{border-left:0;border-right:0}}
+
+.gs{filter:grayscale(1) contrast(1.06)}
+.strip::-webkit-scrollbar{height:0}
+</style>
+</helmet>
+
+<div class="pf">
+
+  <div style="position:sticky;top:0;z-index:20;background:#f3f2f2;border-bottom:2px solid #201e1d">
+   <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:50px">
+    <a href="#profile" style="text-decoration:none;color:#201e1d;font:800 13px/1.1 'Archivo';letter-spacing:-.01em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Juan Fernando Garcia</a>
+    <div style="display:flex;align-items:center;gap:6px">
+    <div style="display:flex;border:2px solid #201e1d;height:34px">
+      <button onClick="{{ setEn }}" style="all:unset;cursor:pointer;padding:0 10px;display:flex;align-items:center;font:600 11px/1 'Archivo';letter-spacing:.04em;background:{{ enBg }};color:{{ enFg }}">EN</button>
+      <button onClick="{{ setFr }}" style="all:unset;cursor:pointer;padding:0 10px;display:flex;align-items:center;font:600 11px/1 'Archivo';letter-spacing:.04em;background:{{ frBg }};color:{{ frFg }};border-left:2px solid #201e1d">FR</button>
+      <button onClick="{{ setEs }}" style="all:unset;cursor:pointer;padding:0 10px;display:flex;align-items:center;font:600 11px/1 'Archivo';letter-spacing:.04em;background:{{ esBg }};color:{{ esFg }};border-left:2px solid #201e1d">ES</button>
+    </div>
+    </div>
+   </div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;border-top:2px solid #201e1d">
+    <a href="#contact" style="text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;height:46px;border-right:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.06em;text-transform:uppercase" style-hover="background:#ffd100">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="0"></rect><path d="m2 6 10 7 10-7"></path></svg>
+      {{ contactLabel }}
+    </a>
+    <button onClick="{{ openShare }}" style="all:unset;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;height:46px;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.06em;text-transform:uppercase" style-hover="background:#ffd100">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="M8.59 13.51l6.83 3.98"></path><path d="M15.41 6.51L8.59 10.49"></path></svg>
+      {{ shareLabel }}
+    </button>
+   </div>
+  </div>
+
+  <sc-if value="{{ shareOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:rgba(32,30,29,.72);display:flex;align-items:flex-end;justify-content:center">
+    <div style="width:100%;max-width:720px;background:#f3f2f2;border-top:2px solid #201e1d">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:2px solid #201e1d">
+        <div style="font:800 18px/1 'Archivo';letter-spacing:-.01em">{{ shareTitle }}</div>
+        <button onClick="{{ closeShare }}" aria-label="Close" style="all:unset;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:2px solid #201e1d;font:700 15px/1 'Archivo'" style-hover="background:#ffd100">✕</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto;gap:0;border-bottom:2px solid #201e1d">
+        <div style="padding:14px 16px;font:400 12px/1.35 'Archivo';color:#605d5d;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ shareUrl }}</div>
+        <button onClick="{{ copyLink }}" style="all:unset;cursor:pointer;padding:0 18px;display:flex;align-items:center;font:600 12px/1 'Archivo';background:{{ copyBg }};color:{{ copyFg }};border-left:2px solid #201e1d" style-hover="background:#ffd100">{{ copyLabel }}</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr">
+        <button onClick="{{ shareWa }}" style="all:unset;cursor:pointer;height:60px;display:flex;align-items:center;padding:0 18px;font:600 13px/1 'Archivo';border-right:2px solid #201e1d;border-bottom:1px solid #d7d3d3" style-hover="background:#fff3c4">WhatsApp</button>
+        <button onClick="{{ shareLi }}" style="all:unset;cursor:pointer;height:60px;display:flex;align-items:center;padding:0 18px;font:600 13px/1 'Archivo';border-bottom:1px solid #d7d3d3" style-hover="background:#fff3c4">LinkedIn</button>
+        <button onClick="{{ shareX }}" style="all:unset;cursor:pointer;height:60px;display:flex;align-items:center;padding:0 18px;font:600 13px/1 'Archivo';border-right:2px solid #201e1d;border-bottom:2px solid #201e1d" style-hover="background:#fff3c4">X / Twitter</button>
+        <button onClick="{{ shareMail }}" style="all:unset;cursor:pointer;height:60px;display:flex;align-items:center;padding:0 18px;font:600 13px/1 'Archivo';border-bottom:2px solid #201e1d" style-hover="background:#fff3c4">{{ shareEmail }}</button>
+      </div>
+      <div style="display:{{ nativeShow }};padding:14px 18px 20px">
+        <button onClick="{{ shareNative }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:#201e1d;color:#ffd100;font:800 15px/1 'Archivo'" style-hover="background:#3d3937">{{ shareMore }} <span>↗</span></button>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <section id="profile">
+    <div style="background:#ffd100;color:#201e1d;min-height:{{ heroMinH }};display:flex;flex-direction:column;border-bottom:2px solid #201e1d">
+      <div style="padding:24px 18px 18px;font:600 10px/1 'Archivo';letter-spacing:.22em;text-transform:uppercase">{{ heroKicker }}</div>
+      <div style="flex: 1; display: grid; grid-template-columns: 1fr 42%; align-items: stretch; border-top: 2px solid #201e1d; max-width: 700px; min-height: {{ heroInnerH }}">
+        <div style="padding: 18px 16px; display: flex; flex-direction: column; justify-content: center; gap: 12px">
+          <h1 style="font:800 clamp(38px,11.5vw,58px)/.9 'Archivo';letter-spacing:-.04em;margin:0">Juan Fernando Garcia</h1>
+          <p style="font:400 14px/1.4 'Archivo';margin:0;text-wrap:pretty">{{ heroBlurb }}</p>
+          <div style="display:inline-flex;align-items:center;gap:7px;background:#201e1d;color:#ffd100;font:600 11px/1.3 'Archivo';padding:10px 11px;align-self:flex-start;flex:none;white-space:nowrap">● {{ heroStatus }}</div>
+        </div>
+        <div style="border-left: 2px solid #201e1d; position: relative; min-height: 180px" class="gs">
+          <image-slot id="portrait" shape="rect" fit="cover" placeholder="Drop your photo" style="width: 100%; height: 100%"></image-slot>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#ffd100;border-bottom:2px solid #201e1d">
+      
+      <div style="padding: 16px 18px 12px; display: flex; flex-direction: column; gap: 10px; max-width: 706px">
+        <div style="font:600 10px/1.3 'Archivo';letter-spacing:.16em;text-transform:uppercase">{{ langLabel }}</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+          <button onClick="{{ setEn }}" style="all:unset;cursor:pointer;height:48px;display:flex;align-items:center;justify-content:center;font:800 16px/1 'Archivo';letter-spacing:.02em;border:2px solid #201e1d;background:{{ enBigBg }};color:{{ enBigFg }}">EN</button>
+          <button onClick="{{ setFr }}" style="all:unset;cursor:pointer;height:48px;display:flex;align-items:center;justify-content:center;font:800 16px/1 'Archivo';letter-spacing:.02em;border:2px solid #201e1d;background:{{ frBigBg }};color:{{ frBigFg }}">FR</button>
+          <button onClick="{{ setEs }}" style="all:unset;cursor:pointer;height:48px;display:flex;align-items:center;justify-content:center;font:800 16px/1 'Archivo';letter-spacing:.02em;border:2px solid #201e1d;background:{{ esBigBg }};color:{{ esBigFg }}">ES</button>
+        </div>
+      </div><div style="display:grid;gap:10px;padding:4px 18px 20px">
+        <a href="#work" style="text-decoration:none;background:#201e1d;color:#ffd100;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 18px" style-hover="background:#3d3937">
+          <span style="display:flex;flex-direction:column;gap:5px"><span style="font:800 24px/1 'Archivo';letter-spacing:-.02em">{{ heroCta1 }}</span><span style="font:400 11px/1 'Archivo';color:#bab6b6">{{ heroCta1Sub }}</span></span>
+          <span style="font:800 22px/1 'Archivo'">→</span>
+        </a>
+        <a href="#cv" style="text-decoration:none;border:2px solid #201e1d;color:#201e1d;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 18px" style-hover="background:#fff3c4">
+          <span style="display:flex;flex-direction:column;gap:5px"><span style="font:800 24px/1 'Archivo';letter-spacing:-.02em">{{ heroCta2 }}</span><span style="font:400 11px/1 'Archivo';color:#6b5200">{{ heroCta2Sub }}</span></span>
+          <span style="font:800 22px/1 'Archivo'">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="cv" style="display:{{ cvShow }}">
+    <div style="padding:22px 18px 14px">
+      <h2 style="font:800 22px/1 'Archivo';letter-spacing:-.02em;margin:0">{{ cvTitle }}</h2>
+    </div>
+    <div style="padding:0 18px 18px">
+      <a href="cv.pdf" download="" style="text-decoration:none;background:#201e1d;color:#ffd100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 16px" style-hover="background:#3d3937">
+        <span style="display:flex;flex-direction:column;gap:4px"><span style="font:800 17px/1 'Archivo';letter-spacing:-.01em">{{ cvDownload }}</span><span style="font:400 11px/1 'Archivo';color:#bab6b6">PDF · {{ cvDownloadSub }}</span></span>
+        <span style="font:800 20px/1 'Archivo'">↓</span>
+      </a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-top:2px solid #201e1d;border-bottom:2px solid #201e1d">
+      <div style="padding:11px 18px;border-right:2px solid #201e1d;border-bottom:1px solid #d7d3d3"><div style="font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ fDegree }}</div><div style="font:600 13px/1.3 'Archivo';margin-top:5px">B.Sc. Chemical Eng.</div></div>
+      <div style="padding:11px 18px;border-bottom:1px solid #d7d3d3"><div style="font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ fYear }}</div><div style="font:600 13px/1.3 'Archivo';margin-top:5px">Year 5 · 2026</div></div>
+      <div style="padding:11px 18px;border-right:2px solid #201e1d;border-bottom:1px solid #d7d3d3"><div style="font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ fFocus }}</div><div style="font:600 13px/1.3 'Archivo';margin-top:5px">Process &amp; energy</div></div>
+      <div style="padding:11px 18px;border-bottom:1px solid #d7d3d3"><div style="font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ fLocation }}</div><div style="font:600 13px/1.3 'Archivo';margin-top:5px">City, Country</div></div>
+      <div style="padding:11px 18px;border-right:2px solid #201e1d"><div style="font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ fLangs }}</div><div style="font:600 13px/1.3 'Archivo';margin-top:5px">EN · FR · ES</div></div>
+      <div style="padding:11px 18px"><div style="font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ fGpa }}</div><div style="font:600 13px/1.3 'Archivo';margin-top:5px">4.6 / 5.0</div></div>
+    </div>
+
+    <div style="padding:20px 18px 10px;font:600 10px/1 'Archivo';letter-spacing:.18em;text-transform:uppercase;color:#7a5c00">{{ cvEducation }}</div>
+    <div style="border-top:2px solid #201e1d">
+      <div style="display:grid;grid-template-columns:74px 1fr;gap:12px;padding:13px 18px;border-bottom:1px solid #d7d3d3">
+        <div style="font:600 11px/1.35 'Archivo';color:#7d7979">2021 — 2026</div>
+        <div><div style="font:600 14px/1.25 'Archivo'">B.Sc. Chemical Engineering</div><div style="font:400 12px/1.4 'Archivo';color:#605d5d;margin-top:4px">University name — thesis on energy integration in distillation trains.</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:74px 1fr;gap:12px;padding:13px 18px;border-bottom:2px solid #201e1d">
+        <div style="font:600 11px/1.35 'Archivo';color:#7d7979">2024</div>
+        <div><div style="font:600 14px/1.25 'Archivo'">Exchange semester</div><div style="font:400 12px/1.4 'Archivo';color:#605d5d;margin-top:4px">Host university — reaction engineering and process control.</div></div>
+      </div>
+    </div>
+
+    <div style="padding:20px 18px 10px;font:600 10px/1 'Archivo';letter-spacing:.18em;text-transform:uppercase;color:#7a5c00">{{ cvExperience }}</div>
+    <div style="border-top:2px solid #201e1d">
+      <div style="display:grid;grid-template-columns:74px 1fr;gap:12px;padding:13px 18px;border-bottom:1px solid #d7d3d3">
+        <div style="font:600 11px/1.35 'Archivo';color:#7d7979">2025</div>
+        <div><div style="font:600 14px/1.25 'Archivo'">Process Engineering Intern</div><div style="font:400 12px/1.4 'Archivo';color:#605d5d;margin-top:4px">Company — mass balances, utility audit, 3 debottlenecking studies.</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:74px 1fr;gap:12px;padding:13px 18px;border-bottom:1px solid #d7d3d3">
+        <div style="font:600 11px/1.35 'Archivo';color:#7d7979">2024</div>
+        <div><div style="font:600 14px/1.25 'Archivo'">Undergraduate Research Assistant</div><div style="font:400 12px/1.4 'Archivo';color:#605d5d;margin-top:4px">Lab — bench absorption rig, data acquisition and analysis.</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:74px 1fr;gap:12px;padding:13px 18px;border-bottom:2px solid #201e1d">
+        <div style="font:600 11px/1.35 'Archivo';color:#7d7979">2023</div>
+        <div><div style="font:600 14px/1.25 'Archivo'">Teaching Assistant — Thermodynamics</div><div style="font:400 12px/1.4 'Archivo';color:#605d5d;margin-top:4px">Weekly problem sessions for 40 second-year students.</div></div>
+      </div>
+    </div>
+
+    <div style="padding:20px 18px 10px;font:600 10px/1 'Archivo';letter-spacing:.18em;text-transform:uppercase;color:#7a5c00">{{ cvSkills }}</div>
+    <div style="display:grid;grid-template-columns:1fr 58px;border-top:2px solid #201e1d">
+      <div style="padding:10px 18px;border-bottom:1px solid #d7d3d3;font:600 13px/1 'Archivo';display:flex;align-items:center">Aspen Plus / HYSYS</div><div style="padding:10px 18px 10px 0;border-bottom:1px solid #d7d3d3;font:600 12px/1 'Archivo';color:#7a5c00;display:flex;align-items:center;justify-content:flex-end">●●●●○</div>
+      <div style="padding:10px 18px;border-bottom:1px solid #d7d3d3;font:600 13px/1 'Archivo';display:flex;align-items:center">Python / pandas</div><div style="padding:10px 18px 10px 0;border-bottom:1px solid #d7d3d3;font:600 12px/1 'Archivo';color:#7a5c00;display:flex;align-items:center;justify-content:flex-end">●●●●●</div>
+      <div style="padding:10px 18px;border-bottom:1px solid #d7d3d3;font:600 13px/1 'Archivo';display:flex;align-items:center">MATLAB / Simulink</div><div style="padding:10px 18px 10px 0;border-bottom:1px solid #d7d3d3;font:600 12px/1 'Archivo';color:#7a5c00;display:flex;align-items:center;justify-content:flex-end">●●●●○</div>
+      <div style="padding:10px 18px;border-bottom:1px solid #d7d3d3;font:600 13px/1 'Archivo';display:flex;align-items:center">COMSOL</div><div style="padding:10px 18px 10px 0;border-bottom:1px solid #d7d3d3;font:600 12px/1 'Archivo';color:#7a5c00;display:flex;align-items:center;justify-content:flex-end">●●●○○</div>
+      <div style="padding:10px 18px;border-bottom:2px solid #201e1d;font:600 13px/1 'Archivo';display:flex;align-items:center">HAZOP / P&amp;ID</div><div style="padding:10px 18px 10px 0;border-bottom:2px solid #201e1d;font:600 12px/1 'Archivo';color:#7a5c00;display:flex;align-items:center;justify-content:flex-end">●●●●○</div>
+    </div>
+  </section>
+
+  <section id="work" style="display:{{ workShow }}">
+    <div style="padding:24px 18px 14px">
+      <h2 style="font:800 22px/1 'Archivo';letter-spacing:-.02em;margin:0">{{ workTitle }}</h2>
+      <p style="font:400 13px/1.45 'Archivo';color:#605d5d;margin:8px 0 0;max-width:440px;text-wrap:pretty">{{ workBlurb }}</p>
+    </div>
+
+    <div class="pgrid">
+    <div style="display:{{ p1Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
+      <div class="gs" style="aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj1" shape="rect" fit="cover" placeholder="Project image"></image-slot></div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">01 · {{ tagDesign }}</div>
+      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">Bioethanol Distillation Retrofit</div>
+      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p1 }}</div>
+      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Aspen Plus</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">Pinch analysis</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2025</span></div>
+      <a href="project.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+    </div>
+
+    <div style="display:{{ p2Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
+      <div class="gs" style="aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj2" shape="rect" fit="cover" placeholder="Project image"></image-slot></div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">02 · {{ tagResearch }}</div>
+      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">CO₂ Capture with Amine Blends</div>
+      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p2 }}</div>
+      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Lab</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">Python</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2025</span></div>
+      <a href="project.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+    </div>
+
+    <div style="display:{{ p3Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
+      <div class="gs" style="aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj3" shape="rect" fit="cover" placeholder="Project image"></image-slot></div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">03 · {{ tagSafety }}</div>
+      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">HAZOP of a Batch Reactor</div>
+      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p3 }}</div>
+      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">HAZOP</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">P&amp;ID</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2024</span></div>
+      <a href="project.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+    </div>
+
+    <div style="display:{{ p4Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
+      <div class="gs" style="aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj4" shape="rect" fit="cover" placeholder="Project image"></image-slot></div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">04 · {{ tagDesign }}</div>
+      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">Fixed-Bed Reactor Modelling</div>
+      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p4 }}</div>
+      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">COMSOL</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">MATLAB</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2024</span></div>
+      <a href="project.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+    </div>
+
+    <div style="display:{{ p5Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
+      <div class="gs" style="aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj5" shape="rect" fit="cover" placeholder="Project image"></image-slot></div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">05 · {{ tagResearch }}</div>
+      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">New project title</div>
+      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p5 }}</div>
+      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Tool</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">Method</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2026</span></div>
+      <a href="project.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+    </div>
+    </div>
+
+    <div style="padding:20px 18px 10px;border-top:2px solid #201e1d;font:600 10px/1 'Archivo';letter-spacing:.18em;text-transform:uppercase;color:#7a5c00;display:{{ galleryDisplay }}">{{ galleryTitle }}</div>
+    <sc-if value="{{ showGallery }}" hint-placeholder-val="{{ true }}">
+    <div class="strip" style="display:flex;gap:10px;overflow-x:auto;padding:4px 18px 20px;scroll-snap-type:x mandatory">
+      <div class="gs" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab1" shape="rect" fit="cover" placeholder="Lab photo"></image-slot></div>
+      <div class="gs" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab2" shape="rect" fit="cover" placeholder="Lab photo"></image-slot></div>
+      <div class="gs" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab3" shape="rect" fit="cover" placeholder="Lab photo"></image-slot></div>
+      <div class="gs" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab4" shape="rect" fit="cover" placeholder="Lab photo"></image-slot></div>
+    </div>
+    </sc-if>
+
+    <div style="display:{{ pubShow }};padding:18px 18px 10px;border-top:2px solid #201e1d;font:600 10px/1 'Archivo';letter-spacing:.18em;text-transform:uppercase;color:#7a5c00">{{ pubTitle }}</div>
+    <div style="display:{{ pubShow }};padding:0 18px 8px">
+      <div style="padding:11px 0;border-bottom:1px solid #d7d3d3"><div style="font:600 13px/1.3 'Archivo'">Poster — Energy integration in bioethanol purification</div><div style="font:400 11px/1.4 'Archivo';color:#7d7979;margin-top:4px">National ChemE Student Congress, 2025</div></div>
+      <div style="padding:11px 0"><div style="font:600 13px/1.3 'Archivo'">Co-author — Amine blend screening for post-combustion capture</div><div style="font:400 11px/1.4 'Archivo';color:#7d7979;margin-top:4px">Under review, 2026</div></div>
+    </div>
+
+    <div style="display:{{ certShow }};padding:14px 18px 10px;border-top:2px solid #201e1d;font:600 10px/1 'Archivo';letter-spacing:.18em;text-transform:uppercase;color:#7a5c00">{{ certTitle }}</div>
+    <div style="display:{{ certShowFlex }};flex-wrap:wrap;gap:6px;padding:4px 18px 22px;border-bottom:2px solid #201e1d">
+      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">Aspen Plus — AspenTech</span>
+      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">HAZOP Leader</span>
+      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">Six Sigma Yellow Belt</span>
+      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">OSHA 30h</span>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div style="background:#201e1d;color:#f3f2f2;padding:30px 18px 34px">
+      <div style="font:800 30px/1.06 'Archivo';letter-spacing:-.025em;max-width:400px;text-wrap:pretty">{{ contactHead }}</div>
+      <a href="mailto:you@example.com" style="display:block;font:800 20px/1.2 'Archivo';color:#ffd100;text-decoration:none;margin-top:20px;word-break:break-all">you@example.com</a>
+      <div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap">
+        <a href="#contact" style="text-decoration:none;background:#ffd100;color:#201e1d;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">{{ contactCv }} ↓</a>
+        <a href="#contact" style="text-decoration:none;border:2px solid #f3f2f2;color:#f3f2f2;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">LinkedIn</a>
+        <a href="#contact" style="text-decoration:none;border:2px solid #f3f2f2;color:#f3f2f2;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="display:{{ aboutShow }}">
+    <div style="padding:24px 18px 14px;border-bottom:2px solid #201e1d">
+      <div style="font:600 10px/1 'Archivo';letter-spacing:.2em;text-transform:uppercase;color:#7a5c00">{{ aboutKicker }}</div>
+      <h2 style="font:800 26px/1.05 'Archivo';letter-spacing:-.025em;margin:10px 0 0">{{ aboutTitle }}</h2>
+      <p style="font:400 15px/1.5 'Archivo';margin:12px 0 0;text-wrap:pretty">{{ aboutIntro }}</p>
+    </div>
+
+    <div style="border-top:2px solid #201e1d;border-bottom:2px solid #201e1d">
+
+      <div style="display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;padding:9px 18px;border-bottom:1px solid #d7d3d3">
+        <div class="gs" style="width:72px;height:72px;border:2px solid #201e1d;overflow:hidden"><image-slot id="hob1" shape="rect" fit="cover" placeholder=" "></image-slot></div>
+        <button onClick="{{ toggleH1 }}" style="all:unset;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px" style-hover="color:#7a5c00">
+          <span><span style="display:block;font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ hobby1L }}</span><span style="display:block;font:600 13px/1.3 'Archivo';margin-top:5px">{{ hobby1 }}</span></span>
+          <span style="font:800 15px/1 'Archivo';color:#7a5c00">{{ h1Sign }}</span>
+        </button>
+      </div>
+      <sc-if value="{{ h1Open }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:0 18px 14px 102px;border-bottom:1px solid #d7d3d3"><p style="font:400 13px/1.5 'Archivo';color:#605d5d;margin:0;text-wrap:pretty">{{ hobby1Detail }}</p></div>
+      </sc-if>
+
+      <div style="display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;padding:9px 18px;border-bottom:1px solid #d7d3d3">
+        <div class="gs" style="width:72px;height:72px;border:2px solid #201e1d;overflow:hidden"><image-slot id="hob2" shape="rect" fit="cover" placeholder=" "></image-slot></div>
+        <button onClick="{{ toggleH2 }}" style="all:unset;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px" style-hover="color:#7a5c00">
+          <span><span style="display:block;font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ hobby2L }}</span><span style="display:block;font:600 13px/1.3 'Archivo';margin-top:5px">{{ hobby2 }}</span></span>
+          <span style="font:800 15px/1 'Archivo';color:#7a5c00">{{ h2Sign }}</span>
+        </button>
+      </div>
+      <sc-if value="{{ h2Open }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:0 18px 14px 102px;border-bottom:1px solid #d7d3d3"><p style="font:400 13px/1.5 'Archivo';color:#605d5d;margin:0;text-wrap:pretty">{{ hobby2Detail }}</p></div>
+      </sc-if>
+
+      <div style="display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;padding:9px 18px;border-bottom:1px solid #d7d3d3">
+        <div class="gs" style="width:72px;height:72px;border:2px solid #201e1d;overflow:hidden"><image-slot id="hob3" shape="rect" fit="cover" placeholder=" "></image-slot></div>
+        <button onClick="{{ toggleH3 }}" style="all:unset;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px" style-hover="color:#7a5c00">
+          <span><span style="display:block;font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ hobby3L }}</span><span style="display:block;font:600 13px/1.3 'Archivo';margin-top:5px">{{ hobby3 }}</span></span>
+          <span style="font:800 15px/1 'Archivo';color:#7a5c00">{{ h3Sign }}</span>
+        </button>
+      </div>
+      <sc-if value="{{ h3Open }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:0 18px 14px 102px;border-bottom:1px solid #d7d3d3"><p style="font:400 13px/1.5 'Archivo';color:#605d5d;margin:0;text-wrap:pretty">{{ hobby3Detail }}</p></div>
+      </sc-if>
+
+      <div style="display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;padding:9px 18px">
+        <div class="gs" style="width:72px;height:72px;border:2px solid #201e1d;overflow:hidden"><image-slot id="hob4" shape="rect" fit="cover" placeholder=" "></image-slot></div>
+        <button onClick="{{ toggleH4 }}" style="all:unset;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px" style-hover="color:#7a5c00">
+          <span><span style="display:block;font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ hobby4L }}</span><span style="display:block;font:600 13px/1.3 'Archivo';margin-top:5px">{{ hobby4 }}</span></span>
+          <span style="font:800 15px/1 'Archivo';color:#7a5c00">{{ h4Sign }}</span>
+        </button>
+      </div>
+      <sc-if value="{{ h4Open }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:0 18px 14px 102px;border-top:1px solid #d7d3d3"><p style="font:400 13px/1.5 'Archivo';color:#605d5d;margin:0;text-wrap:pretty">{{ hobby4Detail }}</p></div>
+      </sc-if>
+
+    </div>
+
+    <div style="display:{{ blogShow }};padding:20px 18px 10px;font:600 10px/1 'Archivo';letter-spacing:.18em;text-transform:uppercase;color:#7a5c00">{{ blogTitle }}</div>
+    <div style="display:{{ blogShow }};border-top:2px solid #201e1d">
+      <div style="padding:16px 18px;border-bottom:1px solid #d7d3d3">
+        <div style="font:600 10px/1 'Archivo';color:#7d7979">12.05.2026 · 4 min</div>
+        <div style="font:800 18px/1.15 'Archivo';letter-spacing:-.01em;margin-top:7px">{{ post1 }}</div>
+        <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:6px">{{ post1Sub }}</div>
+      </div>
+      <div style="padding:16px 18px;border-bottom:1px solid #d7d3d3">
+        <div style="font:600 10px/1 'Archivo';color:#7d7979">28.03.2026 · 6 min</div>
+        <div style="font:800 18px/1.15 'Archivo';letter-spacing:-.01em;margin-top:7px">{{ post2 }}</div>
+        <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:6px">{{ post2Sub }}</div>
+      </div>
+      <div style="padding:16px 18px;border-bottom:2px solid #201e1d">
+        <div style="font:600 10px/1 'Archivo';color:#7d7979">09.02.2026 · 3 min</div>
+        <div style="font:800 18px/1.15 'Archivo';letter-spacing:-.01em;margin-top:7px">{{ post3 }}</div>
+        <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:6px">{{ post3Sub }}</div>
+      </div>
+    </div>
+
+    <div style="background:#ffd100;padding:22px 18px 26px">
+      <div style="font:800 22px/1.1 'Archivo';letter-spacing:-.02em;text-wrap:pretty">{{ aboutClose }}</div>
+      <a href="#contact" style="text-decoration:none;background:#201e1d;color:#ffd100;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;margin-top:16px;font:800 16px/1 'Archivo'">{{ heroCta2Alt }} <span>→</span></a>
+    </div>
+
+    <div style="border-top:2px solid #201e1d;padding:20px 18px 8px;font:600 10px/1 'Archivo';letter-spacing:.18em;text-transform:uppercase;color:#7a5c00">{{ shareTitle }}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 18px 0">
+      <button onClick="{{ shareWa }}" style="all:unset;cursor:pointer;height:52px;display:flex;align-items:center;padding:0 14px;font:600 13px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">WhatsApp</button>
+      <button onClick="{{ shareLi }}" style="all:unset;cursor:pointer;height:52px;display:flex;align-items:center;padding:0 14px;font:600 13px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">LinkedIn</button>
+      <button onClick="{{ shareX }}" style="all:unset;cursor:pointer;height:52px;display:flex;align-items:center;padding:0 14px;font:600 13px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">X / Twitter</button>
+      <button onClick="{{ shareMail }}" style="all:unset;cursor:pointer;height:52px;display:flex;align-items:center;padding:0 14px;font:600 13px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">{{ shareEmail }}</button>
+    </div>
+    <div style="padding:8px 18px 0">
+      <button onClick="{{ copyLink }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:{{ copyBg }};color:{{ copyFg }};font:800 15px/1 'Archivo'" style-hover="background:#3d3937">{{ copyLabel }} <span>⧉</span></button>
+    </div>
+    <div style="font:400 11px/1.5 'Archivo';color:#7d7979;padding:18px 18px 20px;margin-top:14px;border-top:2px solid #201e1d">© 2026 Juan Fernando Garcia · {{ footerNote }}</div>
+  </section>
+
+  <div style="height:64px"></div>
+
+  <div style="position:sticky;bottom:0;z-index:20;display:grid;grid-template-columns:{{ navCols }};background:#f3f2f2;border-top:2px solid #201e1d">
+    <a href="#profile" style="text-decoration:none;height:62px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-right:1px solid #d7d3d3;font:600 10px/1 'Archivo';letter-spacing:.06em;background:{{ nav1Bg }};color:{{ nav1Fg }}"><span style="font-size:15px;line-height:1">◆</span>{{ nav1 }}</a>
+    <a href="#cv" style="text-decoration:none;height:62px;display:{{ cvNavShow }};flex-direction:column;align-items:center;justify-content:center;gap:4px;border-right:1px solid #d7d3d3;font:600 10px/1 'Archivo';letter-spacing:.06em;background:{{ nav2Bg }};color:{{ nav2Fg }}"><span style="font-size:15px;line-height:1">▤</span>{{ nav2 }}</a>
+    <a href="#work" style="text-decoration:none;height:62px;display:{{ workNavShow }};flex-direction:column;align-items:center;justify-content:center;gap:4px;border-right:1px solid #d7d3d3;font:600 10px/1 'Archivo';letter-spacing:.06em;background:{{ nav3Bg }};color:{{ nav3Fg }}"><span style="font-size:15px;line-height:1">◈</span>{{ nav3 }}</a>
+    <a href="#contact" style="text-decoration:none;height:62px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-right:1px solid #d7d3d3;font:600 10px/1 'Archivo';letter-spacing:.06em;background:{{ nav4Bg }};color:{{ nav4Fg }}"><span style="font-size:15px;line-height:1">✉</span>{{ nav4 }}</a>
+    <a href="#about" style="text-decoration:none;height:62px;display:{{ aboutNavShow }};flex-direction:column;align-items:center;justify-content:center;gap:4px;font:600 10px/1 'Archivo';letter-spacing:.06em;background:{{ nav5Bg }};color:{{ nav5Fg }}"><span style="font-size:15px;line-height:1">◍</span>{{ nav5 }}</a>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:900},&quot;heroHeight&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:37,&quot;min&quot;:24,&quot;max&quot;:80,&quot;step&quot;:1,&quot;unit&quot;:&quot;vh&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;projectRatio&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1.9,&quot;min&quot;:1.2,&quot;max&quot;:4,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;fr&quot;,&quot;es&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en' | 'fr' | 'es'&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;showCV&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showProjects&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showAbout&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showGallery&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showPublications&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showCertifications&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showBlog&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showProject1&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject2&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject3&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject4&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject5&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;}}">
+const T = {
+  en: {
+    heroKicker: "Chemical Engineering · Portfolio 2026",
+    heroBlurb: "Final-year chemical engineering student — separation processes, energy integration and process safety.",
+    heroStatus: "Open to internships · Jan 2027",
+    heroCta1: "See projects", heroCta1Sub: "7 design, lab and safety studies",
+    heroCta2: "Read my CV", heroCta2Sub: "Education, experience, software",
+    langLabel: "Choose your language",
+    cvTitle: "Curriculum vitae", cvDownload: "Download PDF",
+    fDegree: "Degree", fYear: "Year", fFocus: "Focus", fLocation: "Location", fLangs: "Languages", fGpa: "GPA",
+    cvEducation: "Education", cvExperience: "Experience", cvSkills: "Software & methods",
+    workTitle: "Projects",
+    workBlurb: "Design studies, lab work and safety reviews. Each one lists the tools used and the number that mattered.",
+    tagDesign: "Process design", tagResearch: "Research", tagSafety: "Process safety",
+    p1: "Pinch analysis of a 40 kt/y column train cut reboiler duty by 23% with two new heat exchangers.",
+    p2: "Bench absorption column screening MEA/PZ blends at 40–60 °C; 91% capture at the best operating point.",
+    p3: "Node-by-node hazard study of a batch reactor: 14 findings, 4 rated high severity, all with recommended safeguards.",
+    galleryTitle: "Lab & fieldwork",
+    pubTitle: "Publications & posters", certTitle: "Certifications",
+    contactHead: "Available for a process engineering internship from January 2027.",
+    contactCv: "Download CV", footerNote: "Built as a static site — updated by hand.",
+    cvDownloadSub: "One page, updated May 2026",
+    aboutKicker: "Off the process flow diagram",
+    aboutTitle: "About me",
+    aboutIntro: "Outside the simulator I climb, cook badly on purpose, and write short notes about the things I get wrong first.",
+    hobby1L: "Sport", hobby1: "Sport climbing · 6b+",
+    hobby2L: "Making", hobby2: "Home fermentation & brewing",
+    hobby3L: "Reading", hobby3: "Industrial history, disasters",
+    hobby4L: "Volunteering", hobby4: "STEM tutoring, weekends",
+    hobby1Detail: "Four years on plastic and rock. Route reading is the same habit as reading a P&ID: find the sequence before you commit to a move.",
+    hobby2Detail: "Two fermenters at home and a logbook of temperature curves. It is the cheapest bioreactor a student can own.",
+    hobby3Detail: "Flixborough, Bhopal, Texas City. Reading the reports carefully is what convinced me to take process safety seriously.",
+    hobby4Detail: "Saturday tutoring for first-year students in maths and general chemistry, through the university outreach programme.",
+    p4: "Transient 2D model of a fixed-bed reactor in COMSOL, fitted to lab data (R² = 0.98).",
+    p5: "Short description of the project — what you did, with what, and the number that mattered.",
+    blogTitle: "Notes & writing",
+    post1: "Why my first pinch analysis was wrong",
+    post1Sub: "Three stream-data mistakes that quietly move the pinch temperature.",
+    post2: "Reading a P&ID like a story",
+    post2Sub: "A habit that made HAZOP sessions much less intimidating.",
+    post3: "Fermenting at home taught me about kinetics",
+    post3Sub: "Temperature control matters more than the recipe.",
+    aboutClose: "Want the long version? Ask me over coffee.",
+    heroCta2Alt: "Get in touch",
+    shareTitle: "Share this portfolio", shareCopy: "Copy link", shareCopied: "Link copied",
+    shareEmail: "Email", shareMore: "More options",
+    contactLabel: "Contact", shareLabel: "Share", caseStudy: "Read case study",
+    nav1: "PROFILE", nav2: "CV", nav3: "PROJECTS", nav4: "CONTACT", nav5: "ABOUT"
+  },
+  fr: {
+    heroKicker: "Génie chimique · Portfolio 2026",
+    heroBlurb: "Étudiant·e en dernière année de génie chimique — procédés de séparation, intégration énergétique et sécurité des procédés.",
+    heroStatus: "Disponible pour un stage · janv. 2027",
+    heroCta1: "Voir les projets", heroCta1Sub: "7 études de conception, labo et sécurité",
+    heroCta2: "Lire mon CV", heroCta2Sub: "Formation, expérience, logiciels",
+    langLabel: "Choisissez la langue",
+    cvTitle: "Curriculum vitæ", cvDownload: "Télécharger le PDF",
+    fDegree: "Diplôme", fYear: "Année", fFocus: "Spécialité", fLocation: "Lieu", fLangs: "Langues", fGpa: "Moyenne",
+    cvEducation: "Formation", cvExperience: "Expérience", cvSkills: "Logiciels & méthodes",
+    workTitle: "Projets",
+    workBlurb: "Études de conception, travaux de laboratoire et analyses de sécurité. Chaque fiche indique les outils et le chiffre clé.",
+    tagDesign: "Conception de procédés", tagResearch: "Recherche", tagSafety: "Sécurité des procédés",
+    p1: "L'analyse pincement d'un train de colonnes de 40 kt/an a réduit la charge du rebouilleur de 23 % avec deux échangeurs.",
+    p2: "Colonne d'absorption de laboratoire, mélanges MEA/PZ à 40–60 °C ; 91 % de captage au meilleur point de fonctionnement.",
+    p3: "Étude de risques nœud par nœud d'un réacteur discontinu : 14 constats, 4 de gravité élevée, avec barrières recommandées.",
+    galleryTitle: "Laboratoire & terrain",
+    pubTitle: "Publications & posters", certTitle: "Certifications",
+    contactHead: "Disponible pour un stage en génie des procédés dès janvier 2027.",
+    contactCv: "Télécharger le CV", footerNote: "Site statique — mis à jour à la main.",
+    cvDownloadSub: "Une page, mise à jour mai 2026",
+    aboutKicker: "Hors du schéma de procédé",
+    aboutTitle: "À propos",
+    aboutIntro: "En dehors du simulateur, je grimpe, je cuisine mal volontairement et j'écris de courtes notes sur ce que je rate en premier.",
+    hobby1L: "Sport", hobby1: "Escalade sportive · 6b+",
+    hobby2L: "Bricolage", hobby2: "Fermentation & brassage maison",
+    hobby3L: "Lectures", hobby3: "Histoire industrielle, accidents",
+    hobby4L: "Bénévolat", hobby4: "Tutorat STEM, le week-end",
+    hobby1Detail: "Quatre ans sur résine et sur rocher. Lire une voie, c'est la même habitude que lire un P&ID : trouver la séquence avant de s'engager.",
+    hobby2Detail: "Deux fermenteurs à la maison et un carnet de courbes de température. Le bioréacteur le moins cher qu'un étudiant puisse avoir.",
+    hobby3Detail: "Flixborough, Bhopal, Texas City. Lire ces rapports en détail m'a convaincu de prendre la sécurité des procédés au sérieux.",
+    hobby4Detail: "Tutorat le samedi en maths et chimie générale pour les première année, via le programme d'ouverture de l'université.",
+    p4: "Modèle 2D transitoire d'un réacteur à lit fixe sous COMSOL, ajusté aux données de laboratoire (R² = 0,98).",
+    p5: "Courte description du projet — ce que vous avez fait, avec quoi, et le chiffre qui compte.",
+    blogTitle: "Notes & écrits",
+    post1: "Pourquoi ma première analyse pincement était fausse",
+    post1Sub: "Trois erreurs de données qui déplacent discrètement le pincement.",
+    post2: "Lire un P&ID comme un récit",
+    post2Sub: "Une habitude qui rend les séances HAZOP bien moins intimidantes.",
+    post3: "La fermentation maison m'a appris la cinétique",
+    post3Sub: "Le contrôle de température compte plus que la recette.",
+    aboutClose: "Vous voulez la version longue ? Autour d'un café.",
+    heroCta2Alt: "Me contacter",
+    shareTitle: "Partager ce portfolio", shareCopy: "Copier le lien", shareCopied: "Lien copié",
+    shareEmail: "E-mail", shareMore: "Plus d'options",
+    contactLabel: "Contact", shareLabel: "Partager", caseStudy: "Lire l'étude de cas",
+    nav1: "PROFIL", nav2: "CV", nav3: "PROJETS", nav4: "CONTACT", nav5: "À PROPOS"
+  },
+  es: {
+    heroKicker: "Ingeniería Química · Portafolio 2026",
+    heroBlurb: "Estudiante de último año de ingeniería química — procesos de separación, integración energética y seguridad de procesos.",
+    heroStatus: "Disponible para prácticas · ene. 2027",
+    heroCta1: "Ver proyectos", heroCta1Sub: "7 estudios de diseño, laboratorio y seguridad",
+    heroCta2: "Leer mi CV", heroCta2Sub: "Formación, experiencia, software",
+    langLabel: "Elige el idioma",
+    cvTitle: "Currículum", cvDownload: "Descargar CV", cvDownloadSub: "Una página, actualizado mayo 2026",
+    fDegree: "Título", fYear: "Año", fFocus: "Enfoque", fLocation: "Ubicación", fLangs: "Idiomas", fGpa: "Promedio",
+    cvEducation: "Formación", cvExperience: "Experiencia", cvSkills: "Software y métodos",
+    workTitle: "Proyectos",
+    workBlurb: "Estudios de diseño, trabajo de laboratorio y análisis de seguridad. Cada ficha indica las herramientas y la cifra clave.",
+    tagDesign: "Diseño de procesos", tagResearch: "Investigación", tagSafety: "Seguridad de procesos",
+    p1: "El análisis pinch de un tren de columnas de 40 kt/año redujo la carga del rehervidor un 23% con dos intercambiadores.",
+    p2: "Columna de absorción de laboratorio con mezclas MEA/PZ a 40–60 °C; 91% de captura en el mejor punto de operación.",
+    p3: "Estudio de riesgos nodo por nodo de un reactor por lotes: 14 hallazgos, 4 de severidad alta, con salvaguardas propuestas.",
+    galleryTitle: "Laboratorio y campo",
+    pubTitle: "Publicaciones y pósteres", certTitle: "Certificaciones",
+    contactHead: "Disponible para prácticas en ingeniería de procesos desde enero de 2027.",
+    contactCv: "Descargar CV", footerNote: "Sitio estático — actualizado a mano.",
+    aboutKicker: "Fuera del diagrama de flujo",
+    aboutTitle: "Sobre mí",
+    aboutIntro: "Fuera del simulador escalo, cocino mal a propósito y escribo notas cortas sobre las cosas que primero hago mal.",
+    hobby1L: "Deporte", hobby1: "Escalada deportiva · 6b+",
+    hobby2L: "Hacer", hobby2: "Fermentación y cerveza casera",
+    hobby3L: "Lecturas", hobby3: "Historia industrial, accidentes",
+    hobby4L: "Voluntariado", hobby4: "Tutorías STEM los fines de semana",
+    hobby1Detail: "Cuatro años entre resina y roca. Leer una ruta es el mismo hábito que leer un P&ID: encontrar la secuencia antes de comprometerse.",
+    hobby2Detail: "Dos fermentadores en casa y un cuaderno de curvas de temperatura. El biorreactor más barato que puede tener un estudiante.",
+    hobby3Detail: "Flixborough, Bhopal, Texas City. Leer esos informes con calma fue lo que me hizo tomarme en serio la seguridad de procesos.",
+    hobby4Detail: "Tutorías los sábados en matemáticas y química general para estudiantes de primer año, dentro del programa de extensión de la universidad.",
+    p4: "Modelo 2D transitorio de un reactor de lecho fijo en COMSOL, ajustado a datos de laboratorio (R² = 0,98).",
+    p5: "Descripción corta del proyecto — qué hiciste, con qué, y la cifra que importó.",
+    blogTitle: "Notas y escritos",
+    post1: "Por qué mi primer análisis pinch estaba mal",
+    post1Sub: "Tres errores de datos que mueven el punto de pliegue sin avisar.",
+    post2: "Leer un P&ID como si fuera un relato",
+    post2Sub: "Un hábito que hizo mucho menos intimidantes las sesiones HAZOP.",
+    post3: "Fermentar en casa me enseñó cinética",
+    post3Sub: "El control de temperatura importa más que la receta.",
+    aboutClose: "¿Quieres la versión larga? Hablemos con un café.",
+    heroCta2Alt: "Contáctame",
+    shareTitle: "Comparte este portafolio", shareCopy: "Copiar enlace", shareCopied: "Enlace copiado",
+    shareEmail: "Correo", shareMore: "Más opciones",
+    contactLabel: "Contacto", shareLabel: "Compartir", caseStudy: "Ver el caso completo",
+    nav1: "PERFIL", nav2: "CV", nav3: "PROYECTOS", nav4: "CONTACTO", nav5: "SOBRE MÍ"
+  }
+};
+
+class Component extends DCLogic {
+  state = { lang: T[this.props.defaultLang] ? this.props.defaultLang : "en", active: "profile", hobby: 0, shareOpen: false, copied: false };
+
+  toggleHobby(n) { this.setState(s => ({ hobby: s.hobby === n ? 0 : n })); }
+
+  url() { return (typeof location !== "undefined" && location.href) || ""; }
+
+  pop(u) { window.open(u, "_blank", "noopener,noreferrer,width=600,height=640"); }
+
+  copy() {
+    const u = this.url();
+    const done = () => {
+      this.setState({ copied: true });
+      clearTimeout(this._ct);
+      this._ct = setTimeout(() => this.setState({ copied: false }), 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(u).then(done).catch(done);
+    } else { done(); }
+  }
+
+  native() {
+    const t = T[this.state.lang];
+    if (navigator.share) {
+      navigator.share({ title: "Juan Fernando Garcia — " + t.heroKicker, url: this.url() }).catch(() => {});
+    } else { this.copy(); }
+  }
+
+  componentDidMount() {
+    const ids = ["profile", "cv", "work", "contact", "about"];
+    this.sync = () => {
+      const mid = window.innerHeight * 0.5;
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= mid) current = id;
+      }
+      if (current !== this.state.active) this.setState({ active: current });
+    };
+    this.onScroll = () => {
+      if (this.raf) return;
+      this.raf = requestAnimationFrame(() => { this.raf = null; this.sync(); });
+    };
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    window.addEventListener("resize", this.onScroll, { passive: true });
+    this.sync();
+
+    this.flash = () => {
+      const id = (location.hash || "").slice(1);
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.style.animation = "none";
+      requestAnimationFrame(() => {
+        el.style.animation = "omflash .8s ease-out 1";
+        clearTimeout(this._ft);
+        this._ft = setTimeout(() => { el.style.animation = ""; }, 950);
+      });
+    };
+    this.onNavClick = e => {
+      const a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const id = a.getAttribute("href").slice(1);
+      if (id && id === (location.hash || "").slice(1)) this.flash();
+    };
+    window.addEventListener("hashchange", this.flash);
+    document.addEventListener("click", this.onNavClick);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("resize", this.onScroll);
+    window.removeEventListener("hashchange", this.flash);
+    document.removeEventListener("click", this.onNavClick);
+    if (this.raf) cancelAnimationFrame(this.raf);
+  }
+
+  renderVals() {
+    const t = T[this.state.lang];
+    const a = this.state.active;
+    const nav = id => a === id
+      ? { bg: "#ffd100", fg: "#201e1d" }
+      : { bg: "transparent", fg: "#7d7979" };
+    const n1 = nav("profile"), n2 = nav("cv"), n3 = nav("work"), n4 = nav("contact"), n5 = nav("about");
+    const L = this.state.lang;
+    const sm = code => L === code
+      ? { bg: "#201e1d", fg: "#f3f2f2" }
+      : { bg: "transparent", fg: "#201e1d" };
+    const bg = code => L === code
+      ? { bg: "#201e1d", fg: "#ffd100" }
+      : { bg: "transparent", fg: "#201e1d" };
+    const sEn = sm("en"), sFr = sm("fr"), sEs = sm("es");
+    const bEn = bg("en"), bFr = bg("fr"), bEs = bg("es");
+    const p = this.props;
+    const heroH = p.heroHeight ?? 37;
+    const gallery = p.showGallery ?? true;
+    const on = (v, d) => (v ?? d) ? "block" : "none";
+    const cvOn = p.showCV ?? true, workOn = p.showProjects ?? true, aboutOn = p.showAbout ?? true;
+    const visibleNav = 2 + (cvOn ? 1 : 0) + (workOn ? 1 : 0) + (aboutOn ? 1 : 0);
+    const h = this.state.hobby;
+    return Object.assign({}, t, {
+      heroMinH: heroH + "vh",
+      heroInnerH: Math.round(heroH * 4.95) + "px",
+      projAspect: "4/" + (p.projectRatio ?? 1.9),
+      showGallery: gallery,
+      galleryDisplay: gallery ? "block" : "none",
+      cvShow: cvOn ? "block" : "none",
+      workShow: workOn ? "block" : "none",
+      aboutShow: aboutOn ? "block" : "none",
+      cvNavShow: cvOn ? "flex" : "none",
+      workNavShow: workOn ? "flex" : "none",
+      aboutNavShow: aboutOn ? "flex" : "none",
+      navCols: "repeat(" + visibleNav + ",1fr)",
+      p1Show: on(p.showProject1, true), p2Show: on(p.showProject2, true),
+      p3Show: on(p.showProject3, true), p4Show: on(p.showProject4, false),
+      p5Show: on(p.showProject5, false),
+      pubShow: on(p.showPublications, true),
+      certShow: on(p.showCertifications, true),
+      certShowFlex: (p.showCertifications ?? true) ? "flex" : "none",
+      blogShow: on(p.showBlog, true),
+      toggleH1: () => this.toggleHobby(1), toggleH2: () => this.toggleHobby(2),
+      toggleH3: () => this.toggleHobby(3), toggleH4: () => this.toggleHobby(4),
+      h1Open: h === 1, h2Open: h === 2, h3Open: h === 3, h4Open: h === 4,
+      h1Sign: h === 1 ? "−" : "+", h2Sign: h === 2 ? "−" : "+",
+      h3Sign: h === 3 ? "−" : "+", h4Sign: h === 4 ? "−" : "+",
+      shareOpen: this.state.shareOpen,
+      openShare: () => this.setState({ shareOpen: true }),
+      closeShare: () => this.setState({ shareOpen: false }),
+      shareUrl: this.url(),
+      copyLink: () => this.copy(),
+      copyLabel: this.state.copied ? t.shareCopied : t.shareCopy,
+      copyBg: this.state.copied ? "#ffd100" : "#201e1d",
+      copyFg: this.state.copied ? "#201e1d" : "#ffd100",
+      shareWa: () => this.pop("https://wa.me/?text=" + encodeURIComponent(this.url())),
+      shareLi: () => this.pop("https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(this.url())),
+      shareX: () => this.pop("https://twitter.com/intent/tweet?url=" + encodeURIComponent(this.url())),
+      shareMail: () => { window.location.href = "mailto:?subject=" + encodeURIComponent("Portfolio — Juan Fernando Garcia") + "&body=" + encodeURIComponent(this.url()); },
+      shareNative: () => this.native(),
+      nativeShow: (typeof navigator !== "undefined" && navigator.share) ? "block" : "none",
+      setEn: () => this.setState({ lang: "en" }),
+      setFr: () => this.setState({ lang: "fr" }),
+      setEs: () => this.setState({ lang: "es" }),
+      enBg: sEn.bg, enFg: sEn.fg, frBg: sFr.bg, frFg: sFr.fg, esBg: sEs.bg, esFg: sEs.fg,
+      enBigBg: bEn.bg, enBigFg: bEn.fg, frBigBg: bFr.bg, frBigFg: bFr.fg, esBigBg: bEs.bg, esBigFg: bEs.fg,
+      nav1Bg: n1.bg, nav1Fg: n1.fg, nav2Bg: n2.bg, nav2Fg: n2.fg,
+      nav3Bg: n3.bg, nav3Fg: n3.fg, nav4Bg: n4.bg, nav4Fg: n4.fg,
+      nav5Bg: n5.bg, nav5Fg: n5.fg
+    });
+  }
+}
+
+</script>
+</body>
+</html>
