@@ -17,7 +17,6 @@
 <script src="./image-slot.js"></script>
 <style>
 html{scroll-behavior:smooth}
-@keyframes omflash{0%{opacity:1}22%{opacity:.32}100%{opacity:1}}
 body{margin:0;background:#c9c6c2;font-family:"Archivo",system-ui,sans-serif;color:#201e1d;-webkit-font-smoothing:antialiased}
 a{color:#201e1d}
 a:hover{color:#7a5c00}
@@ -26,6 +25,16 @@ section[id]{scroll-margin-top:100px}
 button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2px}
 .pf{max-width:720px;margin:0 auto;background:#f3f2f2;border-left:2px solid #201e1d;border-right:2px solid #201e1d;min-height:100vh;position:relative}
 @media (max-width:760px){.pf{border-left:0;border-right:0}}
+@media (min-width:900px){
+.pf{max-width:1100px}
+.herogrid{max-width:none !important;grid-template-columns:1fr 38% !important}
+.herogrid h1{font-size:76px !important}
+.ctarow{grid-template-columns:1fr 1fr !important}
+.langrow{max-width:none !important}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;align-items:start}
+.pgrid>div:nth-child(odd){border-right:2px solid #201e1d}
+.labshot{width:23% !important;height:150px !important}
+}
 
 .gs{filter:grayscale(1) contrast(1.06)}
 .strip::-webkit-scrollbar{height:0}
@@ -84,7 +93,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
   <section id="profile">
     <div style="background:#ffd100;color:#201e1d;min-height:{{ heroMinH }};display:flex;flex-direction:column;border-bottom:2px solid #201e1d">
       <div style="padding:24px 18px 18px;font:600 10px/1 'Archivo';letter-spacing:.22em;text-transform:uppercase">{{ heroKicker }}</div>
-      <div style="flex: 1; display: grid; grid-template-columns: 1fr 42%; align-items: stretch; border-top: 2px solid #201e1d; max-width: 700px; min-height: {{ heroInnerH }}">
+      <div class="herogrid" style="flex: 1; display: grid; grid-template-columns: 1fr 42%; align-items: stretch; border-top: 2px solid #201e1d; max-width: 700px; min-height: {{ heroInnerH }}">
         <div style="padding: 18px 16px; display: flex; flex-direction: column; justify-content: center; gap: 12px">
           <h1 style="font:800 clamp(38px,11.5vw,58px)/.9 'Archivo';letter-spacing:-.04em;margin:0">Juan Fernando Garcia</h1>
           <p style="font:400 14px/1.4 'Archivo';margin:0;text-wrap:pretty">{{ heroBlurb }}</p>
@@ -98,14 +107,14 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
 
     <div style="background:#ffd100;border-bottom:2px solid #201e1d">
       
-      <div style="padding: 16px 18px 12px; display: flex; flex-direction: column; gap: 10px; max-width: 706px">
+      <div class="langrow" style="padding: 16px 18px 12px; display: flex; flex-direction: column; gap: 10px; max-width: 706px">
         <div style="font:600 10px/1.3 'Archivo';letter-spacing:.16em;text-transform:uppercase">{{ langLabel }}</div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
           <button onClick="{{ setEn }}" style="all:unset;cursor:pointer;height:48px;display:flex;align-items:center;justify-content:center;font:800 16px/1 'Archivo';letter-spacing:.02em;border:2px solid #201e1d;background:{{ enBigBg }};color:{{ enBigFg }}">EN</button>
           <button onClick="{{ setFr }}" style="all:unset;cursor:pointer;height:48px;display:flex;align-items:center;justify-content:center;font:800 16px/1 'Archivo';letter-spacing:.02em;border:2px solid #201e1d;background:{{ frBigBg }};color:{{ frBigFg }}">FR</button>
           <button onClick="{{ setEs }}" style="all:unset;cursor:pointer;height:48px;display:flex;align-items:center;justify-content:center;font:800 16px/1 'Archivo';letter-spacing:.02em;border:2px solid #201e1d;background:{{ esBigBg }};color:{{ esBigFg }}">ES</button>
         </div>
-      </div><div style="display:grid;gap:10px;padding:4px 18px 20px">
+      </div><div class="ctarow" style="display:grid;gap:10px;padding:4px 18px 20px">
         <a href="#work" style="text-decoration:none;background:#201e1d;color:#ffd100;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 18px" style-hover="background:#3d3937">
           <span style="display:flex;flex-direction:column;gap:5px"><span style="font:800 24px/1 'Archivo';letter-spacing:-.02em">{{ heroCta1 }}</span><span style="font:400 11px/1 'Archivo';color:#bab6b6">{{ heroCta1Sub }}</span></span>
           <span style="font:800 22px/1 'Archivo'">→</span>
@@ -184,7 +193,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
 
     <div class="pgrid">
     <div style="display:{{ p1Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
-      <div class="gs" style="aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj1" shape="rect" fit="cover" placeholder="Project image"></image-slot></div>
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj1" shape="rect" fit="cover" placeholder="Project image"></image-slot><a href="project.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe1 }}"></a></div>
       <div style="font:600 11px/1 'Archivo';color:#7a5c00">01 · {{ tagDesign }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">Bioethanol Distillation Retrofit</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p1 }}</div>
@@ -193,7 +202,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
     </div>
 
     <div style="display:{{ p2Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
-      <div class="gs" style="aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj2" shape="rect" fit="cover" placeholder="Project image"></image-slot></div>
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj2" shape="rect" fit="cover" placeholder="Project image"></image-slot><a href="project.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe2 }}"></a></div>
       <div style="font:600 11px/1 'Archivo';color:#7a5c00">02 · {{ tagResearch }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">CO₂ Capture with Amine Blends</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p2 }}</div>
@@ -202,7 +211,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
     </div>
 
     <div style="display:{{ p3Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
-      <div class="gs" style="aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj3" shape="rect" fit="cover" placeholder="Project image"></image-slot></div>
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj3" shape="rect" fit="cover" placeholder="Project image"></image-slot><a href="project.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe3 }}"></a></div>
       <div style="font:600 11px/1 'Archivo';color:#7a5c00">03 · {{ tagSafety }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">HAZOP of a Batch Reactor</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p3 }}</div>
@@ -211,7 +220,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
     </div>
 
     <div style="display:{{ p4Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
-      <div class="gs" style="aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj4" shape="rect" fit="cover" placeholder="Project image"></image-slot></div>
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj4" shape="rect" fit="cover" placeholder="Project image"></image-slot><a href="project.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe4 }}"></a></div>
       <div style="font:600 11px/1 'Archivo';color:#7a5c00">04 · {{ tagDesign }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">Fixed-Bed Reactor Modelling</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p4 }}</div>
@@ -220,7 +229,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
     </div>
 
     <div style="display:{{ p5Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
-      <div class="gs" style="aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj5" shape="rect" fit="cover" placeholder="Project image"></image-slot></div>
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj5" shape="rect" fit="cover" placeholder="Project image"></image-slot><a href="project.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe5 }}"></a></div>
       <div style="font:600 11px/1 'Archivo';color:#7a5c00">05 · {{ tagResearch }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">New project title</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p5 }}</div>
@@ -232,10 +241,10 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
     <div style="padding:20px 18px 10px;border-top:2px solid #201e1d;font:600 10px/1 'Archivo';letter-spacing:.18em;text-transform:uppercase;color:#7a5c00;display:{{ galleryDisplay }}">{{ galleryTitle }}</div>
     <sc-if value="{{ showGallery }}" hint-placeholder-val="{{ true }}">
     <div class="strip" style="display:flex;gap:10px;overflow-x:auto;padding:4px 18px 20px;scroll-snap-type:x mandatory">
-      <div class="gs" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab1" shape="rect" fit="cover" placeholder="Lab photo"></image-slot></div>
-      <div class="gs" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab2" shape="rect" fit="cover" placeholder="Lab photo"></image-slot></div>
-      <div class="gs" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab3" shape="rect" fit="cover" placeholder="Lab photo"></image-slot></div>
-      <div class="gs" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab4" shape="rect" fit="cover" placeholder="Lab photo"></image-slot></div>
+      <div class="gs labshot" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab1" shape="rect" fit="cover" placeholder="Lab photo"></image-slot></div>
+      <div class="gs labshot" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab2" shape="rect" fit="cover" placeholder="Lab photo"></image-slot></div>
+      <div class="gs labshot" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab3" shape="rect" fit="cover" placeholder="Lab photo"></image-slot></div>
+      <div class="gs labshot" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab4" shape="rect" fit="cover" placeholder="Lab photo"></image-slot></div>
     </div>
     </sc-if>
 
@@ -371,7 +380,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:900},&quot;heroHeight&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:37,&quot;min&quot;:24,&quot;max&quot;:80,&quot;step&quot;:1,&quot;unit&quot;:&quot;vh&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;projectRatio&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1.9,&quot;min&quot;:1.2,&quot;max&quot;:4,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;fr&quot;,&quot;es&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en' | 'fr' | 'es'&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;showCV&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showProjects&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showAbout&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showGallery&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showPublications&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showCertifications&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showBlog&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showProject1&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject2&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject3&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject4&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject5&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:900},&quot;heroHeight&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:37,&quot;min&quot;:24,&quot;max&quot;:80,&quot;step&quot;:1,&quot;unit&quot;:&quot;vh&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;projectRatio&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1.9,&quot;min&quot;:1.2,&quot;max&quot;:4,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;fr&quot;,&quot;es&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en' | 'fr' | 'es'&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;imageOpensCase&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;showCV&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showProjects&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showAbout&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showGallery&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showPublications&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showCertifications&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showBlog&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showProject1&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject2&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject3&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject4&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject5&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;}}">
 const T = {
   en: {
     heroKicker: "Chemical Engineering · Portfolio 2026",
@@ -519,7 +528,7 @@ const T = {
 };
 
 class Component extends DCLogic {
-  state = { lang: T[this.props.defaultLang] ? this.props.defaultLang : "en", active: "profile", hobby: 0, shareOpen: false, copied: false };
+  state = { lang: T[this.props.defaultLang] ? this.props.defaultLang : "en", active: "profile", hobby: 0, shareOpen: false, copied: false, filled: [false, false, false, false, false] };
 
   toggleHobby(n) { this.setState(s => ({ hobby: s.hobby === n ? 0 : n })); }
 
@@ -569,13 +578,11 @@ class Component extends DCLogic {
       const id = (location.hash || "").slice(1);
       if (!id) return;
       const el = document.getElementById(id);
-      if (!el) return;
-      el.style.animation = "none";
-      requestAnimationFrame(() => {
-        el.style.animation = "omflash .8s ease-out 1";
-        clearTimeout(this._ft);
-        this._ft = setTimeout(() => { el.style.animation = ""; }, 950);
-      });
+      if (!el || !el.animate) return;
+      el.animate(
+        [{ opacity: 1 }, { opacity: 0.32, offset: 0.22 }, { opacity: 1 }],
+        { duration: 800, easing: "ease-out" }
+      );
     };
     this.onNavClick = e => {
       const a = e.target.closest && e.target.closest('a[href^="#"]');
@@ -585,6 +592,21 @@ class Component extends DCLogic {
     };
     window.addEventListener("hashchange", this.flash);
     document.addEventListener("click", this.onNavClick);
+
+    const isFilled = id => {
+      const s = document.getElementById(id);
+      if (!s) return false;
+      const r = s.shadowRoot;
+      const img = r ? r.querySelector("img") : s.querySelector("img");
+      return !!(img && img.getAttribute("src"));
+    };
+    this.syncSlots = () => {
+      const next = [1, 2, 3, 4, 5].map(n => isFilled("proj" + n));
+      const cur = this.state.filled;
+      if (next.some((v, i) => v !== cur[i])) this.setState({ filled: next });
+    };
+    this.syncSlots();
+    this._si = setInterval(this.syncSlots, 1000);
   }
 
   componentWillUnmount() {
@@ -592,6 +614,7 @@ class Component extends DCLogic {
     window.removeEventListener("resize", this.onScroll);
     window.removeEventListener("hashchange", this.flash);
     document.removeEventListener("click", this.onNavClick);
+    if (this._si) clearInterval(this._si);
     if (this.raf) cancelAnimationFrame(this.raf);
   }
 
@@ -638,6 +661,12 @@ class Component extends DCLogic {
       certShow: on(p.showCertifications, true),
       certShowFlex: (p.showCertifications ?? true) ? "flex" : "none",
       blogShow: on(p.showBlog, true),
+      imgLinkShow: (p.imageOpensCase ?? true) ? "block" : "none",
+      pe1: this.state.filled[0] ? "auto" : "none",
+      pe2: this.state.filled[1] ? "auto" : "none",
+      pe3: this.state.filled[2] ? "auto" : "none",
+      pe4: this.state.filled[3] ? "auto" : "none",
+      pe5: this.state.filled[4] ? "auto" : "none",
       toggleH1: () => this.toggleHobby(1), toggleH2: () => this.toggleHobby(2),
       toggleH3: () => this.toggleHobby(3), toggleH4: () => this.toggleHobby(4),
       h1Open: h === 1, h2Open: h === 2, h3Open: h === 3, h4Open: h === 4,
