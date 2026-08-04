@@ -135,6 +135,14 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
   <div style="display:{{ galADisplay }}">
   <div class="gal" style="position:relative;margin:20px 18px 0;border:2px solid #201e1d;background:#201e1d">
     <div ref="{{ galARef }}" onScroll="{{ onGalAScroll }}" class="strip" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory">
+        <div class="gs" style="display:{{ a1Show }};order:{{ a1Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-a1" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a2Show }};order:{{ a2Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-a2" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a3Show }};order:{{ a3Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-a3" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a4Show }};order:{{ a4Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-a4" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a5Show }};order:{{ a5Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-a5" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a6Show }};order:{{ a6Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-a6" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a7Show }};order:{{ a7Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-a7" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a8Show }};order:{{ a8Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-a8" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ av1Show }};order:{{ av1Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
           <sc-if value="{{ av1Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av1Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
         </div>
@@ -164,6 +172,14 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
   <div style="display:{{ galBDisplay }}">
   <div class="gal" style="position:relative;margin:20px 18px 0;border:2px solid #201e1d;background:#201e1d">
     <div ref="{{ galBRef }}" onScroll="{{ onGalBScroll }}" class="strip" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory">
+        <div class="gs" style="display:{{ b1Show }};order:{{ b1Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-g1" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b2Show }};order:{{ b2Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-g2" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b3Show }};order:{{ b3Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-g3" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b4Show }};order:{{ b4Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-g4" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b5Show }};order:{{ b5Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-g5" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b6Show }};order:{{ b6Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-g6" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b7Show }};order:{{ b7Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-g7" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b8Show }};order:{{ b8Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p01-g8" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ bv1Show }};order:{{ bv1Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
           <sc-if value="{{ bv1Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv1Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
         </div>
@@ -259,8 +275,11 @@ function savePending(map) {
   try { localStorage.setItem(PENDING_KEY, JSON.stringify(map)); } catch (e) {}
 }
 
+const DEFAULT_ORDER = {"pp-a":["i:pp-a1","i:pp-a2","pp-a-v1","i:pp-a3"],"pp-b":["i:pp-g2","pp-b-v1","i:pp-g3","i:pp-g1"]};
+
 function storedOrder() {
-  try { return JSON.parse(localStorage.getItem(ORDER_KEY) || "{}") || {}; } catch (e) { return {}; }
+  try { const v = localStorage.getItem(ORDER_KEY); if (v) return JSON.parse(v) || {}; } catch (e) {}
+  return JSON.parse(JSON.stringify(DEFAULT_ORDER));
 }
 
 function saveOrder(map) {
