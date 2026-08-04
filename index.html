@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preload" as="image" href="media/portrait.webp" fetchpriority="high">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -79,17 +80,10 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
         <button onClick="{{ closeShare }}" aria-label="Close" style="all:unset;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:2px solid #201e1d;font:700 15px/1 'Archivo'" style-hover="background:#ffd100">✕</button>
       </div>
       <div style="padding:14px 18px 0;font:400 11px/1.4 'Archivo';color:#7d7979;word-break:break-all">{{ shareUrl }}</div>
-      <div style="padding:12px 18px 0">
-        <button onClick="{{ copyLink }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:{{ copyBg }};color:{{ copyFg }};font:800 22px/1 'Archivo';letter-spacing:-.02em" style-hover="background:#3d3937">{{ copyLabel }} <span style="font-size:19px">⧉</span></button>
-      </div>
-      <div style="display:{{ nativeShow }};padding:10px 18px 0">
-        <button onClick="{{ shareNative }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:2px solid #201e1d;color:#201e1d;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#ffd100">{{ shareMore }} <span style="font-size:17px">↗</span></button>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:16px 18px 22px">
-        <button onClick="{{ shareLi }}" style="all:unset;cursor:pointer;height:52px;display:flex;align-items:center;padding:0 14px;font:600 13px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">LinkedIn</button>
-        <button onClick="{{ shareJtGo }}" style="all:unset;cursor:pointer;height:52px;display:flex;align-items:center;padding:0 14px;font:600 13px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">{{ shareJt }}</button>
-        <button onClick="{{ shareMail }}" style="all:unset;cursor:pointer;height:52px;display:flex;align-items:center;padding:0 14px;font:600 13px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">{{ shareEmail }}</button>
-        <button onClick="{{ shareWa }}" style="all:unset;cursor:pointer;height:52px;display:flex;align-items:center;padding:0 14px;font:600 13px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">WhatsApp</button>
+      <div style="display:grid;gap:8px;padding:12px 18px 22px">
+        <button onClick="{{ shareNative }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#201e1d;color:#ffd100;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#3d3937">{{ shareMore }} <span style="font-size:17px">↗</span></button>
+        <button onClick="{{ shareMail }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:2px solid #201e1d;color:#201e1d;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#ffd100">{{ shareEmail }} <span style="font-size:17px">✉</span></button>
+        <button onClick="{{ copyLink }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:2px solid #201e1d;background:{{ copyBg }};color:#201e1d;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#ffd100">{{ copyLabel }} <span style="font-size:17px">⧉</span></button>
       </div>
     </div>
   </div>
@@ -106,7 +100,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
         </div>
         <div style="border-left: 2px solid #201e1d; background: #ffd100; padding: 14px; box-sizing: border-box; min-height: 180px; display: flex">
           <div class="gs" style="flex:1;position:relative;border:2px solid #201e1d;overflow:hidden;box-shadow:7px 7px 0 rgba(32,30,29,.18)">
-            <image-slot id="portrait" shape="rect" fit="cover" placeholder="Drop your photo · double-click to reframe" style="width: 100%; height: 100%"></image-slot>
+            <image-slot id="portrait" src="media/portrait.webp" shape="rect" fit="cover" placeholder="Drop your photo · double-click to reframe" style="width: 100%; height: 100%"></image-slot>
           </div>
         </div>
       </div>
@@ -133,6 +127,8 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
       </div>
     </div>
   </section>
+
+  <div style="display:{{ cvShow }};height:10px;background:#ffd100;border-top:2px solid #201e1d;border-bottom:2px solid #201e1d"></div>
 
   <section id="cv" style="display:{{ cvShow }}">
     <div style="padding:22px 18px 14px">
@@ -190,7 +186,23 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
       <div style="padding:10px 18px;border-bottom:1px solid #d7d3d3;font:600 13px/1 'Archivo';display:flex;align-items:center">Fusion 360</div><div style="padding:10px 18px 10px 0;border-bottom:1px solid #d7d3d3;font:600 12px/1 'Archivo';color:#7a5c00;display:flex;align-items:center;justify-content:flex-end">●●●○○</div>
       <div style="padding:10px 18px;border-bottom:2px solid #201e1d;font:600 13px/1 'Archivo';display:flex;align-items:center">{{ sk5 }}</div><div style="padding:10px 18px 10px 0;border-bottom:2px solid #201e1d;font:600 12px/1 'Archivo';color:#7a5c00;display:flex;align-items:center;justify-content:flex-end">●●●●○</div>
     </div>
+
+    <div style="display:{{ pubShow }};padding:18px 18px 10px;border-top:2px solid #201e1d;font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">{{ pubTitle }}</div>
+    <div style="display:{{ pubShow }};padding:0 18px 8px">
+      <div style="padding:11px 0;border-bottom:1px solid #d7d3d3"><div style="font:600 13px/1.3 'Archivo'">{{ pub1t }}</div><div style="font:400 11px/1.4 'Archivo';color:#7d7979;margin-top:4px">{{ pub1s }}</div></div>
+      <div style="padding:11px 0"><div style="font:600 13px/1.3 'Archivo'">{{ pub2t }}</div><div style="font:400 11px/1.4 'Archivo';color:#7d7979;margin-top:4px">{{ pub2s }}</div></div>
+    </div>
+
+    <div style="display:{{ certShow }};padding:14px 18px 10px;border-top:2px solid #201e1d;font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">{{ certTitle }}</div>
+    <div style="display:{{ certShowFlex }};flex-wrap:wrap;gap:6px;padding:4px 18px 22px">
+      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">{{ cert1 }}</span>
+      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">{{ cert2 }}</span>
+      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">{{ cert3 }}</span>
+      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">{{ cert4 }}</span>
+    </div>
   </section>
+
+  <div style="display:{{ workShow }};height:10px;background:#ffd100;border-top:2px solid #201e1d;border-bottom:2px solid #201e1d"></div>
 
   <section id="work" style="display:{{ workShow }}">
     <div style="padding:24px 18px 14px">
@@ -200,48 +212,48 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
 
     <div class="pgrid">
     <div style="display:{{ p1Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
-      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj1" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe1 }}"></a></div>
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj1" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-01.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe1 }}"></a></div>
       <div style="font:600 11px/1 'Archivo';color:#7a5c00">01 · {{ tagDesign }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj1 }}</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p1 }}</div>
       <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Aspen Plus</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipTechno }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2025</span></div>
-      <a href="project.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+      <a href="project-01.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
     </div>
 
     <div style="display:{{ p2Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
-      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj2" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe2 }}"></a></div>
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj2" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-02.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe2 }}"></a></div>
       <div style="font:600 11px/1 'Archivo';color:#7a5c00">02 · {{ tagResearch }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj2 }}</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p2 }}</div>
       <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">{{ chipLab }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipCatalysis }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2024</span></div>
-      <a href="project.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+      <a href="project-02.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
     </div>
 
     <div style="display:{{ p3Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
-      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj3" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe3 }}"></a></div>
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj3" src="media/proj3.webp" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-03.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe3 }}"></a></div>
       <div style="font:600 11px/1 'Archivo';color:#7a5c00">03 · {{ tagSafety }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj3 }}</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p3 }}</div>
       <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Fusion 360</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipCommissioning }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2025</span></div>
-      <a href="project.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+      <a href="project-03.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
     </div>
 
     <div style="display:{{ p4Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
-      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj4" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe4 }}"></a></div>
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj4" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-04.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe4 }}"></a></div>
       <div style="font:600 11px/1 'Archivo';color:#7a5c00">04 · {{ tagDesign }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj4 }}</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p4 }}</div>
       <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">COMSOL</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">MATLAB</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2024</span></div>
-      <a href="project.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+      <a href="project-04.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
     </div>
 
     <div style="display:{{ p5Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
-      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj5" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe5 }}"></a></div>
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj5" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-05.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe5 }}"></a></div>
       <div style="font:600 11px/1 'Archivo';color:#7a5c00">05 · {{ tagResearch }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj5 }}</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p5 }}</div>
       <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">{{ chipTool }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipMethod }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2026</span></div>
-      <a href="project.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+      <a href="project-05.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
     </div>
     </div>
 
@@ -255,20 +267,10 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
     </div>
     </sc-if>
 
-    <div style="display:{{ pubShow }};padding:18px 18px 10px;border-top:2px solid #201e1d;font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">{{ pubTitle }}</div>
-    <div style="display:{{ pubShow }};padding:0 18px 8px">
-      <div style="padding:11px 0;border-bottom:1px solid #d7d3d3"><div style="font:600 13px/1.3 'Archivo'">{{ pub1t }}</div><div style="font:400 11px/1.4 'Archivo';color:#7d7979;margin-top:4px">{{ pub1s }}</div></div>
-      <div style="padding:11px 0"><div style="font:600 13px/1.3 'Archivo'">{{ pub2t }}</div><div style="font:400 11px/1.4 'Archivo';color:#7d7979;margin-top:4px">{{ pub2s }}</div></div>
-    </div>
 
-    <div style="display:{{ certShow }};padding:14px 18px 10px;border-top:2px solid #201e1d;font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">{{ certTitle }}</div>
-    <div style="display:{{ certShowFlex }};flex-wrap:wrap;gap:6px;padding:4px 18px 22px;border-bottom:2px solid #201e1d">
-      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">{{ cert1 }}</span>
-      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">{{ cert2 }}</span>
-      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">{{ cert3 }}</span>
-      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">{{ cert4 }}</span>
-    </div>
   </section>
+
+  <div style="display:block;height:10px;background:#ffd100;border-top:2px solid #201e1d;border-bottom:2px solid #201e1d"></div>
 
   <section id="contact">
     <div style="background:#201e1d;color:#f3f2f2;padding:30px 18px 34px">
@@ -276,12 +278,13 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
       <a href="mailto:juanf.garcia.navas@gmail.com" style="display:block;font:800 18px/1.25 'Archivo';color:#ffd100;text-decoration:none;margin-top:20px;word-break:break-all">juanf.garcia.navas@gmail.com</a>
       <a href="tel:+33768718450" style="display:block;font:600 14px/1.3 'Archivo';color:#f3f2f2;text-decoration:none;margin-top:8px">+33 7 68 71 84 50</a>
       <div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap">
-        <a href="#contact" style="text-decoration:none;background:#ffd100;color:#201e1d;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">{{ contactCv }} ↓</a>
-        <a href="#contact" style="text-decoration:none;border:2px solid #f3f2f2;color:#f3f2f2;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">LinkedIn</a>
-        <a href="#contact" style="text-decoration:none;border:2px solid #f3f2f2;color:#f3f2f2;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">GitHub</a>
+        <a href="cv.pdf" download="" style="text-decoration:none;background:#ffd100;color:#201e1d;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">{{ contactCv }} ↓</a>
+        <a href="https://www.linkedin.com/in/juan-fernando-garcia-navas-384146287/" target="_blank" rel="noopener" style="text-decoration:none;border:2px solid #f3f2f2;color:#f3f2f2;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">LinkedIn ↗</a>
       </div>
     </div>
   </section>
+
+  <div style="display:{{ aboutShow }};height:10px;background:#ffd100;border-top:2px solid #201e1d;border-bottom:2px solid #201e1d"></div>
 
   <section id="about" style="display:{{ aboutShow }}">
     <div style="padding:24px 18px 14px;border-bottom:2px solid #201e1d">
@@ -363,14 +366,10 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
     </div>
 
     <div style="border-top:2px solid #201e1d;padding:20px 18px 8px;font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">{{ shareTitle }}</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 18px 0">
-      <button onClick="{{ shareWa }}" style="all:unset;cursor:pointer;height:52px;display:flex;align-items:center;padding:0 14px;font:600 13px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">WhatsApp</button>
-      <button onClick="{{ shareLi }}" style="all:unset;cursor:pointer;height:52px;display:flex;align-items:center;padding:0 14px;font:600 13px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">LinkedIn</button>
-      <button onClick="{{ shareJtGo }}" style="all:unset;cursor:pointer;height:52px;display:flex;align-items:center;padding:0 14px;font:600 13px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">{{ shareJt }}</button>
-      <button onClick="{{ shareMail }}" style="all:unset;cursor:pointer;height:52px;display:flex;align-items:center;padding:0 14px;font:600 13px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">{{ shareEmail }}</button>
-    </div>
-    <div style="padding:8px 18px 0">
-      <button onClick="{{ copyLink }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:{{ copyBg }};color:{{ copyFg }};font:800 15px/1 'Archivo'" style-hover="background:#3d3937">{{ copyLabel }} <span>⧉</span></button>
+    <div style="display:grid;gap:8px;padding:10px 18px 0">
+      <button onClick="{{ shareNative }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#201e1d;color:#ffd100;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#3d3937">{{ shareMore }} <span style="font-size:17px">↗</span></button>
+      <button onClick="{{ shareMail }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:2px solid #201e1d;color:#201e1d;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#ffd100">{{ shareEmail }} <span style="font-size:17px">✉</span></button>
+      <button onClick="{{ copyLink }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:2px solid #201e1d;background:{{ copyBg }};color:#201e1d;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#ffd100">{{ copyLabel }} <span style="font-size:17px">⧉</span></button>
     </div>
     <div style="font:400 11px/1.5 'Archivo';color:#7d7979;padding:18px 18px 20px;margin-top:14px;border-top:2px solid #201e1d">© 2026 Juan Fernando García Navas · {{ footerNote }}</div>
   </section>
@@ -388,7 +387,12 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:900},&quot;heroHeight&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:37,&quot;min&quot;:24,&quot;max&quot;:80,&quot;step&quot;:1,&quot;unit&quot;:&quot;vh&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;projectRatio&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1.9,&quot;min&quot;:1.2,&quot;max&quot;:4,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;fr&quot;,&quot;es&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en' | 'fr' | 'es'&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;imageOpensCase&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;showCV&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showProjects&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showAbout&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showGallery&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showPublications&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showCertifications&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showBlog&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showProject1&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject2&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject3&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject4&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject5&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:900},&quot;heroHeight&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:37,&quot;min&quot;:24,&quot;max&quot;:80,&quot;step&quot;:1,&quot;unit&quot;:&quot;vh&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;projectRatio&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1.9,&quot;min&quot;:1.2,&quot;max&quot;:4,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;fr&quot;,&quot;es&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en' | 'fr' | 'es'&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;imageOpensCase&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;showCV&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showProjects&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showAbout&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showGallery&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showPublications&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showCertifications&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showBlog&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showProject1&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject2&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject3&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject4&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject5&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;}}">
+function storedLang(fallback) {
+  try { const v = localStorage.getItem("jfg-lang"); if (v && T[v]) return v; } catch (e) {}
+  return T[fallback] ? fallback : "en";
+}
+
 const T = {
   en: {
     heroKicker: "Chemical & Process Engineering · Portfolio",
@@ -427,15 +431,15 @@ const T = {
     p5: "Short description of the project · what you did, with what, and the number that mattered.",
     blogTitle: "Notes & writing",
     post1: "Why my first pinch analysis was wrong",
-    post1Sub: "Three stream-data mistakes that quietly move the pinch temperature.",
-    post2: "Reading a P&ID like a story",
+    post1Sub: "Three stream-data mistakes that quietly moved the pinch temperature.",
+    post2: "How I learned to read a P&ID like a story",
     post2Sub: "A habit that made HAZOP sessions much less intimidating.",
     post3: "Fermenting at home taught me about kinetics",
-    post3Sub: "Temperature control matters more than the recipe.",
+    post3Sub: "Temperature control mattered more than the recipe.",
     aboutClose: "Want the long version? Let's talk over coffee.",
     heroCta2Alt: "Get in touch",
     shareTitle: "Share this portfolio", shareCopy: "Copy link", shareCopied: "Link copied",
-    shareEmail: "Email", shareMore: "More options", shareJt: "JobTeaser",
+    shareEmail: "Email", shareMore: "Share",
     contactLabel: "Contact", shareLabel: "Share", caseStudy: "Read case study",
     dDegree: "Double diploma · ENSIC + UIS",
     dProg: "Chemical & Process Eng. · ENSIC 2nd year",
@@ -510,15 +514,15 @@ const T = {
     p5: "Courte description du projet · ce que vous avez fait, avec quoi, et le chiffre qui compte.",
     blogTitle: "Notes & écrits",
     post1: "Pourquoi ma première analyse pincement était fausse",
-    post1Sub: "Trois erreurs de données qui déplacent discrètement le pincement.",
-    post2: "Lire un P&ID comme un récit",
-    post2Sub: "Une habitude qui rend les séances HAZOP bien moins intimidantes.",
+    post1Sub: "Trois erreurs de données qui ont déplacé discrètement le pincement.",
+    post2: "Comment j'ai appris à lire un P&ID comme un récit",
+    post2Sub: "Une habitude qui a rendu les séances HAZOP bien moins intimidantes.",
     post3: "La fermentation maison m'a appris la cinétique",
-    post3Sub: "Le contrôle de température compte plus que la recette.",
+    post3Sub: "Le contrôle de température a compté plus que la recette.",
     aboutClose: "La version longue ? Autour d'un café.",
     heroCta2Alt: "Me contacter",
     shareTitle: "Partager ce portfolio", shareCopy: "Copier le lien", shareCopied: "Lien copié",
-    shareEmail: "E-mail", shareMore: "Plus d'options", shareJt: "JobTeaser",
+    shareEmail: "E-mail", shareMore: "Partager",
     contactLabel: "Contact", shareLabel: "Partager", caseStudy: "Lire l'étude de cas",
     dDegree: "Double diplôme · ENSIC + UIS",
     dProg: "Génie des procédés · ENSIC 2ᵉ année",
@@ -592,15 +596,15 @@ const T = {
     p5: "Descripción corta del proyecto · qué hiciste, con qué, y la cifra que importó.",
     blogTitle: "Notas y escritos",
     post1: "Por qué mi primer análisis pinch estaba mal",
-    post1Sub: "Tres errores de datos que mueven el punto de pliegue sin avisar.",
-    post2: "Leer un P&ID como si fuera un relato",
+    post1Sub: "Tres errores de datos que movieron el punto de pliegue sin avisar.",
+    post2: "Cómo aprendí a leer un P&ID como un relato",
     post2Sub: "Un hábito que hizo mucho menos intimidantes las sesiones HAZOP.",
     post3: "Fermentar en casa me enseñó cinética",
-    post3Sub: "El control de temperatura importa más que la receta.",
+    post3Sub: "El control de temperatura importó más que la receta.",
     aboutClose: "¿La versión larga? Hablemos con un café.",
     heroCta2Alt: "Contáctame",
     shareTitle: "Comparte este portafolio", shareCopy: "Copiar enlace", shareCopied: "Enlace copiado",
-    shareEmail: "Correo", shareMore: "Más opciones", shareJt: "JobTeaser",
+    shareEmail: "Correo", shareMore: "Compartir",
     contactLabel: "Contacto", shareLabel: "Compartir", caseStudy: "Ver el caso completo",
     dDegree: "Doble titulación · ENSIC + UIS",
     dProg: "Ingeniería de procesos · ENSIC 2º año",
@@ -641,7 +645,12 @@ const T = {
 };
 
 class Component extends DCLogic {
-  state = { lang: T[this.props.defaultLang] ? this.props.defaultLang : "en", active: "profile", hobby: 0, shareOpen: false, copied: false, filled: [false, false, false, false, false] };
+  state = { lang: storedLang(this.props.defaultLang), active: "profile", hobby: 0, shareOpen: false, copied: false, filled: [false, false, false, false, false] };
+
+  setLang(l) {
+    try { localStorage.setItem("jfg-lang", l); } catch (e) {}
+    this.setState({ lang: l });
+  }
 
   toggleHobby(n) { this.setState(s => ({ hobby: s.hobby === n ? 0 : n })); }
 
@@ -768,8 +777,8 @@ class Component extends DCLogic {
       aboutNavShow: aboutOn ? "flex" : "none",
       navCols: "repeat(" + visibleNav + ",1fr)",
       p1Show: on(p.showProject1, true), p2Show: on(p.showProject2, true),
-      p3Show: on(p.showProject3, true), p4Show: on(p.showProject4, false),
-      p5Show: on(p.showProject5, false),
+      p3Show: on(p.showProject3, true), p4Show: on(p.showProject4, true),
+      p5Show: on(p.showProject5, true),
       pubShow: on(p.showPublications, true),
       certShow: on(p.showCertifications, true),
       certShowFlex: (p.showCertifications ?? true) ? "flex" : "none",
@@ -791,17 +800,12 @@ class Component extends DCLogic {
       shareUrl: this.url(),
       copyLink: () => this.copy(),
       copyLabel: this.state.copied ? t.shareCopied : t.shareCopy,
-      copyBg: this.state.copied ? "#ffd100" : "#201e1d",
-      copyFg: this.state.copied ? "#201e1d" : "#ffd100",
-      shareWa: () => this.pop("https://wa.me/?text=" + encodeURIComponent(this.url())),
-      shareLi: () => this.pop("https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(this.url())),
-      shareJtGo: () => { this.copy(); this.pop("https://www.jobteaser.com/"); },
+      copyBg: this.state.copied ? "#ffd100" : "transparent",
       shareMail: () => { window.location.href = "mailto:?subject=" + encodeURIComponent("Portfolio · Juan Fernando Garcia") + "&body=" + encodeURIComponent(this.url()); },
       shareNative: () => this.native(),
-      nativeShow: (typeof navigator !== "undefined" && navigator.share) ? "block" : "none",
-      setEn: () => this.setState({ lang: "en" }),
-      setFr: () => this.setState({ lang: "fr" }),
-      setEs: () => this.setState({ lang: "es" }),
+      setEn: () => this.setLang("en"),
+      setFr: () => this.setLang("fr"),
+      setEs: () => this.setLang("es"),
       enBg: sEn.bg, enFg: sEn.fg, frBg: sFr.bg, frFg: sFr.fg, esBg: sEs.bg, esFg: sEs.fg,
       enBigBg: bEn.bg, enBigFg: bEn.fg, frBigBg: bFr.bg, frBigFg: bFr.fg, esBigBg: bEs.bg, esBigFg: bEs.fg,
       nav1Bg: n1.bg, nav1Fg: n1.fg, nav2Bg: n2.bg, nav2Fg: n2.fg,
