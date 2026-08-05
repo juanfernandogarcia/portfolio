@@ -1,0 +1,12 @@
+/* Build: Design Components -> site/
+ * Usage: run from run_script (see chat). Regenerates every page in site/
+ * from the .dc.html sources so the published site always matches the editor.
+ *
+ * Steps per page:
+ *   1. drop every element marked data-editor-only
+ *   2. drop the data-editor-hint attribute
+ *   3. editor = true  ->  editor = false
+ *   4. rewrite .dc.html links to the published .html names
+ *   5. give every filled image slot src="media/<slot-id>.<ext>"
+ *   6. bake the gallery order (localStorage is per-browser, the site needs it inline)
+ */

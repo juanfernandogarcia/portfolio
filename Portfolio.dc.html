@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&amp;display=swap">
+<link rel="stylesheet" href="_ds/modernist-18f78c01-60db-465f-9d67-dca81d30df1b/styles.css">
+<script src="_ds/modernist-18f78c01-60db-465f-9d67-dca81d30df1b/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#c9c6c2;font-family:"Archivo",system-ui,sans-serif;color:#201e1d;-webkit-font-smoothing:antialiased}
+a{color:#201e1d}
+a:hover{color:#7a5c00}
+section[id]{scroll-margin-top:100px}
+::selection{background:#ffd100;color:#201e1d}
+button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2px}
+.pf{max-width:720px;margin:0 auto;background:#f3f2f2;border-left:2px solid #201e1d;border-right:2px solid #201e1d;min-height:100vh;position:relative}
+@media (max-width:760px){.pf{border-left:0;border-right:0}
+.herohead{min-height:calc(100vh - 356px) !important;min-height:calc(100svh - 356px) !important}
+}
+@media (min-width:900px){
+.pf{max-width:none;border-left:0;border-right:0}
+.herogrid{max-width:none !important;grid-template-columns:1fr 38% !important}
+.herogrid h1{font-size:76px !important}
+.ctarow{grid-template-columns:1fr 1fr !important}
+.langrow{max-width:none !important}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;align-items:start}
+.pgrid>div:nth-child(odd){border-right:2px solid #201e1d}
+.labshot{width:23% !important;height:150px !important}
+.statusbadge{font-size:17px !important;padding:16px 20px !important;gap:11px !important;box-shadow:6px 6px 0 rgba(32,30,29,.22)}
+}
+@media (min-width:1500px){
+.pgrid{grid-template-columns:1fr 1fr 1fr}
+.pgrid>div:nth-child(odd){border-right:2px solid #201e1d}
+.pgrid>div:nth-child(2){border-right:2px solid #201e1d}
+.herogrid h1{font-size:104px !important}
+}
+
+.gs{background:#d7d3d3}
+.strip::-webkit-scrollbar{height:0}
+</style>
+</helmet>
+
+<div class="pf">
+
+  <div style="position:sticky;top:0;z-index:20;background:#f3f2f2;border-bottom:2px solid #201e1d">
+   <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:50px">
+    <a href="#profile" style="text-decoration:none;color:#201e1d;font:800 13px/1.1 'Archivo';letter-spacing:-.01em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Juan Fernando Garcia</a>
+    <div style="display:flex;align-items:center;gap:6px">
+    <div style="display:flex;border:2px solid #201e1d;height:34px">
+      <button onClick="{{ setEn }}" style="all:unset;cursor:pointer;padding:0 10px;display:flex;align-items:center;font:600 11px/1 'Archivo';letter-spacing:.04em;background:{{ enBg }};color:{{ enFg }}">EN</button>
+      <button onClick="{{ setFr }}" style="all:unset;cursor:pointer;padding:0 10px;display:flex;align-items:center;font:600 11px/1 'Archivo';letter-spacing:.04em;background:{{ frBg }};color:{{ frFg }};border-left:2px solid #201e1d">FR</button>
+      <button onClick="{{ setEs }}" style="all:unset;cursor:pointer;padding:0 10px;display:flex;align-items:center;font:600 11px/1 'Archivo';letter-spacing:.04em;background:{{ esBg }};color:{{ esFg }};border-left:2px solid #201e1d">ES</button>
+    </div>
+    </div>
+   </div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;border-top:2px solid #201e1d">
+    <a href="#contact" style="text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;height:46px;border-right:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.06em;text-transform:uppercase" style-hover="background:#ffd100">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="0"></rect><path d="m2 6 10 7 10-7"></path></svg><span>{{ contactLabel }}</span>
+    </a>
+    <button onClick="{{ openShare }}" style="all:unset;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;height:46px;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.06em;text-transform:uppercase" style-hover="background:#ffd100">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="M8.59 13.51l6.83 3.98"></path><path d="M15.41 6.51L8.59 10.49"></path></svg><span>{{ shareLabel }}</span>
+    </button>
+   </div>
+  </div>
+
+  <sc-if value="{{ shareOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:rgba(32,30,29,.72);display:flex;align-items:flex-end;justify-content:center">
+    <div style="width:100%;max-width:720px;background:#f3f2f2;border-top:2px solid #201e1d">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:2px solid #201e1d">
+        <div style="font:800 18px/1 'Archivo';letter-spacing:-.01em">{{ shareTitle }}</div>
+        <button onClick="{{ closeShare }}" aria-label="Close" style="all:unset;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:2px solid #201e1d;font:700 15px/1 'Archivo'" style-hover="background:#ffd100">✕</button>
+      </div>
+      <div style="padding:14px 18px 0;font:400 11px/1.4 'Archivo';color:#7d7979;word-break:break-all">{{ shareUrl }}</div>
+      <div style="display:grid;gap:8px;padding:12px 18px 22px">
+        <button onClick="{{ shareNative }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#201e1d;color:#ffd100;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#3d3937">{{ shareMore }} <span style="font-size:17px">↗</span></button>
+        <button onClick="{{ shareMail }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:2px solid #201e1d;color:#201e1d;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#ffd100">{{ shareEmail }} <span style="font-size:17px">✉</span></button>
+        <button onClick="{{ copyLink }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:2px solid #201e1d;background:{{ copyBg }};color:#201e1d;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#ffd100">{{ copyLabel }} <span style="font-size:17px">⧉</span></button>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <section id="profile">
+    <div class="herohead" style="background:#ffd100;color:#201e1d;min-height:{{ heroMinH }};display:flex;flex-direction:column;border-bottom:2px solid #201e1d">
+      <div style="padding:12px 18px 9px;font:600 10px/1 'Archivo';letter-spacing:.22em;text-transform:uppercase">{{ heroKicker }}</div>
+      <div class="herogrid" style="flex: 1; display: grid; grid-template-columns: 1fr 42%; align-items: stretch; border-top: 2px solid #201e1d; max-width: 700px; min-height: {{ heroInnerH }}">
+        <div style="padding: 18px 16px; display: flex; flex-direction: column; justify-content: center; gap: 12px">
+          <h1 style="font:800 clamp(38px,11.5vw,58px)/.9 'Archivo';letter-spacing:-.04em;margin:0">Juan Fernando Garcia</h1>
+          <p style="font:400 14px/1.4 'Archivo';margin:0;text-wrap:pretty">{{ heroBlurb }}</p>
+          <div class="statusbadge" style="display:inline-flex;align-items:center;gap:7px;background:#201e1d;color:#ffd100;font:600 11px/1.3 'Archivo';padding:10px 11px;align-self:flex-start;flex:none;white-space:nowrap">● {{ heroStatus }}</div>
+        </div>
+        <div style="border-left: 2px solid #201e1d; background: #ffd100; padding: 14px; box-sizing: border-box; min-height: 180px; display: flex">
+          <div class="gs" style="flex:1;position:relative;border:2px solid #201e1d;overflow:hidden;box-shadow:7px 7px 0 rgba(32,30,29,.18)">
+            <image-slot id="portrait" shape="rect" fit="cover" placeholder="Drop your photo · double-click to reframe" style="width: 100%; height: 100%"></image-slot>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#ffd100;border-bottom:2px solid #201e1d">
+      
+      <div class="langrow" style="padding: 14px 18px 11px; display: flex; flex-direction: column; gap: 9px; max-width: 706px">
+        <div style="font:600 10px/1.3 'Archivo';letter-spacing:.16em;text-transform:uppercase">{{ langLabel }}</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+          <button onClick="{{ setEn }}" style="all:unset;cursor:pointer;height:43px;display:flex;align-items:center;justify-content:center;font:800 16px/1 'Archivo';letter-spacing:.02em;border:2px solid #201e1d;background:{{ enBigBg }};color:{{ enBigFg }}">EN</button>
+          <button onClick="{{ setFr }}" style="all:unset;cursor:pointer;height:43px;display:flex;align-items:center;justify-content:center;font:800 16px/1 'Archivo';letter-spacing:.02em;border:2px solid #201e1d;background:{{ frBigBg }};color:{{ frBigFg }}">FR</button>
+          <button onClick="{{ setEs }}" style="all:unset;cursor:pointer;height:43px;display:flex;align-items:center;justify-content:center;font:800 16px/1 'Archivo';letter-spacing:.02em;border:2px solid #201e1d;background:{{ esBigBg }};color:{{ esBigFg }}">ES</button>
+        </div>
+      </div><div class="ctarow" style="display:grid;gap:10px;padding:4px 18px 20px">
+        <a href="#work" style="text-decoration:none;background:#201e1d;color:#ffd100;height:61px;display:flex;align-items:center;justify-content:space-between;padding:0 18px" style-hover="background:#3d3937">
+          <span style="display:flex;flex-direction:column;gap:5px"><span style="font:800 24px/1 'Archivo';letter-spacing:-.02em">{{ heroCta1 }}</span><span style="font:400 11px/1 'Archivo';color:#bab6b6">{{ heroCta1Sub }}</span></span>
+          <span style="font:800 22px/1 'Archivo'">→</span>
+        </a>
+        <a href="#cv" style="text-decoration:none;border:2px solid #201e1d;color:#201e1d;height:61px;display:flex;align-items:center;justify-content:space-between;padding:0 18px" style-hover="background:#fff3c4">
+          <span style="display:flex;flex-direction:column;gap:5px"><span style="font:800 24px/1 'Archivo';letter-spacing:-.02em">{{ heroCta2 }}</span><span style="font:400 11px/1 'Archivo';color:#6b5200">{{ heroCta2Sub }}</span></span>
+          <span style="font:800 22px/1 'Archivo'">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div style="display:{{ cvShow }};height:10px;background:#ffd100;border-top:2px solid #201e1d;border-bottom:2px solid #201e1d"></div>
+
+  <section id="cv" style="display:{{ cvShow }}">
+    <div style="padding:22px 18px 14px">
+      <h2 style="font:800 22px/1 'Archivo';letter-spacing:-.02em;margin:0">{{ cvTitle }}</h2>
+    </div>
+    <div style="padding:0 18px 18px">
+      <a href="cv.pdf" download="" style="text-decoration:none;background:#201e1d;color:#ffd100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 16px" style-hover="background:#3d3937">
+        <span style="display:flex;flex-direction:column;gap:4px"><span style="font:800 17px/1 'Archivo';letter-spacing:-.01em">{{ cvDownload }}</span><span style="font:400 11px/1 'Archivo';color:#bab6b6">PDF · {{ cvDownloadSub }}</span></span>
+        <span style="font:800 20px/1 'Archivo'">↓</span>
+      </a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-top:2px solid #201e1d;border-bottom:2px solid #201e1d">
+      <div style="padding:11px 18px;border-right:2px solid #201e1d;border-bottom:1px solid #d7d3d3"><div style="font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ fDegree }}</div><div style="font:600 13px/1.3 'Archivo';margin-top:5px">{{ dDegree }}</div></div>
+      <div style="padding:11px 18px;border-bottom:1px solid #d7d3d3"><div style="font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ fYear }}</div><div style="font:600 13px/1.3 'Archivo';margin-top:5px">{{ dProg }}</div></div>
+      <div style="padding:11px 18px;border-right:2px solid #201e1d;border-bottom:1px solid #d7d3d3"><div style="font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ fFocus }}</div><div style="font:600 13px/1.3 'Archivo';margin-top:5px">{{ dFocus }}</div></div>
+      <div style="padding:11px 18px;border-bottom:1px solid #d7d3d3"><div style="font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ fLocation }}</div><div style="font:600 13px/1.3 'Archivo';margin-top:5px">{{ dLoc }}</div><div style="font:400 10px/1.3 'Archivo';color:#7d7979;margin-top:3px">{{ locNote }}</div></div>
+      <div style="padding:11px 18px;border-right:2px solid #201e1d"><div style="font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ fLangs }}</div><div style="font:600 13px/1.3 'Archivo';margin-top:5px">{{ dLangs }}</div><div style="font:400 10px/1.3 'Archivo';color:#7d7979;margin-top:3px">{{ langNote }}</div></div>
+      <div style="padding:11px 18px"><div style="font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ fGpa }}</div><div style="font:600 13px/1.3 'Archivo';margin-top:5px">{{ dNat }}</div></div>
+    </div>
+
+    <div style="padding:20px 18px 10px;font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">{{ cvEducation }}</div>
+    <div style="border-top:2px solid #201e1d">
+      <div style="display:grid;grid-template-columns:74px 1fr;gap:12px;padding:13px 18px;border-bottom:1px solid #d7d3d3">
+        <div style="font:600 11px/1.35 'Archivo';color:#7d7979">{{ edu1d }}</div>
+        <div><div style="font:600 14px/1.25 'Archivo'">{{ edu1t }}</div><div style="font:400 12px/1.4 'Archivo';color:#605d5d;margin-top:4px">{{ edu1s }}</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:74px 1fr;gap:12px;padding:13px 18px;border-bottom:2px solid #201e1d">
+        <div style="font:600 11px/1.35 'Archivo';color:#7d7979">{{ edu2d }}</div>
+        <div><div style="font:600 14px/1.25 'Archivo'">{{ edu2t }}</div><div style="font:400 12px/1.4 'Archivo';color:#605d5d;margin-top:4px">{{ edu2s }}</div></div>
+      </div>
+    </div>
+
+    <div style="padding:20px 18px 10px;font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">{{ cvExperience }}</div>
+    <div style="border-top:2px solid #201e1d">
+      <div style="display:grid;grid-template-columns:74px 1fr;gap:12px;padding:13px 18px;border-bottom:1px solid #d7d3d3">
+        <div style="font:600 11px/1.35 'Archivo';color:#7d7979">2024</div>
+        <div><div style="font:600 14px/1.25 'Archivo'">{{ exp1t }}</div><div style="font:400 12px/1.4 'Archivo';color:#605d5d;margin-top:4px">{{ exp1s }}</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:74px 1fr;gap:12px;padding:13px 18px;border-bottom:1px solid #d7d3d3">
+        <div style="font:600 11px/1.35 'Archivo';color:#7d7979">2024</div>
+        <div><div style="font:600 14px/1.25 'Archivo'">{{ exp2t }}</div><div style="font:400 12px/1.4 'Archivo';color:#605d5d;margin-top:4px">{{ exp2s }}</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:74px 1fr;gap:12px;padding:13px 18px;border-bottom:2px solid #201e1d">
+        <div style="font:600 11px/1.35 'Archivo';color:#7d7979">2025</div>
+        <div><div style="font:600 14px/1.25 'Archivo'">{{ exp3t }}</div><div style="font:400 12px/1.4 'Archivo';color:#605d5d;margin-top:4px">{{ exp3s }}</div></div>
+      </div>
+    </div>
+
+    <div style="padding:20px 18px 10px;font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">{{ cvSkills }}</div>
+    <div style="display:grid;grid-template-columns:1fr 58px;border-top:2px solid #201e1d">
+      <div style="padding:10px 18px;border-bottom:1px solid #d7d3d3;font:600 13px/1 'Archivo';display:flex;align-items:center">Aspen Plus</div><div style="padding:10px 18px 10px 0;border-bottom:1px solid #d7d3d3;font:600 12px/1 'Archivo';color:#7a5c00;display:flex;align-items:center;justify-content:flex-end">●●●●○</div>
+      <div style="padding:10px 18px;border-bottom:1px solid #d7d3d3;font:600 13px/1 'Archivo';display:flex;align-items:center">Aspen HYSYS / PRO II</div><div style="padding:10px 18px 10px 0;border-bottom:1px solid #d7d3d3;font:600 12px/1 'Archivo';color:#7a5c00;display:flex;align-items:center;justify-content:flex-end">●●●●●</div>
+      <div style="padding:10px 18px;border-bottom:1px solid #d7d3d3;font:600 13px/1 'Archivo';display:flex;align-items:center">Python / MATLAB / Excel (VBA)</div><div style="padding:10px 18px 10px 0;border-bottom:1px solid #d7d3d3;font:600 12px/1 'Archivo';color:#7a5c00;display:flex;align-items:center;justify-content:flex-end">●●●●○</div>
+      <div style="padding:10px 18px;border-bottom:1px solid #d7d3d3;font:600 13px/1 'Archivo';display:flex;align-items:center">Fusion 360</div><div style="padding:10px 18px 10px 0;border-bottom:1px solid #d7d3d3;font:600 12px/1 'Archivo';color:#7a5c00;display:flex;align-items:center;justify-content:flex-end">●●●○○</div>
+      <div style="padding:10px 18px;border-bottom:2px solid #201e1d;font:600 13px/1 'Archivo';display:flex;align-items:center">{{ sk5 }}</div><div style="padding:10px 18px 10px 0;border-bottom:2px solid #201e1d;font:600 12px/1 'Archivo';color:#7a5c00;display:flex;align-items:center;justify-content:flex-end">●●●●○</div>
+    </div>
+
+    <div style="display:{{ pubShow }};padding:18px 18px 10px;border-top:2px solid #201e1d;font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">{{ pubTitle }}</div>
+    <div style="display:{{ pubShow }};padding:0 18px 8px">
+      <div style="padding:11px 0;border-bottom:1px solid #d7d3d3"><div style="font:600 13px/1.3 'Archivo'">{{ pub1t }}</div><div style="font:400 11px/1.4 'Archivo';color:#7d7979;margin-top:4px">{{ pub1s }}</div></div>
+      <div style="padding:11px 0"><div style="font:600 13px/1.3 'Archivo'">{{ pub2t }}</div><div style="font:400 11px/1.4 'Archivo';color:#7d7979;margin-top:4px">{{ pub2s }}</div></div>
+    </div>
+
+    <div style="display:{{ certShow }};padding:14px 18px 10px;border-top:2px solid #201e1d;font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">{{ certTitle }}</div>
+    <div style="display:{{ certShowFlex }};flex-wrap:wrap;gap:6px;padding:4px 18px 22px">
+      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">{{ cert1 }}</span>
+      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">{{ cert2 }}</span>
+      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">{{ cert3 }}</span>
+      <span style="font:600 11px/1 'Archivo';border:1px solid #201e1d;padding:8px 10px;white-space:nowrap">{{ cert4 }}</span>
+    </div>
+  </section>
+
+  <div style="display:{{ workShow }};height:10px;background:#ffd100;border-top:2px solid #201e1d;border-bottom:2px solid #201e1d"></div>
+
+  <section id="work" style="display:{{ workShow }}">
+    <div style="padding:24px 18px 14px">
+      <h2 style="font:800 22px/1 'Archivo';letter-spacing:-.02em;margin:0">{{ workTitle }}</h2>
+      <p style="font:400 13px/1.45 'Archivo';color:#605d5d;margin:8px 0 0;max-width:440px;text-wrap:pretty">{{ workBlurb }}</p>
+    </div>
+
+    <div class="pgrid">
+    <div style="display:{{ p1Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj1" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="Project%2001%20Green%20Methanol.dc.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe1 }}"></a></div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">01 · {{ tagDesign }}</div>
+      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj1 }}</div>
+      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p1 }}</div>
+      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Aspen Plus</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipTechno }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2025</span></div>
+      <a href="Project%2001%20Green%20Methanol.dc.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+    </div>
+
+    <div style="display:{{ p2Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj2" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="Project%2002%20CO2%20Methanation.dc.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe2 }}"></a></div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">02 · {{ tagResearch }}</div>
+      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj2 }}</div>
+      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p2 }}</div>
+      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">{{ chipLab }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipCatalysis }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2024</span></div>
+      <a href="Project%2002%20CO2%20Methanation.dc.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+    </div>
+
+    <div style="display:{{ p3Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj3" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="Project%2003%20Cooling%20Tower.dc.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe3 }}"></a></div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">03 · {{ tagSafety }}</div>
+      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj3 }}</div>
+      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p3 }}</div>
+      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Fusion 360</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipCommissioning }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2025</span></div>
+      <a href="Project%2003%20Cooling%20Tower.dc.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+    </div>
+
+    <div style="display:{{ p4Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj4" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="Project%2004%20Process%20Risk%20MOSAR.dc.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe4 }}"></a></div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">04 · {{ tagDesign }}</div>
+      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj4 }}</div>
+      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p4 }}</div>
+      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">COMSOL</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">MATLAB</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2024</span></div>
+      <a href="Project%2004%20Process%20Risk%20MOSAR.dc.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+    </div>
+
+    <div style="display:{{ p5Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj5" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="Project%2005%20New%20Project.dc.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe5 }}"></a></div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">05 · {{ tagResearch }}</div>
+      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj5 }}</div>
+      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p5 }}</div>
+      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">{{ chipTool }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipMethod }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2026</span></div>
+      <a href="Project%2005%20New%20Project.dc.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+    </div>
+    </div>
+
+    <div style="padding:20px 18px 10px;border-top:2px solid #201e1d;font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00;display:{{ galleryDisplay }}">{{ galleryTitle }}</div>
+    <sc-if value="{{ showGallery }}" hint-placeholder-val="{{ true }}">
+    <div class="strip" style="display:flex;gap:10px;overflow-x:auto;padding:4px 18px 20px;scroll-snap-type:x mandatory">
+      <div class="gs labshot" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab1" shape="rect" fit="cover" placeholder="Lab photo · double-click to reframe"></image-slot></div>
+      <div class="gs labshot" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab2" shape="rect" fit="cover" placeholder="Lab photo · double-click to reframe"></image-slot></div>
+      <div class="gs labshot" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab3" shape="rect" fit="cover" placeholder="Lab photo · double-click to reframe"></image-slot></div>
+      <div class="gs labshot" style="flex:none;width:170px;height:120px;border:2px solid #201e1d;scroll-snap-align:start"><image-slot id="lab4" shape="rect" fit="cover" placeholder="Lab photo · double-click to reframe"></image-slot></div>
+    </div>
+    </sc-if>
+
+
+  </section>
+
+  <div style="display:block;height:10px;background:#ffd100;border-top:2px solid #201e1d;border-bottom:2px solid #201e1d"></div>
+
+  <section id="contact">
+    <div style="background:#201e1d;color:#f3f2f2;padding:30px 18px 34px">
+      <div style="font:800 30px/1.06 'Archivo';letter-spacing:-.025em;max-width:400px;text-wrap:pretty">{{ contactHead }}</div>
+      <a href="mailto:juanf.garcia.navas@gmail.com" style="display:block;font:800 18px/1.25 'Archivo';color:#ffd100;text-decoration:none;margin-top:20px;word-break:break-all">juanf.garcia.navas@gmail.com</a>
+      <a href="tel:+33768718450" style="display:block;font:600 14px/1.3 'Archivo';color:#f3f2f2;text-decoration:none;margin-top:8px">+33 7 68 71 84 50</a>
+      <div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap">
+        <a href="cv.pdf" download="" style="text-decoration:none;background:#ffd100;color:#201e1d;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">{{ contactCv }} ↓</a>
+        <a href="https://www.linkedin.com/in/juan-fernando-garcia-navas-384146287/" target="_blank" rel="noopener" style="text-decoration:none;border:2px solid #f3f2f2;color:#f3f2f2;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <div style="display:{{ aboutShow }};height:10px;background:#ffd100;border-top:2px solid #201e1d;border-bottom:2px solid #201e1d"></div>
+
+  <section id="about" style="display:{{ aboutShow }}">
+    <div style="padding:24px 18px 14px;border-bottom:2px solid #201e1d">
+      <div style="font:600 10px/1 'Archivo';letter-spacing:.2em;text-transform:uppercase;color:#7a5c00">{{ aboutKicker }}</div>
+      <h2 style="font:800 26px/1.05 'Archivo';letter-spacing:-.025em;margin:10px 0 0">{{ aboutTitle }}</h2>
+      <p style="font:400 15px/1.5 'Archivo';margin:12px 0 0;text-wrap:pretty">{{ aboutIntro }}</p>
+    </div>
+
+    <div style="border-top:2px solid #201e1d;border-bottom:2px solid #201e1d">
+
+      <div style="display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;padding:9px 18px;border-bottom:1px solid #d7d3d3">
+        <div class="gs" style="width:72px;height:72px;border:2px solid #201e1d;overflow:hidden"><image-slot id="hob1" shape="rect" fit="cover" placeholder=" "></image-slot></div>
+        <button onClick="{{ toggleH1 }}" style="all:unset;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px" style-hover="color:#7a5c00">
+          <span><span style="display:block;font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ hobby1L }}</span><span style="display:block;font:600 13px/1.3 'Archivo';margin-top:5px">{{ hobby1 }}</span></span>
+          <span style="font:800 15px/1 'Archivo';color:#7a5c00">{{ h1Sign }}</span>
+        </button>
+      </div>
+      <sc-if value="{{ h1Open }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:0 18px 14px 102px;border-bottom:1px solid #d7d3d3"><p style="font:400 13px/1.5 'Archivo';color:#605d5d;margin:0;text-wrap:pretty">{{ hobby1Detail }}</p></div>
+      </sc-if>
+
+      <div style="display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;padding:9px 18px;border-bottom:1px solid #d7d3d3">
+        <div class="gs" style="width:72px;height:72px;border:2px solid #201e1d;overflow:hidden"><image-slot id="hob2" shape="rect" fit="cover" placeholder=" "></image-slot></div>
+        <button onClick="{{ toggleH2 }}" style="all:unset;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px" style-hover="color:#7a5c00">
+          <span><span style="display:block;font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ hobby2L }}</span><span style="display:block;font:600 13px/1.3 'Archivo';margin-top:5px">{{ hobby2 }}</span></span>
+          <span style="font:800 15px/1 'Archivo';color:#7a5c00">{{ h2Sign }}</span>
+        </button>
+      </div>
+      <sc-if value="{{ h2Open }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:0 18px 14px 102px;border-bottom:1px solid #d7d3d3"><p style="font:400 13px/1.5 'Archivo';color:#605d5d;margin:0;text-wrap:pretty">{{ hobby2Detail }}</p></div>
+      </sc-if>
+
+      <div style="display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;padding:9px 18px;border-bottom:1px solid #d7d3d3">
+        <div class="gs" style="width:72px;height:72px;border:2px solid #201e1d;overflow:hidden"><image-slot id="hob3" shape="rect" fit="cover" placeholder=" "></image-slot></div>
+        <button onClick="{{ toggleH3 }}" style="all:unset;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px" style-hover="color:#7a5c00">
+          <span><span style="display:block;font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ hobby3L }}</span><span style="display:block;font:600 13px/1.3 'Archivo';margin-top:5px">{{ hobby3 }}</span></span>
+          <span style="font:800 15px/1 'Archivo';color:#7a5c00">{{ h3Sign }}</span>
+        </button>
+      </div>
+      <sc-if value="{{ h3Open }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:0 18px 14px 102px;border-bottom:1px solid #d7d3d3"><p style="font:400 13px/1.5 'Archivo';color:#605d5d;margin:0;text-wrap:pretty">{{ hobby3Detail }}</p></div>
+      </sc-if>
+
+      <div style="display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;padding:9px 18px">
+        <div class="gs" style="width:72px;height:72px;border:2px solid #201e1d;overflow:hidden"><image-slot id="hob4" shape="rect" fit="cover" placeholder=" "></image-slot></div>
+        <button onClick="{{ toggleH4 }}" style="all:unset;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px" style-hover="color:#7a5c00">
+          <span><span style="display:block;font:600 9px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:#7d7979">{{ hobby4L }}</span><span style="display:block;font:600 13px/1.3 'Archivo';margin-top:5px">{{ hobby4 }}</span></span>
+          <span style="font:800 15px/1 'Archivo';color:#7a5c00">{{ h4Sign }}</span>
+        </button>
+      </div>
+      <sc-if value="{{ h4Open }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:0 18px 14px 102px;border-top:1px solid #d7d3d3"><p style="font:400 13px/1.5 'Archivo';color:#605d5d;margin:0;text-wrap:pretty">{{ hobby4Detail }}</p></div>
+      </sc-if>
+
+    </div>
+
+    <div style="display:{{ blogShow }};padding:20px 18px 10px;font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">{{ blogTitle }}</div>
+    <div style="display:{{ blogShow }};border-top:2px solid #201e1d">
+      <div style="padding:16px 18px;border-bottom:1px solid #d7d3d3">
+        <div style="font:600 10px/1 'Archivo';color:#7d7979">12.05.2026 · 4 min</div>
+        <div style="font:800 18px/1.15 'Archivo';letter-spacing:-.01em;margin-top:7px">{{ post1 }}</div>
+        <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:6px">{{ post1Sub }}</div>
+      </div>
+      <div style="padding:16px 18px;border-bottom:1px solid #d7d3d3">
+        <div style="font:600 10px/1 'Archivo';color:#7d7979">28.03.2026 · 6 min</div>
+        <div style="font:800 18px/1.15 'Archivo';letter-spacing:-.01em;margin-top:7px">{{ post2 }}</div>
+        <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:6px">{{ post2Sub }}</div>
+      </div>
+      <div style="padding:16px 18px;border-bottom:2px solid #201e1d">
+        <div style="font:600 10px/1 'Archivo';color:#7d7979">09.02.2026 · 3 min</div>
+        <div style="font:800 18px/1.15 'Archivo';letter-spacing:-.01em;margin-top:7px">{{ post3 }}</div>
+        <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:6px">{{ post3Sub }}</div>
+      </div>
+    </div>
+
+    <div style="background:#ffd100;padding:22px 18px 26px">
+      <div style="font:800 22px/1.1 'Archivo';letter-spacing:-.02em;text-wrap:pretty">{{ aboutClose }}</div>
+      <a href="#contact" style="text-decoration:none;background:#201e1d;color:#ffd100;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;margin-top:16px;font:800 16px/1 'Archivo'">{{ heroCta2Alt }} <span>→</span></a>
+    </div>
+
+    <div style="border-top:2px solid #201e1d;padding:20px 18px 8px;font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">{{ shareTitle }}</div>
+    <div style="display:grid;gap:8px;padding:10px 18px 0">
+      <button onClick="{{ shareNative }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#201e1d;color:#ffd100;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#3d3937">{{ shareMore }} <span style="font-size:17px">↗</span></button>
+      <button onClick="{{ shareMail }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:2px solid #201e1d;color:#201e1d;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#ffd100">{{ shareEmail }} <span style="font-size:17px">✉</span></button>
+      <button onClick="{{ copyLink }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:2px solid #201e1d;background:{{ copyBg }};color:#201e1d;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#ffd100">{{ copyLabel }} <span style="font-size:17px">⧉</span></button>
+    </div>
+    <div style="font:400 11px/1.5 'Archivo';color:#7d7979;padding:18px 18px 20px;margin-top:14px;border-top:2px solid #201e1d">© 2026 Juan Fernando García Navas · {{ footerNote }}</div>
+  </section>
+
+  <div style="height:64px"></div>
+
+  <div style="position:sticky;bottom:0;z-index:20;display:grid;grid-template-columns:{{ navCols }};background:#f3f2f2;border-top:2px solid #201e1d">
+    <a href="#profile" style="text-decoration:none;height:62px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-right:1px solid #d7d3d3;font:600 10px/1 'Archivo';letter-spacing:.06em;background:{{ nav1Bg }};color:{{ nav1Fg }}"><span style="font-size:15px;line-height:1">◆</span><span>{{ nav1 }}</span></a>
+    <a href="#cv" style="text-decoration:none;height:62px;display:{{ cvNavShow }};flex-direction:column;align-items:center;justify-content:center;gap:4px;border-right:1px solid #d7d3d3;font:600 10px/1 'Archivo';letter-spacing:.06em;background:{{ nav2Bg }};color:{{ nav2Fg }}"><span style="font-size:15px;line-height:1">▤</span><span>{{ nav2 }}</span></a>
+    <a href="#work" style="text-decoration:none;height:62px;display:{{ workNavShow }};flex-direction:column;align-items:center;justify-content:center;gap:4px;border-right:1px solid #d7d3d3;font:600 10px/1 'Archivo';letter-spacing:.06em;background:{{ nav3Bg }};color:{{ nav3Fg }}"><span style="font-size:15px;line-height:1">◈</span><span>{{ nav3 }}</span></a>
+    <a href="#contact" style="text-decoration:none;height:62px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-right:1px solid #d7d3d3;font:600 10px/1 'Archivo';letter-spacing:.06em;background:{{ nav4Bg }};color:{{ nav4Fg }}"><span style="font-size:15px;line-height:1">✉</span><span>{{ nav4 }}</span></a>
+    <a href="#about" style="text-decoration:none;height:62px;display:{{ aboutNavShow }};flex-direction:column;align-items:center;justify-content:center;gap:4px;font:600 10px/1 'Archivo';letter-spacing:.06em;background:{{ nav5Bg }};color:{{ nav5Fg }}"><span style="font-size:15px;line-height:1">◍</span><span>{{ nav5 }}</span></a>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:900},&quot;heroHeight&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:37,&quot;min&quot;:24,&quot;max&quot;:80,&quot;step&quot;:1,&quot;unit&quot;:&quot;vh&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;projectRatio&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1.9,&quot;min&quot;:1.2,&quot;max&quot;:4,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;fr&quot;,&quot;es&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en' | 'fr' | 'es'&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;imageOpensCase&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;showCV&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showProjects&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showAbout&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showGallery&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showPublications&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showCertifications&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showBlog&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showProject1&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject2&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject3&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject4&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;},&quot;showProject5&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Project entries&quot;}}">
+function storedLang(fallback) {
+  try { const v = localStorage.getItem("jfg-lang"); if (v && T[v]) return v; } catch (e) {}
+  return T[fallback] ? fallback : "en";
+}
+
+const T = {
+  en: {
+    heroKicker: "Chemical & Process Engineering · Portfolio",
+    heroBlurb: "Double-degree chemical engineering student at ENSIC (France) and UIS (Colombia) · process design, modelling and simulation.",
+    heroStatus: "Open to internships · June 2027",
+    heroCta1: "See projects", heroCta1Sub: "Design, catalysis and safety studies",
+    heroCta2: "Read my CV", heroCta2Sub: "Education, experience, software",
+    langLabel: "Choose your language",
+    cvTitle: "Curriculum vitae", cvDownload: "Download PDF",
+    fDegree: "Degree", fYear: "Programme", fFocus: "Focus", fLocation: "Location", fLangs: "Languages", fGpa: "Nationality",
+    locNote: "Open to relocation", langNote: "Backed by official certificates",
+    cvEducation: "Education", cvExperience: "Experience", cvSkills: "Software & methods",
+    workTitle: "Projects",
+    workBlurb: "Design studies, laboratory work and safety reviews from both universities. Each entry lists the tools and the outcome.",
+    tagDesign: "Process design", tagResearch: "Catalysis research", tagSafety: "Equipment & commissioning",
+    p1: "Green methanol from biogas CO₂ and electrolytic hydrogen: Aspen Plus simulation, equipment specification, reactor P&ID and a ten-year economic assessment with Monte Carlo risk analysis. USD 200.6 M net present value.",
+    p2: "Synthesis and characterisation of Ni/TiO₂/Al₂O₃ catalysts for CO₂ methanation at CICAT–UIS. First prize, poster format, Colombian National Catalysis Symposium 2025.",
+    p3: "Five months from technology selection to live start-up: a forced draft, counterflow tower with 3D printed ABS packing, 73.1% thermal efficiency, built by a team of five on a 300 USD budget. I led the team and owned the modelling and assembly.",
+    galleryTitle: "Lab & fieldwork",
+    pubTitle: "Publications & posters", certTitle: "Certifications",
+    contactHead: "Available for a process engineering internship from June 2027.",
+    contactCv: "Download CV", footerNote: "Built as a static site · updated by hand.",
+    cvDownloadSub: "One page, updated May 2026",
+    aboutKicker: "Off the process flow diagram",
+    aboutTitle: "About me",
+    aboutIntro: "Outside the simulator: running, boxing, building things by hand, and a standing interest in architecture and painting.",
+    hobby1L: "Sport", hobby1: "Running, boxing, tennis",
+    hobby2L: "Making", hobby2: "DIY and hands-on building",
+    hobby3L: "Interests", hobby3: "Architecture and painting",
+    hobby4L: "Languages", hobby4: "Studying in three languages",
+    hobby1Detail: "Running and boxing keep the week structured; tennis is the social one. Training taught me more about consistency than any productivity method.",
+    hobby2Detail: "I build and repair things by hand. It is the fastest way to learn why a design that looks clean on screen fails once it is assembled.",
+    hobby3Detail: "Architecture and painting · the same interest as process design, really: structure, proportion, and deciding what to leave out.",
+    hobby4Detail: "Studying engineering in Spanish and French, and reading the literature in English, has made working in multicultural teams second nature.",
+    p4: "MOSAR risk analysis of an industrial process, with P&ID review and recommended safeguards.",
+    p5: "Short description of the project · what you did, with what, and the number that mattered.",
+    blogTitle: "Notes & writing",
+    post1: "Why my first pinch analysis was wrong",
+    post1Sub: "Three stream-data mistakes that quietly moved the pinch temperature.",
+    post2: "How I learned to read a P&ID like a story",
+    post2Sub: "A habit that made HAZOP sessions much less intimidating.",
+    post3: "Fermenting at home taught me about kinetics",
+    post3Sub: "Temperature control mattered more than the recipe.",
+    aboutClose: "Want the long version? Let's talk over coffee.",
+    heroCta2Alt: "Get in touch",
+    shareTitle: "Share this portfolio", shareCopy: "Copy link", shareCopied: "Link copied",
+    shareEmail: "Email", shareMore: "Share",
+    contactLabel: "Contact", shareLabel: "Share", caseStudy: "Read case study",
+    dDegree: "Double diploma · ENSIC + UIS",
+    dProg: "Chemical & Process Eng. · ENSIC 2nd year",
+    dFocus: "Process design, modelling & simulation",
+    dLoc: "Nancy, France",
+    dLangs: "EN C1 · FR B2 · ES native",
+    dNat: "Colombian",
+    edu1d: "2024 · present",
+    edu1t: "Diplôme d'ingénieur · Process Engineering",
+    edu1s: "ENSIC · École Nationale Supérieure des Industries Chimiques, Nancy, France. 2nd year.",
+    edu2d: "2020 · present",
+    edu2t: "Chemical Engineering",
+    edu2s: "Universidad Industrial de Santander (UIS), Colombia. 5th year · double-degree track with ENSIC.",
+    exp1t: "Research Intern · Catalysis",
+    exp1s: "CICAT–UIS, Santander. Synthesis and characterisation of Ni/TiO₂/Al₂O₃ catalysts for CO₂ methanation.",
+    exp2t: "Cooling Tower Prototype · UIS",
+    exp2s: "Design, build and commissioning. Packing designed in Fusion 360; operating procedures and risk analysis.",
+    exp3t: "1st prize · Poster",
+    exp3s: "Colombian National Catalysis Symposium 2025, for the CO₂ methanation work.",
+    sk5: "Process safety · MOSAR, P&ID",
+    prj1: "Green Methanol Plant · Conceptual Design",
+    prj2: "CO₂ Methanation Catalysts",
+    prj3: "Cooling Tower Prototype",
+    prj4: "Process Risk Analysis · MOSAR",
+    prj5: "New project title",
+    pub1t: "Poster · Ni/TiO₂/Al₂O₃ catalysts for CO₂ methanation",
+    pub1s: "Colombian National Catalysis Symposium, 2025 · 1st prize",
+    pub2t: "Technical report · Green methanol plant, conceptual design",
+    pub2s: "Universidad Industrial de Santander, 2024",
+    cert1: "English C1 · official certificate",
+    cert2: "French B2 · official certificate",
+    cert3: "Spanish · native",
+    cert4: "Aspen Plus · academic training",
+    chipTechno: "Techno-economic", chipLab: "Lab", chipCatalysis: "Catalysis",
+    chipCommissioning: "Commissioning", chipTool: "Tool", chipMethod: "Method",
+    nav1: "PROFILE", nav2: "CV", nav3: "PROJECTS", nav4: "CONTACT", nav5: "ABOUT"
+  },
+  fr: {
+    heroKicker: "Génie chimique et des procédés · Portfolio",
+    heroBlurb: "Étudiant en double diplôme de génie chimique à l'ENSIC (France) et à l'UIS (Colombie) · conception, modélisation et simulation de procédés.",
+    heroStatus: "Disponible pour un stage · juin 2027",
+    heroCta1: "Voir les projets", heroCta1Sub: "Conception, catalyse et sécurité",
+    heroCta2: "Lire mon CV", heroCta2Sub: "Formation, expérience, logiciels",
+    langLabel: "Choisissez la langue",
+    cvTitle: "Curriculum vitæ", cvDownload: "Télécharger le PDF",
+    fDegree: "Diplôme", fYear: "Programme", fFocus: "Spécialité", fLocation: "Lieu", fLangs: "Langues", fGpa: "Nationalité",
+    locNote: "Ouvert à la mobilité", langNote: "Certificats officiels à l'appui",
+    cvEducation: "Formation", cvExperience: "Expérience", cvSkills: "Logiciels & méthodes",
+    workTitle: "Projets",
+    workBlurb: "Études de conception, travaux de laboratoire et analyses de sécurité menés dans les deux universités. Chaque fiche indique les outils et le résultat.",
+    tagDesign: "Conception de procédés", tagResearch: "Recherche en catalyse", tagSafety: "Équipement et mise en service",
+    p1: "Méthanol vert à partir du CO₂ du biogaz et d'hydrogène électrolytique : simulation Aspen Plus, spécification des équipements, P&ID du réacteur et évaluation économique sur dix ans avec analyse de risque Monte-Carlo. 200,6 M USD de valeur actuelle nette.",
+    p2: "Synthèse et caractérisation de catalyseurs Ni/TiO₂/Al₂O₃ pour la méthanation du CO₂ au CICAT–UIS. Premier prix, format poster, Symposium National Colombien de Catalyse 2025.",
+    p3: "Cinq mois de la sélection de technologie au démarrage en direct : tour à tirage forcé à contre-courant, garnissage ABS imprimé en 3D, 73,1% d'efficacité thermique, une équipe de cinq et 300 USD de budget. J'ai dirigé l'équipe et pris en charge la modélisation et l'assemblage.",
+    galleryTitle: "Laboratoire & terrain",
+    pubTitle: "Publications & posters", certTitle: "Certifications",
+    contactHead: "Disponible pour un stage en génie des procédés dès juin 2027.",
+    contactCv: "Télécharger le CV", footerNote: "Site statique · mis à jour à la main.",
+    cvDownloadSub: "Une page, mise à jour mai 2026",
+    aboutKicker: "Hors du schéma de procédé",
+    aboutTitle: "À propos",
+    aboutIntro: "En dehors du simulateur : course, boxe, bricolage, et un intérêt constant pour l'architecture et la peinture.",
+    hobby1L: "Sport", hobby1: "Course, boxe, tennis",
+    hobby2L: "Bricolage", hobby2: "Fabriquer et réparer soi-même",
+    hobby3L: "Intérêts", hobby3: "Architecture et peinture",
+    hobby4L: "Langues", hobby4: "Étudier en trois langues",
+    hobby1Detail: "La course et la boxe structurent la semaine ; le tennis, c'est le côté social. L'entraînement m'a appris la régularité mieux que n'importe quelle méthode.",
+    hobby2Detail: "Je construis et je répare à la main. C'est la façon la plus rapide de comprendre pourquoi un design propre à l'écran échoue une fois assemblé.",
+    hobby3Detail: "Architecture et peinture · au fond le même intérêt que la conception de procédés : structure, proportion, et savoir quoi retirer.",
+    hobby4Detail: "Étudier l'ingénierie en espagnol et en français, et lire la littérature en anglais, rend le travail en équipe multiculturelle naturel.",
+    p4: "Analyse de risques MOSAR d'un procédé industriel, avec revue du P&ID et barrières recommandées.",
+    p5: "Courte description du projet · ce que vous avez fait, avec quoi, et le chiffre qui compte.",
+    blogTitle: "Notes & écrits",
+    post1: "Pourquoi ma première analyse pincement était fausse",
+    post1Sub: "Trois erreurs de données qui ont déplacé discrètement le pincement.",
+    post2: "Comment j'ai appris à lire un P&ID comme un récit",
+    post2Sub: "Une habitude qui a rendu les séances HAZOP bien moins intimidantes.",
+    post3: "La fermentation maison m'a appris la cinétique",
+    post3Sub: "Le contrôle de température a compté plus que la recette.",
+    aboutClose: "La version longue ? Autour d'un café.",
+    heroCta2Alt: "Me contacter",
+    shareTitle: "Partager ce portfolio", shareCopy: "Copier le lien", shareCopied: "Lien copié",
+    shareEmail: "E-mail", shareMore: "Partager",
+    contactLabel: "Contact", shareLabel: "Partager", caseStudy: "Lire l'étude de cas",
+    dDegree: "Double diplôme · ENSIC + UIS",
+    dProg: "Génie des procédés · ENSIC 2ᵉ année",
+    dFocus: "Conception, modélisation et simulation de procédés",
+    dLoc: "Nancy, France",
+    dLangs: "EN C1 · FR B2 · ES langue maternelle",
+    dNat: "Colombienne",
+    edu1d: "2024 · aujourd'hui",
+    edu1t: "Diplôme d'ingénieur · Génie des Procédés",
+    edu1s: "ENSIC · École Nationale Supérieure des Industries Chimiques, Nancy, France. 2ᵉ année.",
+    edu2d: "2020 · aujourd'hui",
+    edu2t: "Génie chimique",
+    edu2s: "Universidad Industrial de Santander (UIS), Colombie. 5ᵉ année · parcours double diplôme avec l'ENSIC.",
+    exp1t: "Stagiaire de recherche · Catalyse",
+    exp1s: "CICAT–UIS, Santander. Synthèse et caractérisation de catalyseurs Ni/TiO₂/Al₂O₃ pour la méthanation du CO₂.",
+    exp2t: "Prototype de tour de refroidissement · UIS",
+    exp2s: "Conception, construction et mise en service. Garnissage conçu sous Fusion 360 ; procédures d'exploitation et analyse des risques.",
+    exp3t: "1er prix · Poster",
+    exp3s: "Symposium National Colombien de Catalyse 2025, pour les travaux sur la méthanation du CO₂.",
+    sk5: "Sécurité des procédés · MOSAR, P&ID",
+    prj1: "Usine de méthanol vert · conception conceptuelle",
+    prj2: "Catalyseurs pour la méthanation du CO₂",
+    prj3: "Prototype de tour de refroidissement",
+    prj4: "Analyse de risques procédé · MOSAR",
+    prj5: "Nouveau projet",
+    pub1t: "Poster · Catalyseurs Ni/TiO₂/Al₂O₃ pour la méthanation du CO₂",
+    pub1s: "Symposium National Colombien de Catalyse, 2025 · 1er prix",
+    pub2t: "Rapport technique · Usine de méthanol vert, conception conceptuelle",
+    pub2s: "Universidad Industrial de Santander, 2024",
+    cert1: "Anglais C1 · certificat officiel",
+    cert2: "Français B2 · certificat officiel",
+    cert3: "Espagnol · langue maternelle",
+    cert4: "Aspen Plus · formation académique",
+    chipTechno: "Technico-économique", chipLab: "Labo", chipCatalysis: "Catalyse",
+    chipCommissioning: "Mise en service", chipTool: "Outil", chipMethod: "Méthode",
+    nav1: "PROFIL", nav2: "CV", nav3: "PROJETS", nav4: "CONTACT", nav5: "À PROPOS"
+  },
+  es: {
+    heroKicker: "Ingeniería Química y de Procesos · Portafolio",
+    heroBlurb: "Estudiante de doble titulación en ingeniería química en ENSIC (Francia) y la UIS (Colombia) · diseño, modelado y simulación de procesos.",
+    heroStatus: "Disponible para prácticas · junio 2027",
+    heroCta1: "Ver proyectos", heroCta1Sub: "Diseño, catálisis y seguridad",
+    heroCta2: "Leer mi CV", heroCta2Sub: "Formación, experiencia, software",
+    langLabel: "Elige el idioma",
+    cvTitle: "Currículum", cvDownload: "Descargar CV", cvDownloadSub: "Una página, actualizado mayo 2026",
+    fDegree: "Título", fYear: "Programa", fFocus: "Enfoque", fLocation: "Ubicación", fLangs: "Idiomas", fGpa: "Nacionalidad",
+    locNote: "Dispuesto a desplazamientos", langNote: "Respaldados con certificados oficiales",
+    cvEducation: "Formación", cvExperience: "Experiencia", cvSkills: "Software y métodos",
+    workTitle: "Proyectos",
+    workBlurb: "Estudios de diseño, trabajo de laboratorio y análisis de seguridad realizados en ambas universidades. Cada ficha indica las herramientas y el resultado.",
+    tagDesign: "Diseño de procesos", tagResearch: "Investigación en catálisis", tagSafety: "Equipos y puesta en marcha",
+    p1: "Metanol verde a partir del CO₂ del biogás e hidrógeno de electrólisis: simulación en Aspen Plus, especificación de equipos, P&ID del reactor y evaluación económica a diez años con análisis de riesgo Montecarlo. USD 200,6 M de valor presente neto.",
+    p2: "Síntesis y caracterización de catalizadores Ni/TiO₂/Al₂O₃ para la metanación de CO₂ en el CICAT–UIS. Primer premio, formato póster, Simposio Nacional Colombiano de Catálisis 2025.",
+    p3: "Cinco meses desde la selección de tecnología hasta el arranque en vivo: torre de tiro forzado en contracorriente con empaque de ABS impreso en 3D, 73,1% de eficiencia térmica y un equipo de cinco con 300 USD de presupuesto. Lideré el equipo y asumí el modelado y el ensamblaje.",
+    galleryTitle: "Laboratorio y campo",
+    pubTitle: "Publicaciones y pósteres", certTitle: "Certificaciones",
+    contactHead: "Disponible para prácticas en ingeniería de procesos desde junio de 2027.",
+    contactCv: "Descargar CV", footerNote: "Sitio estático · actualizado a mano.",
+    aboutKicker: "Fuera del diagrama de flujo",
+    aboutTitle: "Sobre mí",
+    aboutIntro: "Fuera del simulador: correr, boxear, construir cosas con las manos y un interés constante por la arquitectura y la pintura.",
+    hobby1L: "Deporte", hobby1: "Running, boxeo, tenis",
+    hobby2L: "Manualidades", hobby2: "Construir y reparar a mano",
+    hobby3L: "Intereses", hobby3: "Arquitectura y pintura",
+    hobby4L: "Idiomas", hobby4: "Estudiar en tres idiomas",
+    hobby1Detail: "Correr y boxear le dan estructura a la semana; el tenis es la parte social. El entrenamiento me enseñó constancia mejor que cualquier método.",
+    hobby2Detail: "Construyo y reparo con las manos. Es la forma más rápida de entender por qué un diseño que se ve limpio en pantalla falla al armarlo.",
+    hobby3Detail: "Arquitectura y pintura · en el fondo el mismo interés que el diseño de procesos: estructura, proporción y decidir qué dejar fuera.",
+    hobby4Detail: "Estudiar ingeniería en español y francés, y leer la literatura en inglés, hace que trabajar en equipos multiculturales sea natural.",
+    p4: "Análisis de riesgos MOSAR de un proceso industrial, con revisión de P&ID y salvaguardas recomendadas.",
+    p5: "Descripción corta del proyecto · qué hiciste, con qué, y la cifra que importó.",
+    blogTitle: "Notas y escritos",
+    post1: "Por qué mi primer análisis pinch estaba mal",
+    post1Sub: "Tres errores de datos que movieron el punto de pliegue sin avisar.",
+    post2: "Cómo aprendí a leer un P&ID como un relato",
+    post2Sub: "Un hábito que hizo mucho menos intimidantes las sesiones HAZOP.",
+    post3: "Fermentar en casa me enseñó cinética",
+    post3Sub: "El control de temperatura importó más que la receta.",
+    aboutClose: "¿La versión larga? Hablemos con un café.",
+    heroCta2Alt: "Contáctame",
+    shareTitle: "Comparte este portafolio", shareCopy: "Copiar enlace", shareCopied: "Enlace copiado",
+    shareEmail: "Correo", shareMore: "Compartir",
+    contactLabel: "Contacto", shareLabel: "Compartir", caseStudy: "Ver el caso completo",
+    dDegree: "Doble titulación · ENSIC + UIS",
+    dProg: "Ingeniería de procesos · ENSIC 2º año",
+    dFocus: "Diseño, modelado y simulación de procesos",
+    dLoc: "Nancy, Francia",
+    dLangs: "EN C1 · FR B2 · ES nativo",
+    dNat: "Colombiana",
+    edu1d: "2024 · actualidad",
+    edu1t: "Diplôme d'ingénieur · Ingeniería de Procesos",
+    edu1s: "ENSIC · École Nationale Supérieure des Industries Chimiques, Nancy, Francia. 2º año.",
+    edu2d: "2020 · actualidad",
+    edu2t: "Ingeniería Química",
+    edu2s: "Universidad Industrial de Santander (UIS), Colombia. 5º año · programa de doble titulación con ENSIC.",
+    exp1t: "Pasante de investigación · Catálisis",
+    exp1s: "CICAT–UIS, Santander. Síntesis y caracterización de catalizadores Ni/TiO₂/Al₂O₃ para la metanación de CO₂.",
+    exp2t: "Prototipo de torre de enfriamiento · UIS",
+    exp2s: "Diseño, construcción y puesta en marcha. Empaque diseñado en Fusion 360; procedimientos de operación y análisis de riesgos.",
+    exp3t: "1er premio · Póster",
+    exp3s: "Simposio Nacional Colombiano de Catálisis 2025, por el trabajo en metanación de CO₂.",
+    sk5: "Seguridad de procesos · MOSAR, P&ID",
+    prj1: "Planta de metanol verde · diseño conceptual",
+    prj2: "Catalizadores para la metanación de CO₂",
+    prj3: "Prototipo de torre de enfriamiento",
+    prj4: "Análisis de riesgos de proceso · MOSAR",
+    prj5: "Nuevo proyecto",
+    pub1t: "Póster · Catalizadores Ni/TiO₂/Al₂O₃ para la metanación de CO₂",
+    pub1s: "Simposio Nacional Colombiano de Catálisis, 2025 · 1er premio",
+    pub2t: "Informe técnico · Planta de metanol verde, diseño conceptual",
+    pub2s: "Universidad Industrial de Santander, 2024",
+    cert1: "Inglés C1 · certificado oficial",
+    cert2: "Francés B2 · certificado oficial",
+    cert3: "Español · nativo",
+    cert4: "Aspen Plus · formación académica",
+    chipTechno: "Técnico-económico", chipLab: "Laboratorio", chipCatalysis: "Catálisis",
+    chipCommissioning: "Puesta en marcha", chipTool: "Herramienta", chipMethod: "Método",
+    nav1: "PERFIL", nav2: "CV", nav3: "PROYECTOS", nav4: "CONTACTO", nav5: "SOBRE MÍ"
+  }
+};
+
+class Component extends DCLogic {
+  state = { lang: storedLang(this.props.defaultLang), active: "profile", hobby: 0, shareOpen: false, copied: false, filled: [false, false, false, false, false] };
+
+  setLang(l) {
+    try { localStorage.setItem("jfg-lang", l); } catch (e) {}
+    this.setState({ lang: l });
+  }
+
+  toggleHobby(n) { this.setState(s => ({ hobby: s.hobby === n ? 0 : n })); }
+
+  url() { return "https://juanfernandogarcia.github.io/portfolio"; }
+
+  pop(u) { window.open(u, "_blank", "noopener,noreferrer,width=600,height=640"); }
+
+  copy() {
+    const u = this.url();
+    const done = () => {
+      this.setState({ copied: true });
+      clearTimeout(this._ct);
+      this._ct = setTimeout(() => this.setState({ copied: false }), 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(u).then(done).catch(done);
+    } else { done(); }
+  }
+
+  native() {
+    const t = T[this.state.lang];
+    if (navigator.share) {
+      navigator.share({ title: "Juan Fernando Garcia · " + t.heroKicker, url: this.url() }).catch(() => {});
+    } else { this.copy(); }
+  }
+
+  componentDidMount() {
+    const ids = ["profile", "cv", "work", "contact", "about"];
+    this.sync = () => {
+      const mid = window.innerHeight * 0.5;
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= mid) current = id;
+      }
+      if (current !== this.state.active) this.setState({ active: current });
+    };
+    this.onScroll = () => {
+      if (this.raf) return;
+      this.raf = requestAnimationFrame(() => { this.raf = null; this.sync(); });
+    };
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    window.addEventListener("resize", this.onScroll, { passive: true });
+    this.sync();
+
+    this._hashJump = () => {
+      const id = (location.hash || "").slice(1);
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      const y = el.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo(0, y < 0 ? 0 : y);
+    };
+    setTimeout(this._hashJump, 80);
+    setTimeout(this._hashJump, 350);
+
+    this.flash = () => {
+      const id = (location.hash || "").slice(1);
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el || !el.animate) return;
+      el.animate(
+        [{ opacity: 1 }, { opacity: 0.32, offset: 0.22 }, { opacity: 1 }],
+        { duration: 800, easing: "ease-out" }
+      );
+    };
+    this.onNavClick = e => {
+      const a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const id = a.getAttribute("href").slice(1);
+      if (id && id === (location.hash || "").slice(1)) this.flash();
+    };
+    window.addEventListener("hashchange", this.flash);
+    document.addEventListener("click", this.onNavClick);
+
+    const isFilled = id => {
+      const s = document.getElementById(id);
+      if (!s) return false;
+      const r = s.shadowRoot;
+      const img = r ? r.querySelector("img") : s.querySelector("img");
+      return !!(img && img.getAttribute("src"));
+    };
+    this.syncSlots = () => {
+      const next = [1, 2, 3, 4, 5].map(n => isFilled("proj" + n));
+      const cur = this.state.filled;
+      if (next.some((v, i) => v !== cur[i])) this.setState({ filled: next });
+    };
+    this.syncSlots();
+    this._si = setInterval(this.syncSlots, 1000);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("resize", this.onScroll);
+    window.removeEventListener("hashchange", this.flash);
+    document.removeEventListener("click", this.onNavClick);
+    if (this._si) clearInterval(this._si);
+    if (this.raf) cancelAnimationFrame(this.raf);
+  }
+
+  renderVals() {
+    const t = T[this.state.lang];
+    const a = this.state.active;
+    const nav = id => a === id
+      ? { bg: "#ffd100", fg: "#201e1d" }
+      : { bg: "transparent", fg: "#7d7979" };
+    const n1 = nav("profile"), n2 = nav("cv"), n3 = nav("work"), n4 = nav("contact"), n5 = nav("about");
+    const L = this.state.lang;
+    const sm = code => L === code
+      ? { bg: "#201e1d", fg: "#f3f2f2" }
+      : { bg: "transparent", fg: "#201e1d" };
+    const bg = code => L === code
+      ? { bg: "#201e1d", fg: "#ffd100" }
+      : { bg: "transparent", fg: "#201e1d" };
+    const sEn = sm("en"), sFr = sm("fr"), sEs = sm("es");
+    const bEn = bg("en"), bFr = bg("fr"), bEs = bg("es");
+    const p = this.props;
+    const heroH = p.heroHeight ?? 37;
+    const gallery = p.showGallery ?? true;
+    const on = (v, d) => (v ?? d) ? "block" : "none";
+    const cvOn = p.showCV ?? true, workOn = p.showProjects ?? true, aboutOn = p.showAbout ?? true;
+    const visibleNav = 2 + (cvOn ? 1 : 0) + (workOn ? 1 : 0) + (aboutOn ? 1 : 0);
+    const h = this.state.hobby;
+    return Object.assign({}, t, {
+      heroMinH: (heroH * 0.48) + "vh",
+      heroInnerH: Math.round(heroH * 4.95 * 0.48) + "px",
+      projAspect: "4/" + (p.projectRatio ?? 1.9),
+      showGallery: gallery,
+      galleryDisplay: gallery ? "block" : "none",
+      cvShow: cvOn ? "block" : "none",
+      workShow: workOn ? "block" : "none",
+      aboutShow: aboutOn ? "block" : "none",
+      cvNavShow: cvOn ? "flex" : "none",
+      workNavShow: workOn ? "flex" : "none",
+      aboutNavShow: aboutOn ? "flex" : "none",
+      navCols: "repeat(" + visibleNav + ",1fr)",
+      p1Show: on(p.showProject1, true), p2Show: on(p.showProject2, true),
+      p3Show: on(p.showProject3, true), p4Show: on(p.showProject4, true),
+      p5Show: on(p.showProject5, true),
+      pubShow: on(p.showPublications, true),
+      certShow: on(p.showCertifications, true),
+      certShowFlex: (p.showCertifications ?? true) ? "flex" : "none",
+      blogShow: on(p.showBlog, true),
+      imgLinkShow: (p.imageOpensCase ?? true) ? "block" : "none",
+      pe1: this.state.filled[0] ? "auto" : "none",
+      pe2: this.state.filled[1] ? "auto" : "none",
+      pe3: this.state.filled[2] ? "auto" : "none",
+      pe4: this.state.filled[3] ? "auto" : "none",
+      pe5: this.state.filled[4] ? "auto" : "none",
+      toggleH1: () => this.toggleHobby(1), toggleH2: () => this.toggleHobby(2),
+      toggleH3: () => this.toggleHobby(3), toggleH4: () => this.toggleHobby(4),
+      h1Open: h === 1, h2Open: h === 2, h3Open: h === 3, h4Open: h === 4,
+      h1Sign: h === 1 ? "−" : "+", h2Sign: h === 2 ? "−" : "+",
+      h3Sign: h === 3 ? "−" : "+", h4Sign: h === 4 ? "−" : "+",
+      shareOpen: this.state.shareOpen,
+      openShare: () => this.setState({ shareOpen: true }),
+      closeShare: () => this.setState({ shareOpen: false }),
+      shareUrl: this.url(),
+      copyLink: () => this.copy(),
+      copyLabel: this.state.copied ? t.shareCopied : t.shareCopy,
+      copyBg: this.state.copied ? "#ffd100" : "transparent",
+      shareMail: () => { window.location.href = "mailto:?subject=" + encodeURIComponent("Portfolio · Juan Fernando Garcia") + "&body=" + encodeURIComponent(this.url()); },
+      shareNative: () => this.native(),
+      setEn: () => this.setLang("en"),
+      setFr: () => this.setLang("fr"),
+      setEs: () => this.setLang("es"),
+      enBg: sEn.bg, enFg: sEn.fg, frBg: sFr.bg, frFg: sFr.fg, esBg: sEs.bg, esFg: sEs.fg,
+      enBigBg: bEn.bg, enBigFg: bEn.fg, frBigBg: bFr.bg, frBigFg: bFr.fg, esBigBg: bEs.bg, esBigFg: bEs.fg,
+      nav1Bg: n1.bg, nav1Fg: n1.fg, nav2Bg: n2.bg, nav2Fg: n2.fg,
+      nav3Bg: n3.bg, nav3Fg: n3.fg, nav4Bg: n4.bg, nav4Fg: n4.fg,
+      nav5Bg: n5.bg, nav5Fg: n5.fg
+    });
+  }
+}
+
+</script>
+</body>
+</html>
