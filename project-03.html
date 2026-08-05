@@ -34,6 +34,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
 .strip{scrollbar-width:none;-ms-overflow-style:none;touch-action:pan-y}
 .strip::-webkit-scrollbar{height:0;width:0}
 .sec{scroll-margin-top:112px}
+@media (max-width:760px){.galn{top:auto !important;bottom:10px !important;right:8px !important}}
 .kpigrid{display:grid;grid-template-columns:1fr;gap:14px 24px;align-items:start}
 @media (min-width:600px){.kpigrid{grid-template-columns:1fr 1fr}}
 .dgrid{display:grid;gap:0}
@@ -76,11 +77,11 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
   </div>
   </sc-if>
 
-  <div class="gs pphero" style="height:250px;border-bottom:2px solid #201e1d;overflow:hidden"><image-slot id="pp-hero" src="media/pp-hero.webp" shape="rect" fit="cover" placeholder="Hero image, the finished tower"></image-slot></div>
+  <div class="gs pphero" style="height:250px;border-bottom:2px solid #201e1d;overflow:hidden"><image-slot id="pp-hero" src="media/pp/pp-hero.webp" shape="rect" fit="cover" placeholder="Hero image, the finished tower"></image-slot></div>
 
   <div class="psec" style="background:#ffd100;padding:20px 18px 22px;border-bottom:2px solid #201e1d">
     <div style="font:600 10px/1 'Archivo';letter-spacing:.2em;text-transform:uppercase">{{ kicker }}</div>
-    <h1 style="font:800 clamp(28px,8vw,40px)/1.02 'Archivo';letter-spacing:-.03em;margin:12px 0 0">Cooling Tower Prototype</h1>
+    <h1 style="font:800 clamp(28px,8vw,40px)/1.02 'Archivo';letter-spacing:-.03em;margin:12px 0 0">{{ title }}</h1>
     <p style="font:400 15px/1.5 'Archivo';margin:12px 0 0;max-width:640px;text-wrap:pretty">{{ lede }}</p>
     <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:16px">
       <span style="font:600 10px/1 'Archivo';letter-spacing:.08em;text-transform:uppercase;border:2px solid #201e1d;padding:7px 9px">{{ metaYear }}</span>
@@ -135,9 +136,9 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
   <div style="display:{{ galADisplay }}">
   <div class="gal" style="position:relative;margin:20px 18px 0;border:2px solid #201e1d;background:#201e1d">
     <div ref="{{ galARef }}" onScroll="{{ onGalAScroll }}" class="strip" style="display:flex;overflow:hidden">
-        <div class="gs" style="display:{{ a1Show }};order:{{ a1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a1" src="media/pp-a1.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a2Show }};order:{{ a2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a2" src="media/pp-a2.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a3Show }};order:{{ a3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a3" src="media/pp-a3.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a1Show }};order:{{ a1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a1" src="media/pp/pp-a1.webp" src="./img_6536-mseo6flb-7s9m.jpeg" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a2Show }};order:{{ a2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a2" src="media/pp/pp-a2.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a3Show }};order:{{ a3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a3" src="media/pp/pp-a3.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ a4Show }};order:{{ a4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a4" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ a5Show }};order:{{ a5Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a5" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ a6Show }};order:{{ a6Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a6" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
@@ -146,29 +147,34 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
         <div class="gs" style="display:{{ av1Show }};order:{{ av1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ av1Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av1Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ av1Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+          
         </div>
         <div class="gs" style="display:{{ av2Show }};order:{{ av2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ av2Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av2Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ av2Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+          
         </div>
         <div class="gs" style="display:{{ av3Show }};order:{{ av3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ av3Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av3Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ av3Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+          
         </div>
         <div class="gs" style="display:{{ av4Show }};order:{{ av4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ av4Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av4Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ av4Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+          
         </div>
     </div>
     <button onClick="{{ gaPrev }}" aria-label="Previous" style="all:unset;cursor:pointer;position:absolute;top:50%;left:0;transform:translateY(-50%);width:40px;height:52px;display:{{ galAArrows }};align-items:center;justify-content:center;background:rgba(32,30,29,.85);color:#ffd100;font:800 17px/1 'Archivo';border-right:2px solid #ffd100" style-hover="background:#201e1d">‹</button>
     <button onClick="{{ gaNext }}" aria-label="Next" style="all:unset;cursor:pointer;position:absolute;top:50%;right:0;transform:translateY(-50%);width:40px;height:52px;display:{{ galAArrows }};align-items:center;justify-content:center;background:rgba(32,30,29,.85);color:#ffd100;font:800 17px/1 'Archivo';border-left:2px solid #ffd100" style-hover="background:#201e1d">›</button>
-    <div style="position:absolute;top:8px;right:8px;background:rgba(32,30,29,.85);color:#f3f2f2;font:600 10px/1 'Archivo';letter-spacing:.1em;padding:7px 9px;pointer-events:none">{{ galACount }}</div>
+    <div class="galn" style="position:absolute;top:8px;right:8px;background:rgba(32,30,29,.85);color:#f3f2f2;font:600 10px/1 'Archivo';letter-spacing:.1em;padding:7px 9px;pointer-events:none">{{ galACount }}</div>
     <div style="position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:6px">
       <sc-for list="{{ dotsA }}" as="d" hint-placeholder-count="1">
         <button onClick="{{ d.go }}" aria-label="Slide" style="all:unset;cursor:pointer;width:24px;height:24px;display:flex;align-items:center;justify-content:center"><span style="display:block;width:8px;height:8px;background:{{ d.bg }};box-shadow:0 0 0 1px rgba(32,30,29,.6)"></span></button>
       </sc-for>
     </div>
   </div>
+  
   </div>
 
   <div id="build" class="psec sec" style="padding:22px 18px 8px"><div style="font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">03 · {{ s3 }}</div><p style="font:400 15px/1.6 'Archivo';margin:12px 0 0;text-align:justify;hyphens:auto">{{ t3 }}</p></div>
@@ -176,9 +182,9 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
   <div style="display:{{ galBDisplay }}">
   <div class="gal" style="position:relative;margin:20px 18px 0;border:2px solid #201e1d;background:#201e1d">
     <div ref="{{ galBRef }}" onScroll="{{ onGalBScroll }}" class="strip" style="display:flex;overflow:hidden">
-        <div class="gs" style="display:{{ b1Show }};order:{{ b1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-g1" src="media/pp-g1.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b2Show }};order:{{ b2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-g2" src="media/pp-g2.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b3Show }};order:{{ b3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-g3" src="media/pp-g3.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b1Show }};order:{{ b1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-g1" src="media/pp/pp-g1.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b2Show }};order:{{ b2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-g2" src="media/pp/pp-g2.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b3Show }};order:{{ b3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-g3" src="media/pp/pp-g3.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ b4Show }};order:{{ b4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-g4" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ b5Show }};order:{{ b5Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-g5" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ b6Show }};order:{{ b6Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-g6" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
@@ -187,29 +193,34 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
         <div class="gs" style="display:{{ bv1Show }};order:{{ bv1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ bv1Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv1Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ bv1Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+          
         </div>
         <div class="gs" style="display:{{ bv2Show }};order:{{ bv2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ bv2Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv2Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ bv2Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+          
         </div>
         <div class="gs" style="display:{{ bv3Show }};order:{{ bv3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ bv3Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv3Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ bv3Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+          
         </div>
         <div class="gs" style="display:{{ bv4Show }};order:{{ bv4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ bv4Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv4Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ bv4Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+          
         </div>
     </div>
     <button onClick="{{ gbPrev }}" aria-label="Previous" style="all:unset;cursor:pointer;position:absolute;top:50%;left:0;transform:translateY(-50%);width:40px;height:52px;display:{{ galBArrows }};align-items:center;justify-content:center;background:rgba(32,30,29,.85);color:#ffd100;font:800 17px/1 'Archivo';border-right:2px solid #ffd100" style-hover="background:#201e1d">‹</button>
     <button onClick="{{ gbNext }}" aria-label="Next" style="all:unset;cursor:pointer;position:absolute;top:50%;right:0;transform:translateY(-50%);width:40px;height:52px;display:{{ galBArrows }};align-items:center;justify-content:center;background:rgba(32,30,29,.85);color:#ffd100;font:800 17px/1 'Archivo';border-left:2px solid #ffd100" style-hover="background:#201e1d">›</button>
-    <div style="position:absolute;top:8px;right:8px;background:rgba(32,30,29,.85);color:#f3f2f2;font:600 10px/1 'Archivo';letter-spacing:.1em;padding:7px 9px;pointer-events:none">{{ galBCount }}</div>
+    <div class="galn" style="position:absolute;top:8px;right:8px;background:rgba(32,30,29,.85);color:#f3f2f2;font:600 10px/1 'Archivo';letter-spacing:.1em;padding:7px 9px;pointer-events:none">{{ galBCount }}</div>
     <div style="position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:6px">
       <sc-for list="{{ dotsB }}" as="d" hint-placeholder-count="1">
         <button onClick="{{ d.go }}" aria-label="Slide" style="all:unset;cursor:pointer;width:24px;height:24px;display:flex;align-items:center;justify-content:center"><span style="display:block;width:8px;height:8px;background:{{ d.bg }};box-shadow:0 0 0 1px rgba(32,30,29,.6)"></span></button>
       </sc-for>
     </div>
   </div>
+  
   </div>
 
   <div id="comm" class="psec sec" style="padding:22px 18px 8px"><div style="font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">04 · {{ s4 }}</div><p style="font:400 15px/1.6 'Archivo';margin:12px 0 0;text-align:justify;hyphens:auto">{{ t4 }}</p></div>
@@ -325,7 +336,7 @@ const T = {
   en: {
     back: "Main", contactLabel: "Contact", shareLabel: "Share", shareMore: "Share", nextT: "Process Risk Analysis · MOSAR",
     kpiN1: "73.1%", kpiN2: "5 members · 300 USD",
-    kicker: "Industrial Utilities · UIS · 2025",
+    kicker: "Industrial Utilities · UIS · 2025", title: "Cooling Tower Prototype",
     lede: "Five months taking a cooling tower from a technology study to a machine running live in front of an audience.",
     metaYear: "2025", metaDur: "5 months", metaPlace: "Universidad Industrial de Santander",
     toolsL: "Tools", skillsL: "Skills",
@@ -372,7 +383,7 @@ const T = {
   fr: {
     back: "Accueil", contactLabel: "Contact", shareLabel: "Partager", shareMore: "Partager", nextT: "Analyse de risques procédé · MOSAR",
     kpiN1: "73,1%", kpiN2: "5 membres · 300 USD",
-    kicker: "Utilités industrielles · UIS · 2025",
+    kicker: "Utilités industrielles · UIS · 2025", title: "Prototype de tour de refroidissement",
     lede: "Cinq mois pour amener une tour de refroidissement de l'étude de technologie à une machine qui tourne en direct devant un public.",
     metaYear: "2025", metaDur: "5 mois", metaPlace: "Universidad Industrial de Santander",
     toolsL: "Outils", skillsL: "Compétences",
@@ -419,7 +430,7 @@ const T = {
   es: {
     back: "Principal", contactLabel: "Contacto", shareLabel: "Compartir", shareMore: "Compartir", nextT: "Análisis de riesgos de proceso · MOSAR",
     kpiN1: "73,1%", kpiN2: "5 integrantes · 300 USD",
-    kicker: "Servicios Industriales · UIS · 2025",
+    kicker: "Servicios Industriales · UIS · 2025", title: "Prototipo de torre de enfriamiento",
     lede: "Cinco meses para llevar una torre de enfriamiento del estudio de tecnología a una máquina operando en vivo frente a un público.",
     metaYear: "2025", metaDur: "5 meses", metaPlace: "Universidad Industrial de Santander",
     toolsL: "Herramientas", skillsL: "Habilidades",
@@ -589,9 +600,9 @@ class Component extends DCLogic {
     const fr = which === "A" ? this._frA : this._frB;
     const cur = this.curIndex(which);
     if (!fr) return;
-    const live = fr.filter(x => x.kind !== "empty");
+    const live = fr.filter(x => x.kind !== "empty" && x.kind !== "hint" && x.kind !== "wait");
     const me = fr[Math.min(cur, fr.length - 1)];
-    if (!me || me.kind === "empty") return;
+    if (!me || me.kind === "empty" || me.kind === "hint" || me.kind === "wait") return;
     const i = live.indexOf(me), j = i + dir;
     if (i < 0 || j < 0 || j >= live.length) return;
     const keys = live.map(x => x.key);
@@ -683,7 +694,7 @@ class Component extends DCLogic {
       const blob = this.state.blobs[v];
       if (!blob && !this.state.vids[v]) continue;
       if (this.state.hidden[v]) continue;
-      live.push({ kind: "vid", n: n + 1, key: v, src: blob ? blob.url : "media/" + v + ".mp4" });
+      live.push({ kind: "vid", n: n + 1, key: v, src: blob ? blob.url : "media/" + SLUG + "/" + v + ".mp4" });
     }
     const savedKeys = this.state.order[SLUG + "-" + (pool === "a" ? "a" : "b")] || [];
     if (!this.editor) {
@@ -702,7 +713,7 @@ class Component extends DCLogic {
           kind: "hint",
           n: this.videoKeys(vgroup).indexOf(freeVid) + 1,
           key: freeVid,
-          name: pend ? pend + " → media/" + freeVid + ".mp4" : "media/" + freeVid + ".mp4"
+          name: pend ? pend + " → media/" + SLUG + "/" + freeVid + ".mp4" : "media/" + SLUG + "/" + freeVid + ".mp4"
         });
       }
     }
@@ -963,7 +974,7 @@ class Component extends DCLogic {
           return { vids: nv };
         });
       };
-      p.src = "media/" + v + ".mp4";
+      p.src = "media/" + SLUG + "/" + v + ".mp4";
       this._probes.push(p);
     }
 
