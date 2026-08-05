@@ -31,7 +31,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
 .galcap{padding-left:44px !important;padding-right:44px !important;text-align:center}
 }
 .gs{background:#d7d3d3}
-.strip{scrollbar-width:none;-ms-overflow-style:none}
+.strip{scrollbar-width:none;-ms-overflow-style:none;touch-action:pan-x pan-y;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
 .strip::-webkit-scrollbar{height:0;width:0}
 .sec{scroll-margin-top:112px}
 .kpigrid{display:grid;grid-template-columns:1fr;gap:14px 24px;align-items:start}
@@ -805,6 +805,82 @@ class Component extends DCLogic {
     } else { done(); }
   }
 
+  // Own the horizontal swipe instead of relying on native touch scrolling:
+  // any component inside a frame (the image viewer, for one) can set
+  // touch-action and kill the gesture, so the strip is dragged by hand.
+  bindSwipe(which) {
+    const el = which === "A" ? this.galA.current : this.galB.current;
+    if (!el || el._swipeBound) return;
+    el._swipeBound = true;
+    let x0 = 0, y0 = 0, sl = 0, mode = 0;
+    const start = e => {
+      if (e.touches.length !== 1 || (e.target.closest && e.target.closest("video"))) { mode = 2; return; }
+      const t = e.touches[0];
+      x0 = t.clientX; y0 = t.clientY; sl = el.scrollLeft; mode = 0;
+    };
+    const move = e => {
+      if (mode === 2 || e.touches.length !== 1) return;
+      const t = e.touches[0], dx = t.clientX - x0, dy = t.clientY - y0;
+      if (mode === 0) {
+        if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+        mode = Math.abs(dx) > Math.abs(dy) ? 1 : 2;
+        if (mode !== 1) return;
+        el.style.scrollSnapType = "none";
+        el.style.scrollBehavior = "auto";
+      }
+      e.preventDefault();
+      el.scrollLeft = sl - dx;
+    };
+    const end = () => {
+      if (mode !== 1) { mode = 0; return; }
+      mode = 0;
+      el.style.scrollSnapType = "";
+      const w = el.clientWidth || 1;
+      const moved = el.scrollLeft - sl;
+      const base = Math.round(sl / w);
+      const n = Math.max(1, Math.round(el.scrollWidth / w));
+      let i = Math.abs(moved) > w * 0.15 ? base + (moved > 0 ? 1 : -1) : base;
+      this.goSlide(which, Math.max(0, Math.min(n - 1, i)));
+    };
+    el.addEventListener("touchstart", start, { passive: true });
+    el.addEventListener("touchmove", move, { passive: false });
+    el.addEventListener("touchend", end);
+    el.addEventListener("touchcancel", end);
+  }
+
+  // Pause immediately on every slide change (the observer below is the
+  // backstop for page scrolling). Pausing keeps currentTime, so swiping
+  // back to a video resumes where it stopped.
+  pauseOffscreen() {
+    for (const el of [this.galA.current, this.galB.current]) {
+      if (!el) continue;
+      const w = el.clientWidth || 1;
+      const cur = Math.round(el.scrollLeft / w);
+      for (const v of el.querySelectorAll("video")) {
+        const frame = v.closest(".gs");
+        const at = frame ? (parseInt(getComputedStyle(frame).order, 10) || 0) : 0;
+        if (at !== cur && !v.paused) v.pause();
+      }
+    }
+  }
+
+  // A video that scrolls out of view pauses and keeps its position, so
+  // swiping back resumes where it stopped.
+  watchVideos() {
+    if (!window.IntersectionObserver) return;
+    if (!this._vio) {
+      this._vio = new IntersectionObserver(entries => {
+        for (const en of entries) if (!en.isIntersecting && !en.target.paused) en.target.pause();
+      }, { threshold: 0.55 });
+      this._vseen = new WeakSet();
+    }
+    for (const v of document.querySelectorAll(".strip video")) {
+      if (this._vseen.has(v)) continue;
+      this._vseen.add(v);
+      this._vio.observe(v);
+    }
+  }
+
   componentDidMount() {
     this.flash = () => {
       const id = (location.hash || "").slice(1);
@@ -846,17 +922,41 @@ class Component extends DCLogic {
     this._si = setInterval(this.scan, 800);
 
 
+    this._probes = [];
     for (const v of this.videoKeys("a").concat(this.videoKeys("b"))) {
-      fetch("media/" + v + ".mp4", { method: "HEAD" })
-        .then(r => { if (r.ok) this.setState(st => { const nv = Object.assign({}, st.vids); nv[v] = true; return { vids: nv }; }); })
-        .catch(() => {});
+      const p = document.createElement("video");
+      p.preload = "metadata";
+      p.muted = true;
+      p.onloadedmetadata = () => {
+        this.setState(st => {
+          if (st.vids[v]) return null;
+          const nv = Object.assign({}, st.vids);
+          nv[v] = true;
+          return { vids: nv };
+        });
+      };
+      p.src = "media/" + v + ".mp4";
+      this._probes.push(p);
     }
+
+    this.bindSwipe("A");
+    this.bindSwipe("B");
+    this.watchVideos();
+  }
+
+  componentDidUpdate() {
+    this.bindSwipe("A");
+    this.bindSwipe("B");
+    this.watchVideos();
+    this.pauseOffscreen();
   }
 
   componentWillUnmount() {
     window.removeEventListener("hashchange", this.flash);
     document.removeEventListener("click", this.onNavClick);
     if (this._si) clearInterval(this._si);
+    if (this._probes) for (const p of this._probes) { p.onloadedmetadata = null; p.removeAttribute("src"); }
+    if (this._vio) this._vio.disconnect();
   }
 
   renderVals() {
