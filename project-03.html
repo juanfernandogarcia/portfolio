@@ -526,6 +526,7 @@ class Component extends DCLogic {
     clearTimeout(this["_lt" + which]);
     this["_lt" + which] = setTimeout(() => { this["_lock" + which] = false; }, 90);
     this.setState(which === "A" ? { gA: i } : { gB: i });
+    this.autoPlay(which);
   }
 
   curIndex(which) {
@@ -768,6 +769,52 @@ class Component extends DCLogic {
   // Own the horizontal swipe instead of relying on native touch scrolling:
   // any component inside a frame (the image viewer, for one) can set
   // touch-action and kill the gesture, so the strip is dragged by hand.
+  // A touch on the bottom strip of a video belongs to the native controls
+  // (scrub bar, volume); everywhere else on the video is swipe territory.
+  onVideoControls(t) {
+    const v = t && t.target && t.target.closest && t.target.closest("video");
+    if (!v) return false;
+    return t.clientY > v.getBoundingClientRect().bottom - 56;
+  }
+
+  // Trackpads and horizontal mouse wheels: one gesture, one frame.
+  bindWheel(which) {
+    const el = which === "A" ? this.galA.current : this.galB.current;
+    if (!el || el._wheelBound) return;
+    el._wheelBound = true;
+    let acc = 0, cool = false;
+    el.addEventListener("wheel", e => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      if (cool) return;
+      acc += e.deltaX;
+      if (Math.abs(acc) < 30) return;
+      const n = this.frameCount(which);
+      const i = Math.max(0, Math.min(n - 1, this.liveIndex(which) + (acc > 0 ? 1 : -1)));
+      acc = 0; cool = true;
+      clearTimeout(this["_wc" + which]);
+      this["_wc" + which] = setTimeout(() => { cool = false; acc = 0; }, 420);
+      this.glideTo(which, i);
+    }, { passive: false });
+  }
+
+  // Landing on a video starts it; landing elsewhere leaves it paused.
+  autoPlay(which) {
+    const el = which === "A" ? this.galA.current : this.galB.current;
+    if (!el) return;
+    const w = el.clientWidth || 1;
+    const cur = Math.round(el.scrollLeft / w);
+    if (this["_ap" + which] === cur) return;
+    this["_ap" + which] = cur;
+    for (const v of el.querySelectorAll("video")) {
+      const fr = v.closest(".gs");
+      const at = fr ? (parseInt(getComputedStyle(fr).order, 10) || 0) : 0;
+      if (at !== cur) continue;
+      const p = v.play();
+      if (p && p.catch) p.catch(() => { v.muted = true; const q = v.play(); if (q && q.catch) q.catch(() => {}); });
+    }
+  }
+
   // The strip has overflow hidden and touch-action pan-y, so the browser
   // never scrolls it: the drag is ours from the first pixel and momentum
   // can never carry past one frame. Follow the finger, commit on release,
@@ -778,7 +825,7 @@ class Component extends DCLogic {
     el._swipeBound = true;
     let x0 = 0, y0 = 0, base = 0, idx = 0, n = 1, mode = 0, lastX = 0, lastT = 0, vx = 0;
     const start = e => {
-      if (e.touches.length !== 1 || (e.target.closest && e.target.closest("video"))) { mode = 2; return; }
+      if (e.touches.length !== 1 || this.onVideoControls(e.touches[0])) { mode = 2; return; }
       if (this["_raf" + which]) { cancelAnimationFrame(this["_raf" + which]); this["_raf" + which] = 0; }
       clearTimeout(this["_gt2" + which]);
       const w = el.clientWidth || 1;
@@ -922,12 +969,16 @@ class Component extends DCLogic {
 
     this.bindSwipe("A");
     this.bindSwipe("B");
+    this.bindWheel("A");
+    this.bindWheel("B");
     this.watchVideos();
   }
 
   componentDidUpdate() {
     this.bindSwipe("A");
     this.bindSwipe("B");
+    this.bindWheel("A");
+    this.bindWheel("B");
     this.watchVideos();
     this.pauseOffscreen();
   }
