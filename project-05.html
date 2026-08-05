@@ -31,7 +31,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
 .galcap{padding-left:44px !important;padding-right:44px !important;text-align:center}
 }
 .gs{background:#d7d3d3}
-.strip{scrollbar-width:none;-ms-overflow-style:none;touch-action:pan-x pan-y;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.strip{scrollbar-width:none;-ms-overflow-style:none;touch-action:pan-y}
 .strip::-webkit-scrollbar{height:0;width:0}
 .sec{scroll-margin-top:112px}
 .kpigrid{display:grid;grid-template-columns:1fr;gap:14px 24px;align-items:start}
@@ -134,28 +134,28 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
 
   <div style="display:{{ galADisplay }}">
   <div class="gal" style="position:relative;margin:20px 18px 0;border:2px solid #201e1d;background:#201e1d">
-    <div ref="{{ galARef }}" onScroll="{{ onGalAScroll }}" class="strip" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory">
-        <div class="gs" style="display:{{ a1Show }};order:{{ a1Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-a1" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a2Show }};order:{{ a2Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-a2" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a3Show }};order:{{ a3Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-a3" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a4Show }};order:{{ a4Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-a4" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a5Show }};order:{{ a5Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-a5" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a6Show }};order:{{ a6Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-a6" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a7Show }};order:{{ a7Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-a7" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a8Show }};order:{{ a8Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-a8" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ av1Show }};order:{{ av1Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
+    <div ref="{{ galARef }}" onScroll="{{ onGalAScroll }}" class="strip" style="display:flex;overflow:hidden">
+        <div class="gs" style="display:{{ a1Show }};order:{{ a1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a1" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a2Show }};order:{{ a2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a2" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a3Show }};order:{{ a3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a3" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a4Show }};order:{{ a4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a4" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a5Show }};order:{{ a5Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a5" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a6Show }};order:{{ a6Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a6" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a7Show }};order:{{ a7Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a7" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a8Show }};order:{{ a8Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a8" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ av1Show }};order:{{ av1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ av1Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av1Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ av1Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
-        <div class="gs" style="display:{{ av2Show }};order:{{ av2Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
+        <div class="gs" style="display:{{ av2Show }};order:{{ av2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ av2Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av2Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ av2Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
-        <div class="gs" style="display:{{ av3Show }};order:{{ av3Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
+        <div class="gs" style="display:{{ av3Show }};order:{{ av3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ av3Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av3Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ av3Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
-        <div class="gs" style="display:{{ av4Show }};order:{{ av4Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
+        <div class="gs" style="display:{{ av4Show }};order:{{ av4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ av4Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av4Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ av4Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
@@ -175,28 +175,28 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
 
   <div style="display:{{ galBDisplay }}">
   <div class="gal" style="position:relative;margin:20px 18px 0;border:2px solid #201e1d;background:#201e1d">
-    <div ref="{{ galBRef }}" onScroll="{{ onGalBScroll }}" class="strip" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory">
-        <div class="gs" style="display:{{ b1Show }};order:{{ b1Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-g1" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b2Show }};order:{{ b2Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-g2" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b3Show }};order:{{ b3Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-g3" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b4Show }};order:{{ b4Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-g4" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b5Show }};order:{{ b5Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-g5" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b6Show }};order:{{ b6Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-g6" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b7Show }};order:{{ b7Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-g7" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b8Show }};order:{{ b8Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-g8" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ bv1Show }};order:{{ bv1Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
+    <div ref="{{ galBRef }}" onScroll="{{ onGalBScroll }}" class="strip" style="display:flex;overflow:hidden">
+        <div class="gs" style="display:{{ b1Show }};order:{{ b1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g1" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b2Show }};order:{{ b2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g2" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b3Show }};order:{{ b3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g3" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b4Show }};order:{{ b4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g4" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b5Show }};order:{{ b5Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g5" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b6Show }};order:{{ b6Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g6" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b7Show }};order:{{ b7Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g7" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b8Show }};order:{{ b8Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g8" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ bv1Show }};order:{{ bv1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ bv1Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv1Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ bv1Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
-        <div class="gs" style="display:{{ bv2Show }};order:{{ bv2Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
+        <div class="gs" style="display:{{ bv2Show }};order:{{ bv2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ bv2Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv2Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ bv2Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
-        <div class="gs" style="display:{{ bv3Show }};order:{{ bv3Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
+        <div class="gs" style="display:{{ bv3Show }};order:{{ bv3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ bv3Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv3Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ bv3Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
-        <div class="gs" style="display:{{ bv4Show }};order:{{ bv4Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
+        <div class="gs" style="display:{{ bv4Show }};order:{{ bv4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ bv4Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv4Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ bv4Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
@@ -556,19 +556,32 @@ class Component extends DCLogic {
 
   goSlide(which, i) { this.glideTo(which, i); }
 
-  // One easeOutCubic glide drives arrows, dots and the release of a swipe,
-  // so every transition between frames feels the same and lands quickly.
+  frameCount(which) {
+    const el = which === "A" ? this.galA.current : this.galB.current;
+    if (!el) return 1;
+    const w = el.clientWidth || 1;
+    return Math.max(1, Math.round(el.scrollWidth / w));
+  }
+
+  // The index the strip is on or heading to. Never derived from a partial
+  // scroll offset, so a gesture can only ever move one frame.
+  liveIndex(which) {
+    const p = this["_pend" + which];
+    if (p != null) return p;
+    return which === "A" ? this.state.gA : this.state.gB;
+  }
+
+  // Single easeOutCubic glide for arrows, dots and the release of a swipe.
   glideTo(which, i) {
     const el = which === "A" ? this.galA.current : this.galB.current;
     if (!el) return;
     const w = el.clientWidth || 1;
     const from = el.scrollLeft, dist = i * w - from;
+    this["_pend" + which] = i;
     this["_lock" + which] = true;
     if (this["_raf" + which]) cancelAnimationFrame(this["_raf" + which]);
-    el.style.scrollSnapType = "none";
-    el.style.scrollBehavior = "auto";
     if (Math.abs(dist) < 1) { this.settleAt(which, i); return; }
-    const dur = Math.max(170, Math.min(340, 130 + Math.abs(dist) / w * 190));
+    const dur = 280;
     const t0 = performance.now();
     const step = now => {
       const p = Math.min(1, (now - t0) / dur);
@@ -577,8 +590,6 @@ class Component extends DCLogic {
       else { this["_raf" + which] = 0; this.settleAt(which, i); }
     };
     this["_raf" + which] = requestAnimationFrame(step);
-    // If frames stop arriving (backgrounded tab), land anyway rather than
-    // leaving the strip mid-glide with snapping switched off.
     clearTimeout(this["_gt2" + which]);
     this["_gt2" + which] = setTimeout(() => {
       if (!this["_raf" + which]) return;
@@ -590,10 +601,8 @@ class Component extends DCLogic {
 
   settleAt(which, i) {
     const el = which === "A" ? this.galA.current : this.galB.current;
-    if (el) {
-      el.scrollLeft = i * (el.clientWidth || 1);
-      el.style.scrollSnapType = "";
-    }
+    if (el) el.scrollLeft = i * (el.clientWidth || 1);
+    this["_pend" + which] = null;
     clearTimeout(this["_gt2" + which]);
     clearTimeout(this["_lt" + which]);
     this["_lt" + which] = setTimeout(() => { this["_lock" + which] = false; }, 90);
@@ -601,10 +610,7 @@ class Component extends DCLogic {
   }
 
   curIndex(which) {
-    const el = which === "A" ? this.galA.current : this.galB.current;
-    const fallback = which === "A" ? this.state.gA : this.state.gB;
-    if (!el || !el.clientWidth) return fallback;
-    return Math.max(0, Math.round(el.scrollLeft / el.clientWidth));
+    return Math.max(0, this.liveIndex(which));
   }
 
   slotFilled(id) {
@@ -843,16 +849,26 @@ class Component extends DCLogic {
   // Own the horizontal swipe instead of relying on native touch scrolling:
   // any component inside a frame (the image viewer, for one) can set
   // touch-action and kill the gesture, so the strip is dragged by hand.
+  // The strip has overflow hidden and touch-action pan-y, so the browser
+  // never scrolls it: the drag is ours from the first pixel and momentum
+  // can never carry past one frame. Follow the finger, commit on release,
+  // and move at most one frame, in the direction of the swipe.
   bindSwipe(which) {
     const el = which === "A" ? this.galA.current : this.galB.current;
     if (!el || el._swipeBound) return;
     el._swipeBound = true;
-    let x0 = 0, y0 = 0, sl = 0, mode = 0, lastX = 0, lastT = 0, vx = 0;
+    let x0 = 0, y0 = 0, base = 0, idx = 0, n = 1, mode = 0, lastX = 0, lastT = 0, vx = 0;
     const start = e => {
       if (e.touches.length !== 1 || (e.target.closest && e.target.closest("video"))) { mode = 2; return; }
       if (this["_raf" + which]) { cancelAnimationFrame(this["_raf" + which]); this["_raf" + which] = 0; }
+      clearTimeout(this["_gt2" + which]);
+      const w = el.clientWidth || 1;
+      n = this.frameCount(which);
+      idx = Math.max(0, Math.min(n - 1, this.liveIndex(which)));
+      base = idx * w;
+      el.scrollLeft = base;
       const t = e.touches[0];
-      x0 = lastX = t.clientX; y0 = t.clientY; sl = el.scrollLeft;
+      x0 = lastX = t.clientX; y0 = t.clientY;
       lastT = performance.now(); vx = 0; mode = 0;
     };
     const move = e => {
@@ -860,32 +876,33 @@ class Component extends DCLogic {
       const t = e.touches[0], dx = t.clientX - x0, dy = t.clientY - y0;
       if (mode === 0) {
         if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
-        mode = Math.abs(dx) > Math.abs(dy) * 1.1 ? 1 : 2;
+        mode = Math.abs(dx) > Math.abs(dy) ? 1 : 2;
         if (mode !== 1) return;
-        el.style.scrollSnapType = "none";
-        el.style.scrollBehavior = "auto";
         this["_lock" + which] = true;
       }
       e.preventDefault();
       const now = performance.now(), dt = now - lastT;
-      if (dt > 0) vx = 0.7 * ((t.clientX - lastX) / dt) + 0.3 * vx;
-      lastX = t.clientX; lastT = now;
-      const w = el.clientWidth || 1, max = Math.max(0, el.scrollWidth - w);
-      let next = sl - dx;
-      if (next < 0) next *= 0.35;
-      else if (next > max) next = max + (next - max) * 0.35;
+      if (dt > 4) { vx = 0.6 * ((t.clientX - lastX) / dt) + 0.4 * vx; lastX = t.clientX; lastT = now; }
+      // Never expose more than the immediate neighbour in the swipe
+      // direction; past that the drag rubber-bands.
+      const w = el.clientWidth || 1, max = (n - 1) * w;
+      const lo = Math.max(0, Math.min(max, (idx - 1) * w));
+      const hi = Math.max(0, Math.min(max, (idx + 1) * w));
+      let next = base - dx;
+      if (next < lo) next = lo + (next - lo) * 0.3;
+      else if (next > hi) next = hi + (next - hi) * 0.3;
       el.scrollLeft = next;
     };
-    const end = () => {
+    const end = e => {
       if (mode !== 1) { mode = 0; return; }
       mode = 0;
       const w = el.clientWidth || 1;
-      const n = Math.max(1, Math.round(el.scrollWidth / w));
-      const base = Math.round(sl / w), moved = el.scrollLeft - sl;
-      let i = base;
-      if (Math.abs(vx) > 0.3 && Math.abs(moved) > 8) i = base + (vx < 0 ? 1 : -1);
-      else if (Math.abs(moved) > w * 0.22) i = base + (moved > 0 ? 1 : -1);
-      this.glideTo(which, Math.max(0, Math.min(n - 1, i)));
+      const dx = (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : lastX) - x0;
+      const th = w * 0.18;
+      let target = idx;
+      if (dx <= -th || (vx <= -0.25 && dx < -10)) target = idx + 1;
+      else if (dx >= th || (vx >= 0.25 && dx > 10)) target = idx - 1;
+      this.glideTo(which, Math.max(0, Math.min(n - 1, target)));
     };
     el.addEventListener("touchstart", start, { passive: true });
     el.addEventListener("touchmove", move, { passive: false });
