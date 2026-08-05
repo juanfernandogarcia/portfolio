@@ -22,7 +22,9 @@ a{color:#201e1d}a:hover{color:#7a5c00}
 ::selection{background:#ffd100;color:#201e1d}
 button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2px}
 .pf{max-width:720px;margin:0 auto;background:#f3f2f2;border-left:2px solid #201e1d;border-right:2px solid #201e1d;min-height:100vh}
-@media (max-width:760px){.pf{border-left:0;border-right:0}}
+@media (max-width:760px){.pf{border-left:0;border-right:0}
+.ptopbar{flex-wrap:wrap;height:auto !important;min-height:50px;padding-top:8px;padding-bottom:8px;row-gap:8px}
+.plang{margin-left:auto}}
 @media (min-width:900px){
 .pf{max-width:none;border-left:0;border-right:0}
 .pphero{height:420px !important}
@@ -46,9 +48,12 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
 <div class="pf">
 
   <div style="position:sticky;top:0;z-index:20;background:#201e1d;color:#f3f2f2">
-    <div style="display:flex;align-items:center;justify-content:space-between;height:50px;padding:0 16px">
-      <a href="index.html#work" style="text-decoration:none;color:#ffd100;font:800 16px/1 'Archivo';letter-spacing:-.01em">← {{ back }}</a>
-      <div style="display:flex;border:2px solid #f3f2f2;height:32px">
+    <div class="ptopbar" style="display:flex;align-items:center;justify-content:space-between;height:50px;padding:0 16px">
+      <div style="display:flex;align-items:center;gap:12px;min-width:0">
+        <a href="index.html" style="text-decoration:none;color:#ffd100;font:800 16px/1 'Archivo';letter-spacing:-.01em;white-space:nowrap;display:inline-flex;align-items:center;height:34px;padding:0 11px;border:2px solid #ffd100" style-hover="background:#3d3937">← {{ back }}</a>
+        <a href="index.html#work" style="text-decoration:none;color:#f3f2f2;font:800 16px/1 'Archivo';letter-spacing:-.01em;white-space:nowrap;display:inline-flex;align-items:center;height:34px;padding:0 11px;border:2px solid #f3f2f2" style-hover="background:#3d3937;color:#ffd100">{{ projL }}</a>
+      </div>
+      <div class="plang" style="display:flex;border:2px solid #f3f2f2;height:32px">
         <button onClick="{{ setEn }}" style="all:unset;cursor:pointer;padding:0 9px;display:flex;align-items:center;font:600 11px/1 'Archivo';background:{{ enBg }};color:{{ enFg }}">EN</button>
         <button onClick="{{ setFr }}" style="all:unset;cursor:pointer;padding:0 9px;display:flex;align-items:center;font:600 11px/1 'Archivo';border-left:2px solid #f3f2f2;background:{{ frBg }};color:{{ frFg }}">FR</button>
         <button onClick="{{ setEs }}" style="all:unset;cursor:pointer;padding:0 9px;display:flex;align-items:center;font:600 11px/1 'Archivo';border-left:2px solid #f3f2f2;background:{{ esBg }};color:{{ esFg }}">ES</button>
@@ -335,6 +340,7 @@ const NEIGH = {
 const T = {
   "en": {
     "back": "Main",
+    "projL": "Back to Projects",
     "contactLabel": "Contact",
     "shareLabel": "Share",
     "shareMore": "Share",
@@ -410,6 +416,7 @@ const T = {
   },
   "fr": {
     "back": "Accueil",
+    "projL": "Retour aux projets",
     "contactLabel": "Contact",
     "shareLabel": "Partager",
     "shareMore": "Partager",
@@ -484,7 +491,8 @@ const T = {
     "d4c": "Ajoutez un point."
   },
   "es": {
-    "back": "Principal",
+    "back": "Inicio",
+    "projL": "Volver a proyectos",
     "contactLabel": "Contacto",
     "shareLabel": "Compartir",
     "shareMore": "Compartir",

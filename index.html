@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preload" as="image" href="media/portrait.webp" fetchpriority="high">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -16,6 +15,7 @@
 <link rel="stylesheet" href="_ds/modernist-18f78c01-60db-465f-9d67-dca81d30df1b/styles.css">
 <script src="_ds/modernist-18f78c01-60db-465f-9d67-dca81d30df1b/_ds_bundle.js"></script>
 <script src="./image-slot.js"></script>
+<link rel="preload" as="image" href="media/portrait.webp" fetchpriority="high">
 <style>
 html{scroll-behavior:smooth}
 body{margin:0;background:#c9c6c2;font-family:"Archivo",system-ui,sans-serif;color:#201e1d;-webkit-font-smoothing:antialiased}
@@ -25,7 +25,9 @@ section[id]{scroll-margin-top:100px}
 ::selection{background:#ffd100;color:#201e1d}
 button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2px}
 .pf{max-width:720px;margin:0 auto;background:#f3f2f2;border-left:2px solid #201e1d;border-right:2px solid #201e1d;min-height:100vh;position:relative}
-@media (max-width:760px){.pf{border-left:0;border-right:0}}
+@media (max-width:760px){.pf{border-left:0;border-right:0}
+.herohead{min-height:calc(100vh - 424px) !important;min-height:calc(100svh - 424px) !important}
+}
 @media (min-width:900px){
 .pf{max-width:none;border-left:0;border-right:0}
 .herogrid{max-width:none !important;grid-template-columns:1fr 38% !important}
@@ -90,8 +92,8 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
   </sc-if>
 
   <section id="profile">
-    <div style="background:#ffd100;color:#201e1d;min-height:{{ heroMinH }};display:flex;flex-direction:column;border-bottom:2px solid #201e1d">
-      <div style="padding:24px 18px 18px;font:600 10px/1 'Archivo';letter-spacing:.22em;text-transform:uppercase">{{ heroKicker }}</div>
+    <div class="herohead" style="background:#ffd100;color:#201e1d;min-height:{{ heroMinH }};display:flex;flex-direction:column;border-bottom:2px solid #201e1d">
+      <div style="padding:12px 18px 9px;font:600 10px/1 'Archivo';letter-spacing:.22em;text-transform:uppercase">{{ heroKicker }}</div>
       <div class="herogrid" style="flex: 1; display: grid; grid-template-columns: 1fr 42%; align-items: stretch; border-top: 2px solid #201e1d; max-width: 700px; min-height: {{ heroInnerH }}">
         <div style="padding: 18px 16px; display: flex; flex-direction: column; justify-content: center; gap: 12px">
           <h1 style="font:800 clamp(38px,11.5vw,58px)/.9 'Archivo';letter-spacing:-.04em;margin:0">Juan Fernando Garcia</h1>
@@ -108,19 +110,19 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
 
     <div style="background:#ffd100;border-bottom:2px solid #201e1d">
       
-      <div class="langrow" style="padding: 16px 18px 12px; display: flex; flex-direction: column; gap: 10px; max-width: 706px">
+      <div class="langrow" style="padding: 14px 18px 11px; display: flex; flex-direction: column; gap: 9px; max-width: 706px">
         <div style="font:600 10px/1.3 'Archivo';letter-spacing:.16em;text-transform:uppercase">{{ langLabel }}</div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
-          <button onClick="{{ setEn }}" style="all:unset;cursor:pointer;height:48px;display:flex;align-items:center;justify-content:center;font:800 16px/1 'Archivo';letter-spacing:.02em;border:2px solid #201e1d;background:{{ enBigBg }};color:{{ enBigFg }}">EN</button>
-          <button onClick="{{ setFr }}" style="all:unset;cursor:pointer;height:48px;display:flex;align-items:center;justify-content:center;font:800 16px/1 'Archivo';letter-spacing:.02em;border:2px solid #201e1d;background:{{ frBigBg }};color:{{ frBigFg }}">FR</button>
-          <button onClick="{{ setEs }}" style="all:unset;cursor:pointer;height:48px;display:flex;align-items:center;justify-content:center;font:800 16px/1 'Archivo';letter-spacing:.02em;border:2px solid #201e1d;background:{{ esBigBg }};color:{{ esBigFg }}">ES</button>
+          <button onClick="{{ setEn }}" style="all:unset;cursor:pointer;height:43px;display:flex;align-items:center;justify-content:center;font:800 16px/1 'Archivo';letter-spacing:.02em;border:2px solid #201e1d;background:{{ enBigBg }};color:{{ enBigFg }}">EN</button>
+          <button onClick="{{ setFr }}" style="all:unset;cursor:pointer;height:43px;display:flex;align-items:center;justify-content:center;font:800 16px/1 'Archivo';letter-spacing:.02em;border:2px solid #201e1d;background:{{ frBigBg }};color:{{ frBigFg }}">FR</button>
+          <button onClick="{{ setEs }}" style="all:unset;cursor:pointer;height:43px;display:flex;align-items:center;justify-content:center;font:800 16px/1 'Archivo';letter-spacing:.02em;border:2px solid #201e1d;background:{{ esBigBg }};color:{{ esBigFg }}">ES</button>
         </div>
       </div><div class="ctarow" style="display:grid;gap:10px;padding:4px 18px 20px">
-        <a href="#work" style="text-decoration:none;background:#201e1d;color:#ffd100;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 18px" style-hover="background:#3d3937">
+        <a href="#work" style="text-decoration:none;background:#201e1d;color:#ffd100;height:61px;display:flex;align-items:center;justify-content:space-between;padding:0 18px" style-hover="background:#3d3937">
           <span style="display:flex;flex-direction:column;gap:5px"><span style="font:800 24px/1 'Archivo';letter-spacing:-.02em">{{ heroCta1 }}</span><span style="font:400 11px/1 'Archivo';color:#bab6b6">{{ heroCta1Sub }}</span></span>
           <span style="font:800 22px/1 'Archivo'">→</span>
         </a>
-        <a href="#cv" style="text-decoration:none;border:2px solid #201e1d;color:#201e1d;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 18px" style-hover="background:#fff3c4">
+        <a href="#cv" style="text-decoration:none;border:2px solid #201e1d;color:#201e1d;height:61px;display:flex;align-items:center;justify-content:space-between;padding:0 18px" style-hover="background:#fff3c4">
           <span style="display:flex;flex-direction:column;gap:5px"><span style="font:800 24px/1 'Archivo';letter-spacing:-.02em">{{ heroCta2 }}</span><span style="font:400 11px/1 'Archivo';color:#6b5200">{{ heroCta2Sub }}</span></span>
           <span style="font:800 22px/1 'Archivo'">→</span>
         </a>
@@ -696,6 +698,17 @@ class Component extends DCLogic {
     window.addEventListener("resize", this.onScroll, { passive: true });
     this.sync();
 
+    this._hashJump = () => {
+      const id = (location.hash || "").slice(1);
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      const y = el.getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo(0, y < 0 ? 0 : y);
+    };
+    setTimeout(this._hashJump, 80);
+    setTimeout(this._hashJump, 350);
+
     this.flash = () => {
       const id = (location.hash || "").slice(1);
       if (!id) return;
@@ -764,8 +777,8 @@ class Component extends DCLogic {
     const visibleNav = 2 + (cvOn ? 1 : 0) + (workOn ? 1 : 0) + (aboutOn ? 1 : 0);
     const h = this.state.hobby;
     return Object.assign({}, t, {
-      heroMinH: heroH + "vh",
-      heroInnerH: Math.round(heroH * 4.95) + "px",
+      heroMinH: (heroH * 0.48) + "vh",
+      heroInnerH: Math.round(heroH * 4.95 * 0.48) + "px",
       projAspect: "4/" + (p.projectRatio ?? 1.9),
       showGallery: gallery,
       galleryDisplay: gallery ? "block" : "none",

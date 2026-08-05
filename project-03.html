@@ -22,7 +22,9 @@ a{color:#201e1d}a:hover{color:#7a5c00}
 ::selection{background:#ffd100;color:#201e1d}
 button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2px}
 .pf{max-width:720px;margin:0 auto;background:#f3f2f2;border-left:2px solid #201e1d;border-right:2px solid #201e1d;min-height:100vh}
-@media (max-width:760px){.pf{border-left:0;border-right:0}}
+@media (max-width:760px){.pf{border-left:0;border-right:0}
+.ptopbar{flex-wrap:wrap;height:auto !important;min-height:50px;padding-top:8px;padding-bottom:8px;row-gap:8px}
+.plang{margin-left:auto}}
 @media (min-width:900px){
 .pf{max-width:none;border-left:0;border-right:0}
 .pphero{height:420px !important}
@@ -46,9 +48,12 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
 <div class="pf">
 
   <div style="position:sticky;top:0;z-index:20;background:#201e1d;color:#f3f2f2">
-    <div style="display:flex;align-items:center;justify-content:space-between;height:50px;padding:0 16px">
-      <a href="index.html#work" style="text-decoration:none;color:#ffd100;font:800 16px/1 'Archivo';letter-spacing:-.01em">← {{ back }}</a>
-      <div style="display:flex;border:2px solid #f3f2f2;height:32px">
+    <div class="ptopbar" style="display:flex;align-items:center;justify-content:space-between;height:50px;padding:0 16px">
+      <div style="display:flex;align-items:center;gap:12px;min-width:0">
+        <a href="index.html" style="text-decoration:none;color:#ffd100;font:800 16px/1 'Archivo';letter-spacing:-.01em;white-space:nowrap;display:inline-flex;align-items:center;height:34px;padding:0 11px;border:2px solid #ffd100" style-hover="background:#3d3937">← {{ back }}</a>
+        <a href="index.html#work" style="text-decoration:none;color:#f3f2f2;font:800 16px/1 'Archivo';letter-spacing:-.01em;white-space:nowrap;display:inline-flex;align-items:center;height:34px;padding:0 11px;border:2px solid #f3f2f2" style-hover="background:#3d3937;color:#ffd100">{{ projL }}</a>
+      </div>
+      <div class="plang" style="display:flex;border:2px solid #f3f2f2;height:32px">
         <button onClick="{{ setEn }}" style="all:unset;cursor:pointer;padding:0 9px;display:flex;align-items:center;font:600 11px/1 'Archivo';background:{{ enBg }};color:{{ enFg }}">EN</button>
         <button onClick="{{ setFr }}" style="all:unset;cursor:pointer;padding:0 9px;display:flex;align-items:center;font:600 11px/1 'Archivo';border-left:2px solid #f3f2f2;background:{{ frBg }};color:{{ frFg }}">FR</button>
         <button onClick="{{ setEs }}" style="all:unset;cursor:pointer;padding:0 9px;display:flex;align-items:center;font:600 11px/1 'Archivo';border-left:2px solid #f3f2f2;background:{{ esBg }};color:{{ esFg }}">ES</button>
@@ -136,7 +141,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
   <div style="display:{{ galADisplay }}">
   <div class="gal" style="position:relative;margin:20px 18px 0;border:2px solid #201e1d;background:#201e1d">
     <div ref="{{ galARef }}" onScroll="{{ onGalAScroll }}" class="strip" style="display:flex;overflow:hidden">
-        <div class="gs" style="display:{{ a1Show }};order:{{ a1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a1" src="media/pp/pp-a1.webp" src="./img_6536-mseo6flb-7s9m.jpeg" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a1Show }};order:{{ a1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a1" src="./img_6536-mseo6flb-7s9m.jpeg" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ a2Show }};order:{{ a2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a2" src="media/pp/pp-a2.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ a3Show }};order:{{ a3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a3" src="media/pp/pp-a3.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ a4Show }};order:{{ a4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a4" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
@@ -334,7 +339,7 @@ const NEIGH = {
 
 const T = {
   en: {
-    back: "Main", contactLabel: "Contact", shareLabel: "Share", shareMore: "Share", nextT: "Process Risk Analysis · MOSAR",
+    back: "Main", projL: "Back to Projects", contactLabel: "Contact", shareLabel: "Share", shareMore: "Share", nextT: "Process Risk Analysis · MOSAR",
     kpiN1: "73.1%", kpiN2: "5 members · 300 USD",
     kicker: "Industrial Utilities · UIS · 2025", title: "Cooling Tower Prototype",
     lede: "Five months taking a cooling tower from a technology study to a machine running live in front of an audience.",
@@ -381,7 +386,7 @@ const T = {
     shareTitle: "Share this project", shareCopy: "Copy link", shareCopied: "Link copied", shareEmail: "Email"
   },
   fr: {
-    back: "Accueil", contactLabel: "Contact", shareLabel: "Partager", shareMore: "Partager", nextT: "Analyse de risques procédé · MOSAR",
+    back: "Accueil", projL: "Retour aux projets", contactLabel: "Contact", shareLabel: "Partager", shareMore: "Partager", nextT: "Analyse de risques procédé · MOSAR",
     kpiN1: "73,1%", kpiN2: "5 membres · 300 USD",
     kicker: "Utilités industrielles · UIS · 2025", title: "Prototype de tour de refroidissement",
     lede: "Cinq mois pour amener une tour de refroidissement de l'étude de technologie à une machine qui tourne en direct devant un public.",
@@ -428,7 +433,7 @@ const T = {
     shareTitle: "Partager ce projet", shareCopy: "Copier le lien", shareCopied: "Lien copié", shareEmail: "E-mail"
   },
   es: {
-    back: "Principal", contactLabel: "Contacto", shareLabel: "Compartir", shareMore: "Compartir", nextT: "Análisis de riesgos de proceso · MOSAR",
+    back: "Principal", projL: "Volver a proyectos", contactLabel: "Contacto", shareLabel: "Compartir", shareMore: "Compartir", nextT: "Análisis de riesgos de proceso · MOSAR",
     kpiN1: "73,1%", kpiN2: "5 integrantes · 300 USD",
     kicker: "Servicios Industriales · UIS · 2025", title: "Prototipo de torre de enfriamiento",
     lede: "Cinco meses para llevar una torre de enfriamiento del estudio de tecnología a una máquina operando en vivo frente a un público.",
