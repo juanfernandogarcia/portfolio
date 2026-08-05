@@ -473,14 +473,49 @@ class Component extends DCLogic {
   fileA = React.createRef();
   fileB = React.createRef();
 
-  goSlide(which, i) {
+  goSlide(which, i) { this.glideTo(which, i); }
+
+  // One easeOutCubic glide drives arrows, dots and the release of a swipe,
+  // so every transition between frames feels the same and lands quickly.
+  glideTo(which, i) {
     const el = which === "A" ? this.galA.current : this.galB.current;
     if (!el) return;
+    const w = el.clientWidth || 1;
+    const from = el.scrollLeft, dist = i * w - from;
     this["_lock" + which] = true;
-    clearTimeout(this["_lt" + which]);
-    this["_lt" + which] = setTimeout(() => { this["_lock" + which] = false; }, 700);
+    if (this["_raf" + which]) cancelAnimationFrame(this["_raf" + which]);
+    el.style.scrollSnapType = "none";
     el.style.scrollBehavior = "auto";
-    el.scrollLeft = i * el.clientWidth;
+    if (Math.abs(dist) < 1) { this.settleAt(which, i); return; }
+    const dur = Math.max(170, Math.min(340, 130 + Math.abs(dist) / w * 190));
+    const t0 = performance.now();
+    const step = now => {
+      const p = Math.min(1, (now - t0) / dur);
+      el.scrollLeft = from + dist * (1 - Math.pow(1 - p, 3));
+      if (p < 1) this["_raf" + which] = requestAnimationFrame(step);
+      else { this["_raf" + which] = 0; this.settleAt(which, i); }
+    };
+    this["_raf" + which] = requestAnimationFrame(step);
+    // If frames stop arriving (backgrounded tab), land anyway rather than
+    // leaving the strip mid-glide with snapping switched off.
+    clearTimeout(this["_gt2" + which]);
+    this["_gt2" + which] = setTimeout(() => {
+      if (!this["_raf" + which]) return;
+      cancelAnimationFrame(this["_raf" + which]);
+      this["_raf" + which] = 0;
+      this.settleAt(which, i);
+    }, dur + 220);
+  }
+
+  settleAt(which, i) {
+    const el = which === "A" ? this.galA.current : this.galB.current;
+    if (el) {
+      el.scrollLeft = i * (el.clientWidth || 1);
+      el.style.scrollSnapType = "";
+    }
+    clearTimeout(this["_gt2" + which]);
+    clearTimeout(this["_lt" + which]);
+    this["_lt" + which] = setTimeout(() => { this["_lock" + which] = false; }, 90);
     this.setState(which === "A" ? { gA: i } : { gB: i });
   }
 
@@ -731,35 +766,45 @@ class Component extends DCLogic {
     const el = which === "A" ? this.galA.current : this.galB.current;
     if (!el || el._swipeBound) return;
     el._swipeBound = true;
-    let x0 = 0, y0 = 0, sl = 0, mode = 0;
+    let x0 = 0, y0 = 0, sl = 0, mode = 0, lastX = 0, lastT = 0, vx = 0;
     const start = e => {
       if (e.touches.length !== 1 || (e.target.closest && e.target.closest("video"))) { mode = 2; return; }
+      if (this["_raf" + which]) { cancelAnimationFrame(this["_raf" + which]); this["_raf" + which] = 0; }
       const t = e.touches[0];
-      x0 = t.clientX; y0 = t.clientY; sl = el.scrollLeft; mode = 0;
+      x0 = lastX = t.clientX; y0 = t.clientY; sl = el.scrollLeft;
+      lastT = performance.now(); vx = 0; mode = 0;
     };
     const move = e => {
       if (mode === 2 || e.touches.length !== 1) return;
       const t = e.touches[0], dx = t.clientX - x0, dy = t.clientY - y0;
       if (mode === 0) {
-        if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
-        mode = Math.abs(dx) > Math.abs(dy) ? 1 : 2;
+        if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+        mode = Math.abs(dx) > Math.abs(dy) * 1.1 ? 1 : 2;
         if (mode !== 1) return;
         el.style.scrollSnapType = "none";
         el.style.scrollBehavior = "auto";
+        this["_lock" + which] = true;
       }
       e.preventDefault();
-      el.scrollLeft = sl - dx;
+      const now = performance.now(), dt = now - lastT;
+      if (dt > 0) vx = 0.7 * ((t.clientX - lastX) / dt) + 0.3 * vx;
+      lastX = t.clientX; lastT = now;
+      const w = el.clientWidth || 1, max = Math.max(0, el.scrollWidth - w);
+      let next = sl - dx;
+      if (next < 0) next *= 0.35;
+      else if (next > max) next = max + (next - max) * 0.35;
+      el.scrollLeft = next;
     };
     const end = () => {
       if (mode !== 1) { mode = 0; return; }
       mode = 0;
-      el.style.scrollSnapType = "";
       const w = el.clientWidth || 1;
-      const moved = el.scrollLeft - sl;
-      const base = Math.round(sl / w);
       const n = Math.max(1, Math.round(el.scrollWidth / w));
-      let i = Math.abs(moved) > w * 0.15 ? base + (moved > 0 ? 1 : -1) : base;
-      this.goSlide(which, Math.max(0, Math.min(n - 1, i)));
+      const base = Math.round(sl / w), moved = el.scrollLeft - sl;
+      let i = base;
+      if (Math.abs(vx) > 0.3 && Math.abs(moved) > 8) i = base + (vx < 0 ? 1 : -1);
+      else if (Math.abs(moved) > w * 0.22) i = base + (moved > 0 ? 1 : -1);
+      this.glideTo(which, Math.max(0, Math.min(n - 1, i)));
     };
     el.addEventListener("touchstart", start, { passive: true });
     el.addEventListener("touchmove", move, { passive: false });
@@ -876,6 +921,8 @@ class Component extends DCLogic {
     if (this._si) clearInterval(this._si);
     if (this._probes) for (const p of this._probes) { p.onloadedmetadata = null; p.removeAttribute("src"); }
     if (this._vio) this._vio.disconnect();
+    if (this._rafA) cancelAnimationFrame(this._rafA);
+    if (this._rafB) cancelAnimationFrame(this._rafB);
   }
 
   renderVals() {
