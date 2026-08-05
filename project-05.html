@@ -145,15 +145,19 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
         <div class="gs" style="display:{{ a8Show }};order:{{ a8Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-a8" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ av1Show }};order:{{ av1Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
           <sc-if value="{{ av1Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av1Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ av1Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
         <div class="gs" style="display:{{ av2Show }};order:{{ av2Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
           <sc-if value="{{ av2Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av2Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ av2Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
         <div class="gs" style="display:{{ av3Show }};order:{{ av3Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
           <sc-if value="{{ av3Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av3Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ av3Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
         <div class="gs" style="display:{{ av4Show }};order:{{ av4Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
           <sc-if value="{{ av4Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av4Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ av4Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
     </div>
     <button onClick="{{ gaPrev }}" aria-label="Previous" style="all:unset;cursor:pointer;position:absolute;top:50%;left:0;transform:translateY(-50%);width:40px;height:52px;display:{{ galAArrows }};align-items:center;justify-content:center;background:rgba(32,30,29,.85);color:#ffd100;font:800 17px/1 'Archivo';border-right:2px solid #ffd100" style-hover="background:#201e1d">‹</button>
@@ -182,15 +186,19 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
         <div class="gs" style="display:{{ b8Show }};order:{{ b8Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative"><image-slot id="p05-g8" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ bv1Show }};order:{{ bv1Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
           <sc-if value="{{ bv1Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv1Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ bv1Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
         <div class="gs" style="display:{{ bv2Show }};order:{{ bv2Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
           <sc-if value="{{ bv2Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv2Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ bv2Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
         <div class="gs" style="display:{{ bv3Show }};order:{{ bv3Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
           <sc-if value="{{ bv3Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv3Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ bv3Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
         <div class="gs" style="display:{{ bv4Show }};order:{{ bv4Order }};flex:none;width:100%;aspect-ratio:4/2.7;scroll-snap-align:start;overflow:hidden;position:relative">
           <sc-if value="{{ bv4Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv4Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ bv4Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
         </div>
     </div>
     <button onClick="{{ gbPrev }}" aria-label="Previous" style="all:unset;cursor:pointer;position:absolute;top:50%;left:0;transform:translateY(-50%);width:40px;height:52px;display:{{ galBArrows }};align-items:center;justify-content:center;background:rgba(32,30,29,.85);color:#ffd100;font:800 17px/1 'Archivo';border-right:2px solid #ffd100" style-hover="background:#201e1d">‹</button>
@@ -716,6 +724,14 @@ class Component extends DCLogic {
       if (this.state.hidden[v]) continue;
       live.push({ kind: "vid", n: n + 1, key: v, src: blob ? blob.url : "media/" + v + ".mp4" });
     }
+    const savedKeys = this.state.order[SLUG + "-" + (pool === "a" ? "a" : "b")] || [];
+    if (!this.editor) {
+      for (const [n, v] of this.videoKeys(vgroup).entries()) {
+        if (this.state.vids[v] || this.state.blobs[v] || this.state.hidden[v]) continue;
+        if (savedKeys.indexOf(v) < 0) continue;
+        live.push({ kind: "wait", n: n + 1, key: v });
+      }
+    }
     const nReal = live.length;
     if (this.editor) {
       const freeVid = this.videoKeys(vgroup).find(v => !this.state.vids[v] && !this.state.blobs[v]);
@@ -863,11 +879,12 @@ class Component extends DCLogic {
         shows[pre + i + "Order"] = f ? arr.indexOf(f) : 0;
       }
       for (let n = 1; n <= 4; n++) {
-        const f = arr.find(x => x.n === n && (x.kind === "vid" || x.kind === "hint"));
+        const f = arr.find(x => x.n === n && (x.kind === "vid" || x.kind === "hint" || x.kind === "wait"));
         shows[pre + "v" + n + "Show"] = f ? "block" : "none";
         shows[pre + "v" + n + "Order"] = f ? arr.indexOf(f) : 0;
         shows[pre + "v" + n + "Play"] = !!(f && f.kind === "vid");
         shows[pre + "v" + n + "Hint"] = !!(f && f.kind === "hint");
+        shows[pre + "v" + n + "Wait"] = !!(f && f.kind === "wait");
         shows[pre + "v" + n + "Src"] = (f && f.src) || "";
         shows[pre + "v" + n + "Name"] = (f && f.name) || "";
       }
