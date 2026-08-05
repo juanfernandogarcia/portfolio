@@ -1,0 +1,77 @@
+CÓMO AÑADIR VIDEOS
+==================
+
+Los videos NO se suben desde el navegador. Cada proyecto tiene su propia
+subcarpeta dentro de site/media/ (una por proyecto, para no mezclar los
+archivos de páginas distintas) y el video va ahí con un nombre EXACTO.
+Si el nombre o la carpeta no coinciden, el video no aparece.
+
+Formato: .mp4 (H.264 + AAC). Máximo 100 MB por archivo (límite de GitHub);
+por debajo de 50 MB carga mucho más rápido.
+
+Orientación: no importa. El video se ajusta solo al recuadro — si es
+vertical se muestra vertical con barras negras a los lados.
+
+
+NOMBRES POR PÁGINA
+------------------
+
+Cada página de proyecto tiene DOS galerías y cada galería admite hasta
+4 videos. Los nombres son:
+
+  project-01.html   site/media/p01/  Galería 1: p01-a-v1.mp4 … p01-a-v4.mp4
+                                    Galería 2: p01-b-v1.mp4 … p01-b-v4.mp4
+
+  project-02.html   site/media/p02/  Galería 1: p02-a-v1.mp4 … p02-a-v4.mp4
+                                    Galería 2: p02-b-v1.mp4 … p02-b-v4.mp4
+
+  project-03.html   site/media/pp/   Galería 1: pp-a-v1.mp4 … pp-a-v4.mp4
+  (torre de                          Galería 2: pp-b-v1.mp4 … pp-b-v4.mp4
+   enfriamiento)
+
+  project-04.html   site/media/p04/  Galería 1: p04-a-v1.mp4 … p04-a-v4.mp4
+                                    Galería 2: p04-b-v1.mp4 … p04-b-v4.mp4
+
+  project-05.html   site/media/p05/  Galería 1: p05-a-v1.mp4 … p05-a-v4.mp4
+                                    Galería 2: p05-b-v1.mp4 … p05-b-v4.mp4
+
+Las fotos de cada proyecto (las que se sueltan en el editor) también se
+guardan en su propia subcarpeta: site/media/<slug>/<id>.<ext>. Las imágenes
+del portafolio (retrato, tarjetas de la página principal) siguen sueltas en
+site/media/, sin subcarpeta.
+
+
+TUS DOS VIDEOS DE LA TORRE
+--------------------------
+
+Son videos distintos, uno en cada galería:
+
+  video de la galería 1  ->  site/media/pp/pp-a-v1.mp4
+  video de la galería 2  ->  site/media/pp/pp-b-v1.mp4
+
+
+PASOS
+-----
+
+1. git pull
+2. Arrastra los .mp4 a la subcarpeta del proyecto (site/media/<slug>/) con esos nombres.
+3. git add site/media
+   git commit -m "videos"
+   git push
+4. Espera 1-2 minutos a que GitHub Pages publique.
+
+
+REPRODUCTOR
+-----------
+
+Cada video sale con los controles del navegador: play/pausa, barra para
+adelantar y retroceder, volumen y pantalla completa.
+
+
+ORDEN DE FOTOS Y VIDEOS
+-----------------------
+
+En el editor, los botones "◀ Izquierda" y "Derecha ▶" mueven el elemento
+que estés viendo — fotos, videos y también el recuadro vacío de video.
+Coloca el recuadro vacío donde quieras que salga el video ANTES de subir
+el archivo: cuando el .mp4 llegue con ese nombre, aparecerá justo ahí.
