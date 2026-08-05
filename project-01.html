@@ -143,7 +143,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
         <div class="gs" style="display:{{ a1Show }};order:{{ a1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p01-a1" src="media/p01/p01-a1.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ a2Show }};order:{{ a2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p01-a2" src="media/p01/p01-a2.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ a3Show }};order:{{ a3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p01-a3" src="media/p01/p01-a3.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a4Show }};order:{{ a4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p01-a4" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a4Show }};order:{{ a4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p01-a4" src="media/p01/p01-a4.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ a5Show }};order:{{ a5Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p01-a5" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ a6Show }};order:{{ a6Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p01-a6" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ a7Show }};order:{{ a7Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p01-a7" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
@@ -256,7 +256,7 @@ function savePending(map) {
   try { localStorage.setItem(PENDING_KEY, JSON.stringify(map)); } catch (e) {}
 }
 
-const DEFAULT_ORDER = {};
+const DEFAULT_ORDER = {"p01-a":["i:p01-a1","i:p01-a2","i:p01-a4","i:p01-a3"]};
 
 function storedOrder() {
   try { const v = localStorage.getItem(ORDER_KEY); if (v) return JSON.parse(v) || {}; } catch (e) {}
