@@ -9,13 +9,13 @@
 <x-dc>
 <helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preload" as="image" href="media/portrait.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&amp;display=swap">
 <link rel="stylesheet" href="_ds/modernist-18f78c01-60db-465f-9d67-dca81d30df1b/styles.css">
 <script src="_ds/modernist-18f78c01-60db-465f-9d67-dca81d30df1b/_ds_bundle.js"></script>
 <script src="./image-slot.js"></script>
-<link rel="preload" as="image" href="media/portrait.webp" fetchpriority="high">
 <style>
 html{scroll-behavior:smooth}
 body{margin:0;background:#c9c6c2;font-family:"Archivo",system-ui,sans-serif;color:#201e1d;-webkit-font-smoothing:antialiased}
@@ -223,7 +223,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
     </div>
 
     <div style="display:{{ p2Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
-      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj2" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-02.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe2 }}"></a></div>
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj2" src="media/p02/p02-hero.jpg" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-02.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe2 }}"></a></div>
       <div style="font:600 11px/1 'Archivo';color:#7a5c00">02 · {{ tagResearch }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj2 }}</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p2 }}</div>
@@ -411,7 +411,7 @@ const T = {
     workBlurb: "Design studies, laboratory work and safety reviews from both universities. Each entry lists the tools and the outcome.",
     tagDesign: "Process design", tagResearch: "Catalysis research", tagSafety: "Equipment & commissioning",
     p1: "Green methanol from biogas CO₂ and electrolytic hydrogen: Aspen Plus simulation, equipment specification, reactor P&ID and a ten-year economic assessment with Monte Carlo risk analysis. USD 200.6 M net present value.",
-    p2: "Synthesis and characterisation of Ni/TiO₂/Al₂O₃ catalysts for CO₂ methanation at CICAT–UIS. First prize, poster format, Colombian National Catalysis Symposium 2025.",
+    p2: "Six months at the CICAT catalysis laboratory of the Universidad Industrial de Santander, with the whole synthesis under my responsibility: six nickel catalysts prepared and characterised end to end, four Ni/TiO₂-Al₂O₃ configurations and two references at 10 % nickel, tested from 250 to 300 °C. First prize, poster format, Colombian National Catalysis Symposium 2025.",
     p3: "Five months from technology selection to live start-up: a forced draft, counterflow tower with 3D printed ABS packing, 73.1% thermal efficiency, built by a team of five on a 300 USD budget. I led the team and owned the modelling and assembly.",
     galleryTitle: "Lab & fieldwork",
     pubTitle: "Publications & posters", certTitle: "Certifications",
@@ -494,7 +494,7 @@ const T = {
     workBlurb: "Études de conception, travaux de laboratoire et analyses de sécurité menés dans les deux universités. Chaque fiche indique les outils et le résultat.",
     tagDesign: "Conception de procédés", tagResearch: "Recherche en catalyse", tagSafety: "Équipement et mise en service",
     p1: "Méthanol vert à partir du CO₂ du biogaz et d'hydrogène électrolytique : simulation Aspen Plus, spécification des équipements, P&ID du réacteur et évaluation économique sur dix ans avec analyse de risque Monte-Carlo. 200,6 M USD de valeur actuelle nette.",
-    p2: "Synthèse et caractérisation de catalyseurs Ni/TiO₂/Al₂O₃ pour la méthanation du CO₂ au CICAT–UIS. Premier prix, format poster, Symposium National Colombien de Catalyse 2025.",
+    p2: "Six mois au laboratoire de catalyse CICAT de l'Universidad Industrial de Santander, toute la synthèse sous ma responsabilité : six catalyseurs au nickel préparés et caractérisés de bout en bout, quatre configurations Ni/TiO₂-Al₂O₃ et deux références à 10 % de nickel, testées de 250 à 300 °C. Premier prix, format poster, Symposium National Colombien de Catalyse 2025.",
     p3: "Cinq mois de la sélection de technologie au démarrage en direct : tour à tirage forcé à contre-courant, garnissage ABS imprimé en 3D, 73,1% d'efficacité thermique, une équipe de cinq et 300 USD de budget. J'ai dirigé l'équipe et pris en charge la modélisation et l'assemblage.",
     galleryTitle: "Laboratoire & terrain",
     pubTitle: "Publications & posters", certTitle: "Certifications",
@@ -577,7 +577,7 @@ const T = {
     workBlurb: "Estudios de diseño, trabajo de laboratorio y análisis de seguridad realizados en ambas universidades. Cada ficha indica las herramientas y el resultado.",
     tagDesign: "Diseño de procesos", tagResearch: "Investigación en catálisis", tagSafety: "Equipos y puesta en marcha",
     p1: "Metanol verde a partir del CO₂ del biogás e hidrógeno de electrólisis: simulación en Aspen Plus, especificación de equipos, P&ID del reactor y evaluación económica a diez años con análisis de riesgo Montecarlo. USD 200,6 M de valor presente neto.",
-    p2: "Síntesis y caracterización de catalizadores Ni/TiO₂/Al₂O₃ para la metanación de CO₂ en el CICAT–UIS. Primer premio, formato póster, Simposio Nacional Colombiano de Catálisis 2025.",
+    p2: "Seis meses en el laboratorio de catálisis CICAT de la Universidad Industrial de Santander, con toda la síntesis a mi cargo: seis catalizadores de níquel preparados y caracterizados de principio a fin, cuatro configuraciones Ni/TiO₂-Al₂O₃ y dos referencias al 10 % de níquel, probadas de 250 a 300 °C. Primer premio, formato póster, Simposio Nacional Colombiano de Catálisis 2025.",
     p3: "Cinco meses desde la selección de tecnología hasta el arranque en vivo: torre de tiro forzado en contracorriente con empaque de ABS impreso en 3D, 73,1% de eficiencia térmica y un equipo de cinco con 300 USD de presupuesto. Lideré el equipo y asumí el modelado y el ensamblaje.",
     galleryTitle: "Laboratorio y campo",
     pubTitle: "Publicaciones y pósteres", certTitle: "Certificaciones",

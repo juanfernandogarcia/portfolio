@@ -300,11 +300,8 @@ function savePending(map) {
   try { localStorage.setItem(PENDING_KEY, JSON.stringify(map)); } catch (e) {}
 }
 
-const DEFAULT_ORDER = {};
-
 function storedOrder() {
-  try { const v = localStorage.getItem(ORDER_KEY); if (v) return JSON.parse(v) || {}; } catch (e) {}
-  return JSON.parse(JSON.stringify(DEFAULT_ORDER));
+  try { return JSON.parse(localStorage.getItem(ORDER_KEY) || "{}") || {}; } catch (e) { return {}; }
 }
 
 function saveOrder(map) {
