@@ -142,7 +142,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
   <div style="display:{{ galADisplay }}">
   <div class="gal" style="position:relative;margin:20px 18px 0;border:2px solid #201e1d;background:#201e1d">
     <div ref="{{ galARef }}" onScroll="{{ onGalAScroll }}" class="strip" style="display:flex;overflow:hidden">
-        <div class="gs" style="display:{{ a1Show }};order:{{ a1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a1" src="media/pp/pp-a1.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a1Show }};order:{{ a1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a1" src="./img_6536-mseo6flb-7s9m.jpeg" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ a2Show }};order:{{ a2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a2" src="media/pp/pp-a2.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ a3Show }};order:{{ a3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a3" src="media/pp/pp-a3.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ a4Show }};order:{{ a4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pp-a4" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
@@ -333,14 +333,14 @@ const UI = {
 const SLUG = "pp";
 
 const NEIGH = {
-  en: { prevL: "Previous project", nextL: "Next project", prevT: "CO₂ Methanation Catalysts", nextT: "Process Risk Analysis · MOSAR" },
-  fr: { prevL: "Projet précédent", nextL: "Projet suivant", prevT: "Catalyseurs de méthanation du CO₂", nextT: "Analyse de risques procédé · MOSAR" },
-  es: { prevL: "Proyecto anterior", nextL: "Siguiente proyecto", prevT: "Catalizadores para metanación de CO₂", nextT: "Análisis de riesgos de proceso · MOSAR" }
+  en: { prevL: "Previous project", nextL: "Next project", prevT: "CO₂ Methanation Catalysts", nextT: "Ammonia Synthesis Unit · Industrial Project" },
+  fr: { prevL: "Projet précédent", nextL: "Projet suivant", prevT: "Catalyseurs de méthanation du CO₂", nextT: "Unité de synthèse d'ammoniac · Projet industriel" },
+  es: { prevL: "Proyecto anterior", nextL: "Siguiente proyecto", prevT: "Catalizadores para metanación de CO₂", nextT: "Unidad de síntesis de amoniaco · Proyecto industrial" }
 };
 
 const T = {
   en: {
-    back: "Main", projL: "Back to Projects", contactLabel: "Contact", shareLabel: "Share", shareMore: "Share", nextT: "Process Risk Analysis · MOSAR",
+    back: "Main", projL: "Back to Projects", contactLabel: "Contact", shareLabel: "Share", shareMore: "Share", nextT: "Ammonia Synthesis Unit · Industrial Project",
     kpiN1: "73.1%", kpiN2: "5 members · 300 USD",
     kicker: "Industrial Utilities · UIS · 2025", title: "Cooling Tower Prototype",
     lede: "Five months taking a cooling tower from a technology study to a machine running live in front of an audience.",
@@ -387,7 +387,7 @@ const T = {
     shareTitle: "Share this project", shareCopy: "Copy link", shareCopied: "Link copied", shareEmail: "Email"
   },
   fr: {
-    back: "Accueil", projL: "Retour aux projets", contactLabel: "Contact", shareLabel: "Partager", shareMore: "Partager", nextT: "Analyse de risques procédé · MOSAR",
+    back: "Accueil", projL: "Retour aux projets", contactLabel: "Contact", shareLabel: "Partager", shareMore: "Partager", nextT: "Unité de synthèse d'ammoniac · Projet industriel",
     kpiN1: "73,1%", kpiN2: "5 membres · 300 USD",
     kicker: "Utilités industrielles · UIS · 2025", title: "Prototype de tour de refroidissement",
     lede: "Cinq mois pour amener une tour de refroidissement de l'étude de technologie à une machine qui tourne en direct devant un public.",
@@ -434,7 +434,7 @@ const T = {
     shareTitle: "Partager ce projet", shareCopy: "Copier le lien", shareCopied: "Lien copié", shareEmail: "E-mail"
   },
   es: {
-    back: "Principal", projL: "Volver a proyectos", contactLabel: "Contacto", shareLabel: "Compartir", shareMore: "Compartir", nextT: "Análisis de riesgos de proceso · MOSAR",
+    back: "Principal", projL: "Volver a proyectos", contactLabel: "Contacto", shareLabel: "Compartir", shareMore: "Compartir", nextT: "Unidad de síntesis de amoniaco · Proyecto industrial",
     kpiN1: "73,1%", kpiN2: "5 integrantes · 300 USD",
     kicker: "Servicios Industriales · UIS · 2025", title: "Prototipo de torre de enfriamiento",
     lede: "Cinco meses para llevar una torre de enfriamiento del estudio de tecnología a una máquina operando en vivo frente a un público.",

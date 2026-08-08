@@ -300,8 +300,11 @@ function savePending(map) {
   try { localStorage.setItem(PENDING_KEY, JSON.stringify(map)); } catch (e) {}
 }
 
+const DEFAULT_ORDER = {};
+
 function storedOrder() {
-  try { return JSON.parse(localStorage.getItem(ORDER_KEY) || "{}") || {}; } catch (e) { return {}; }
+  try { const v = localStorage.getItem(ORDER_KEY); if (v) return JSON.parse(v) || {}; } catch (e) {}
+  return JSON.parse(JSON.stringify(DEFAULT_ORDER));
 }
 
 function saveOrder(map) {
@@ -330,9 +333,9 @@ const UI = {
 const SLUG = "p05";
 
 const NEIGH = {
-  en: { prevL: "Previous project", nextL: "Back to main", prevT: "Process Risk Analysis · MOSAR", nextT: "Portfolio" },
-  fr: { prevL: "Projet précédent", nextL: "Retour à l'accueil", prevT: "Analyse de risques procédé · MOSAR", nextT: "Portfolio" },
-  es: { prevL: "Proyecto anterior", nextL: "Volver al principal", prevT: "Análisis de riesgos de proceso · MOSAR", nextT: "Portafolio" }
+  en: { prevL: "Previous project", nextL: "Back to main", prevT: "Ammonia Synthesis Unit · Industrial Project", nextT: "Portfolio" },
+  fr: { prevL: "Projet précédent", nextL: "Retour à l'accueil", prevT: "Unité de synthèse d'ammoniac · Projet industriel", nextT: "Portfolio" },
+  es: { prevL: "Proyecto anterior", nextL: "Volver al principal", prevT: "Unidad de síntesis de amoniaco · Proyecto industrial", nextT: "Portafolio" }
 };
 
 const T = {

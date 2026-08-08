@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<link rel="preload" as="image" href="media/portrait.webp">
 </head>
 <body>
 <x-dc>
@@ -221,9 +222,18 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
       <a href="project-02.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
     </div>
 
+    <div style="display:{{ p4Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj4" src="media/p04/p04-hero.webp" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-04.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe4 }}"></a></div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">02 · {{ tagDesign }}</div>
+      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj4 }}</div>
+      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p4 }}</div>
+      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Pro/II</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">P&ID</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2026</span></div>
+      <a href="project-04.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+    </div>
+
     <div style="display:{{ p3Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
       <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj3" src="media/proj3.webp" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-03.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe3 }}"></a></div>
-      <div style="font:600 11px/1 'Archivo';color:#7a5c00">02 · {{ tagSafety }}</div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">03 · {{ tagSafety }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj3 }}</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p3 }}</div>
       <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Fusion 360</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipCommissioning }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2025</span></div>
@@ -232,20 +242,11 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
 
     <div style="display:{{ p1Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
       <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj1" src="media/proj1.webp" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-01.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe1 }}"></a></div>
-      <div style="font:600 11px/1 'Archivo';color:#7a5c00">03 · {{ tagDesign }}</div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">04 · {{ tagDesign }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj1 }}</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p1 }}</div>
       <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Aspen Plus</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipTechno }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2025</span></div>
       <a href="project-01.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
-    </div>
-
-    <div style="display:{{ p4Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
-      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj4" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-04.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe4 }}"></a></div>
-      <div style="font:600 11px/1 'Archivo';color:#7a5c00">04 · {{ tagDesign }}</div>
-      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj4 }}</div>
-      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p4 }}</div>
-      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">COMSOL</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">MATLAB</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2024</span></div>
-      <a href="project-04.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
     </div>
 
     <div style="display:{{ p5Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
@@ -428,7 +429,7 @@ const T = {
     hobby2Detail: "I build and repair things by hand. It is the fastest way to learn why a design that looks clean on screen fails once it is assembled.",
     hobby3Detail: "Architecture and painting · the same interest as process design, really: structure, proportion, and deciding what to leave out.",
     hobby4Detail: "Studying engineering in Spanish and French, and reading the literature in English, has made working in multicultural teams second nature.",
-    p4: "MOSAR risk analysis of an industrial process, with P&ID review and recommended safeguards.",
+    p4: "Ammonia synthesis unit of 2 700 t/day designed for Technip Energies, who acted as our client for six months. Simulation, PFD, equipment sizing, P&ID, safety and a 187 M$ CAPEX with 25% IRR.",
     p5: "Short description of the project · what you did, with what, and the number that mattered.",
     blogTitle: "Notes & writing",
     post1: "Why my first pinch analysis was wrong",
@@ -464,7 +465,7 @@ const T = {
     prj1: "Green Methanol Plant · Conceptual Design",
     prj2: "CO₂ Methanation Catalysts",
     prj3: "Cooling Tower Prototype",
-    prj4: "Process Risk Analysis · MOSAR",
+    prj4: "Ammonia Synthesis Unit · Industrial Project",
     prj5: "New project title",
     pub1t: "Poster · Ni/TiO₂/Al₂O₃ catalysts for CO₂ methanation",
     pub1s: "Colombian National Catalysis Symposium, 2025 · 1st prize",
@@ -511,7 +512,7 @@ const T = {
     hobby2Detail: "Je construis et je répare à la main. C'est la façon la plus rapide de comprendre pourquoi un design propre à l'écran échoue une fois assemblé.",
     hobby3Detail: "Architecture et peinture · au fond le même intérêt que la conception de procédés : structure, proportion, et savoir quoi retirer.",
     hobby4Detail: "Étudier l'ingénierie en espagnol et en français, et lire la littérature en anglais, rend le travail en équipe multiculturelle naturel.",
-    p4: "Analyse de risques MOSAR d'un procédé industriel, avec revue du P&ID et barrières recommandées.",
+    p4: "Unité de synthèse d'ammoniac de 2 700 t/jour conçue pour Technip Energies, client du projet pendant six mois. Simulation, PFD, dimensionnement, P&ID, sécurité et un CAPEX de 187 M$ pour 25% de TRI.",
     p5: "Courte description du projet · ce que vous avez fait, avec quoi, et le chiffre qui compte.",
     blogTitle: "Notes & écrits",
     post1: "Pourquoi ma première analyse pincement était fausse",
@@ -547,7 +548,7 @@ const T = {
     prj1: "Usine de méthanol vert · conception conceptuelle",
     prj2: "Catalyseurs pour la méthanation du CO₂",
     prj3: "Prototype de tour de refroidissement",
-    prj4: "Analyse de risques procédé · MOSAR",
+    prj4: "Unité de synthèse d'ammoniac · Projet industriel",
     prj5: "Nouveau projet",
     pub1t: "Poster · Catalyseurs Ni/TiO₂/Al₂O₃ pour la méthanation du CO₂",
     pub1s: "Symposium National Colombien de Catalyse, 2025 · 1er prix",
@@ -593,7 +594,7 @@ const T = {
     hobby2Detail: "Construyo y reparo con las manos. Es la forma más rápida de entender por qué un diseño que se ve limpio en pantalla falla al armarlo.",
     hobby3Detail: "Arquitectura y pintura · en el fondo el mismo interés que el diseño de procesos: estructura, proporción y decidir qué dejar fuera.",
     hobby4Detail: "Estudiar ingeniería en español y francés, y leer la literatura en inglés, hace que trabajar en equipos multiculturales sea natural.",
-    p4: "Análisis de riesgos MOSAR de un proceso industrial, con revisión de P&ID y salvaguardas recomendadas.",
+    p4: "Unidad de síntesis de amoniaco de 2 700 t/día diseñada para Technip Energies, cliente del proyecto durante seis meses. Simulación, PFD, dimensionamiento, P&ID, seguridad y un CAPEX de 187 M$ con 25% de TIR.",
     p5: "Descripción corta del proyecto · qué hiciste, con qué, y la cifra que importó.",
     blogTitle: "Notas y escritos",
     post1: "Por qué mi primer análisis pinch estaba mal",
@@ -629,7 +630,7 @@ const T = {
     prj1: "Planta de metanol verde · diseño conceptual",
     prj2: "Catalizadores para la metanación de CO₂",
     prj3: "Prototipo de torre de enfriamiento",
-    prj4: "Análisis de riesgos de proceso · MOSAR",
+    prj4: "Unidad de síntesis de amoniaco · Proyecto industrial",
     prj5: "Nuevo proyecto",
     pub1t: "Póster · Catalizadores Ni/TiO₂/Al₂O₃ para la metanación de CO₂",
     pub1s: "Simposio Nacional Colombiano de Catálisis, 2025 · 1er premio",
