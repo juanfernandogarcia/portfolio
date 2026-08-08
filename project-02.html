@@ -300,7 +300,7 @@ function savePending(map) {
   try { localStorage.setItem(PENDING_KEY, JSON.stringify(map)); } catch (e) {}
 }
 
-const DEFAULT_ORDER = {"p02-a":["i:p02-a2","i:p02-a3","i:p02-a5","p02-a-v1","i:p02-a1","i:p02-a4"],"p02-b":["i:p02-g1","p02-b-v1","i:p02-g2","p02-b-v2","i:p02-g3","i:p02-g4"]};
+const DEFAULT_ORDER = {"p02-a":["i:p02-a2","p02-a-v1","i:p02-a3","i:p02-a5","i:p02-a1","i:p02-a4"],"p02-b":["i:p02-g1","p02-b-v1","i:p02-g2","p02-b-v2","i:p02-g3","i:p02-g4"]};
 
 function storedOrder() {
   try { const v = localStorage.getItem(ORDER_KEY); if (v) return JSON.parse(v) || {}; } catch (e) {}
