@@ -213,18 +213,9 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
     </div>
 
     <div class="pgrid">
-    <div style="display:{{ p1Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
-      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj1" src="media/proj1.webp" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-01.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe1 }}"></a></div>
-      <div style="font:600 11px/1 'Archivo';color:#7a5c00">01 · {{ tagDesign }}</div>
-      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj1 }}</div>
-      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p1 }}</div>
-      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Aspen Plus</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipTechno }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2025</span></div>
-      <a href="project-01.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
-    </div>
-
     <div style="display:{{ p2Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
       <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj2" src="media/p02/p02-hero.jpg" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-02.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe2 }}"></a></div>
-      <div style="font:600 11px/1 'Archivo';color:#7a5c00">02 · {{ tagResearch }}</div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">01 · {{ tagResearch }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj2 }}</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p2 }}</div>
       <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">{{ chipLab }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipCatalysis }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2024</span></div>
@@ -233,11 +224,20 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
 
     <div style="display:{{ p3Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
       <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj3" src="media/proj3.webp" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-03.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe3 }}"></a></div>
-      <div style="font:600 11px/1 'Archivo';color:#7a5c00">03 · {{ tagSafety }}</div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">02 · {{ tagSafety }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj3 }}</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p3 }}</div>
       <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Fusion 360</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipCommissioning }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2025</span></div>
       <a href="project-03.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+    </div>
+
+    <div style="display:{{ p1Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj1" src="media/proj1.webp" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-01.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe1 }}"></a></div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">03 · {{ tagDesign }}</div>
+      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj1 }}</div>
+      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p1 }}</div>
+      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Aspen Plus</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipTechno }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2025</span></div>
+      <a href="project-01.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
     </div>
 
     <div style="display:{{ p4Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
