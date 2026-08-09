@@ -300,7 +300,7 @@ function savePending(map) {
   try { localStorage.setItem(PENDING_KEY, JSON.stringify(map)); } catch (e) {}
 }
 
-const DEFAULT_ORDER = {"pesc-a":["pesc-a1","pesc-a4","pesc-a2","pesc-a3"],"pesc-b":[]};
+const DEFAULT_ORDER = {"pesc-a":["pesc-a1","pesc-a4","pesc-a2","pesc-a3"]};
 
 function storedOrder() {
   try { const v = localStorage.getItem(ORDER_KEY); if (v) return JSON.parse(v) || {}; } catch (e) {}
