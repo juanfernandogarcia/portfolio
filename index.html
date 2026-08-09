@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
-<link rel="preload" as="image" href="media/portrait.webp">
 </head>
 <body>
 <x-dc>
@@ -49,6 +48,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
 .gs{background:#d7d3d3}
 .strip::-webkit-scrollbar{height:0}
 </style>
+<link rel="preload" as="image" href="media/portrait.webp">
 </helmet>
 
 <div class="pf">
@@ -222,9 +222,18 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
       <a href="project-02.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
     </div>
 
+    <div style="display:{{ p5Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
+      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj5" src="media/pesc/pesc-hero.webp" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-05.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe5 }}"></a></div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">02 · {{ tagOutreach }}</div>
+      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj5 }}</div>
+      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p5 }}</div>
+      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Canva</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">Gantt</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2026</span></div>
+      <a href="project-05.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
+    </div>
+
     <div style="display:{{ p4Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
       <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj4" src="media/p04/p04-hero.webp" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-04.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe4 }}"></a></div>
-      <div style="font:600 11px/1 'Archivo';color:#7a5c00">02 · {{ tagDesign }}</div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">03 · {{ tagDesign }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj4 }}</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p4 }}</div>
       <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Pro/II</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">P&ID</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2026</span></div>
@@ -233,7 +242,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
 
     <div style="display:{{ p3Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
       <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj3" src="media/proj3.webp" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-03.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe3 }}"></a></div>
-      <div style="font:600 11px/1 'Archivo';color:#7a5c00">03 · {{ tagSafety }}</div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">04 · {{ tagSafety }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj3 }}</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p3 }}</div>
       <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Fusion 360</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipCommissioning }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2025</span></div>
@@ -242,20 +251,11 @@ button:focus-visible,a:focus-visible{outline:2px solid #201e1d;outline-offset:2p
 
     <div style="display:{{ p1Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
       <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj1" src="media/proj1.webp" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-01.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe1 }}"></a></div>
-      <div style="font:600 11px/1 'Archivo';color:#7a5c00">04 · {{ tagDesign }}</div>
+      <div style="font:600 11px/1 'Archivo';color:#7a5c00">05 · {{ tagDesign }}</div>
       <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj1 }}</div>
       <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p1 }}</div>
       <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">Aspen Plus</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipTechno }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2025</span></div>
       <a href="project-01.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
-    </div>
-
-    <div style="display:{{ p5Show }};padding:16px 18px 22px;border-top:2px solid #201e1d">
-      <div class="gs" style="position:relative;aspect-ratio:{{ projAspect }};margin-bottom:14px;border:2px solid #201e1d"><image-slot id="proj5" shape="rect" fit="cover" placeholder="Project image · double-click to reframe"></image-slot><a href="project-05.html" aria-label="{{ caseStudy }}" style="position:absolute;inset:0;z-index:2;display:{{ imgLinkShow }};pointer-events:{{ pe5 }}"></a></div>
-      <div style="font:600 11px/1 'Archivo';color:#7a5c00">05 · {{ tagResearch }}</div>
-      <div style="font:800 25px/1.06 'Archivo';letter-spacing:-.02em;margin-top:8px">{{ prj5 }}</div>
-      <div style="font:400 13px/1.45 'Archivo';color:#605d5d;margin-top:8px">{{ p5 }}</div>
-      <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap"><span style="font:600 10px/1 'Archivo';background:#ffd100;padding:7px 9px;white-space:nowrap">{{ chipTool }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">{{ chipMethod }}</span><span style="font:600 10px/1 'Archivo';border:1px solid #201e1d;padding:7px 9px;white-space:nowrap">2026</span></div>
-      <a href="project-05.html" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;margin-top:14px;height:48px;padding:0 14px;border:2px solid #201e1d;color:#201e1d;font:600 12px/1 'Archivo';letter-spacing:.04em;text-transform:uppercase" style-hover="background:#ffd100">{{ caseStudy }} <span style="font-weight:800">→</span></a>
     </div>
     </div>
 
@@ -409,7 +409,7 @@ const T = {
     cvEducation: "Education", cvExperience: "Experience", cvSkills: "Software & methods",
     workTitle: "Projects",
     workBlurb: "Design studies, laboratory work and safety reviews from both universities. Each entry lists the tools and the outcome.",
-    tagDesign: "Process design", tagResearch: "Catalysis research", tagSafety: "Equipment & commissioning",
+    tagDesign: "Process design", tagResearch: "Catalysis research", tagSafety: "Equipment & commissioning", tagOutreach: "Project management & outreach",
     p1: "Green methanol from biogas CO₂ and electrolytic hydrogen: Aspen Plus simulation, equipment specification, reactor P&ID and a ten-year economic assessment with Monte Carlo risk analysis. USD 200.6 M net present value.",
     p2: "Six months at the CICAT catalysis laboratory of the Universidad Industrial de Santander, with the whole synthesis under my responsibility: six nickel catalysts prepared and characterised end to end, four Ni/TiO₂-Al₂O₃ configurations and two references at 10 % nickel, tested from 250 to 300 °C. First prize, poster format, Colombian National Catalysis Symposium 2025.",
     p3: "Five months from technology selection to live start-up: a forced draft, counterflow tower with 3D printed ABS packing, 73.1% thermal efficiency, built by a team of five on a 300 USD budget. I led the team and owned the modelling and assembly.",
@@ -430,7 +430,7 @@ const T = {
     hobby3Detail: "Architecture and painting · the same interest as process design, really: structure, proportion, and deciding what to leave out.",
     hobby4Detail: "Studying engineering in Spanish and French, and reading the literature in English, has made working in multicultural teams second nature.",
     p4: "Ammonia synthesis unit of 2 700 t/day designed for Technip Energies, who acted as our client for six months. Simulation, PFD, equipment sizing, P&ID, safety and a 187 M$ CAPEX with 25% IRR.",
-    p5: "Short description of the project · what you did, with what, and the number that mattered.",
+    p5: "Educational escape game built with five ENSIC students for 120 pupils of the Collège Grandville. Eight scientific challenges, twenty-four printed supports and five days of animation, for a spend of 902,62 € financed by the school association.",
     blogTitle: "Notes & writing",
     post1: "Why my first pinch analysis was wrong",
     post1Sub: "Three stream-data mistakes that quietly moved the pinch temperature.",
@@ -466,7 +466,7 @@ const T = {
     prj2: "CO₂ Methanation Catalysts",
     prj3: "Cooling Tower Prototype",
     prj4: "Ammonia Synthesis Unit · Industrial Project",
-    prj5: "New project title",
+    prj5: "EscapeScience · Educational Escape Game",
     pub1t: "Poster · Ni/TiO₂/Al₂O₃ catalysts for CO₂ methanation",
     pub1s: "Colombian National Catalysis Symposium, 2025 · 1st prize",
     pub2t: "Technical report · Green methanol plant, conceptual design",
@@ -492,7 +492,7 @@ const T = {
     cvEducation: "Formation", cvExperience: "Expérience", cvSkills: "Logiciels & méthodes",
     workTitle: "Projets",
     workBlurb: "Études de conception, travaux de laboratoire et analyses de sécurité menés dans les deux universités. Chaque fiche indique les outils et le résultat.",
-    tagDesign: "Conception de procédés", tagResearch: "Recherche en catalyse", tagSafety: "Équipement et mise en service",
+    tagDesign: "Conception de procédés", tagResearch: "Recherche en catalyse", tagSafety: "Équipement et mise en service", tagOutreach: "Gestion de projet et médiation",
     p1: "Méthanol vert à partir du CO₂ du biogaz et d'hydrogène électrolytique : simulation Aspen Plus, spécification des équipements, P&ID du réacteur et évaluation économique sur dix ans avec analyse de risque Monte-Carlo. 200,6 M USD de valeur actuelle nette.",
     p2: "Six mois au laboratoire de catalyse CICAT de l'Universidad Industrial de Santander, toute la synthèse sous ma responsabilité : six catalyseurs au nickel préparés et caractérisés de bout en bout, quatre configurations Ni/TiO₂-Al₂O₃ et deux références à 10 % de nickel, testées de 250 à 300 °C. Premier prix, format poster, Symposium National Colombien de Catalyse 2025.",
     p3: "Cinq mois de la sélection de technologie au démarrage en direct : tour à tirage forcé à contre-courant, garnissage ABS imprimé en 3D, 73,1% d'efficacité thermique, une équipe de cinq et 300 USD de budget. J'ai dirigé l'équipe et pris en charge la modélisation et l'assemblage.",
@@ -513,7 +513,7 @@ const T = {
     hobby3Detail: "Architecture et peinture · au fond le même intérêt que la conception de procédés : structure, proportion, et savoir quoi retirer.",
     hobby4Detail: "Étudier l'ingénierie en espagnol et en français, et lire la littérature en anglais, rend le travail en équipe multiculturelle naturel.",
     p4: "Unité de synthèse d'ammoniac de 2 700 t/jour conçue pour Technip Energies, client du projet pendant six mois. Simulation, PFD, dimensionnement, P&ID, sécurité et un CAPEX de 187 M$ pour 25% de TRI.",
-    p5: "Courte description du projet · ce que vous avez fait, avec quoi, et le chiffre qui compte.",
+    p5: "Escape game pédagogique construit avec cinq étudiants de l'ENSIC pour 120 élèves du Collège Grandville. Huit défis scientifiques, vingt-quatre supports imprimés et cinq journées d'animation, pour une dépense de 902,62 € financée par le Foyer Socio-Éducatif.",
     blogTitle: "Notes & écrits",
     post1: "Pourquoi ma première analyse pincement était fausse",
     post1Sub: "Trois erreurs de données qui ont déplacé discrètement le pincement.",
@@ -549,7 +549,7 @@ const T = {
     prj2: "Catalyseurs pour la méthanation du CO₂",
     prj3: "Prototype de tour de refroidissement",
     prj4: "Unité de synthèse d'ammoniac · Projet industriel",
-    prj5: "Nouveau projet",
+    prj5: "EscapeScience · Escape game pédagogique",
     pub1t: "Poster · Catalyseurs Ni/TiO₂/Al₂O₃ pour la méthanation du CO₂",
     pub1s: "Symposium National Colombien de Catalyse, 2025 · 1er prix",
     pub2t: "Rapport technique · Usine de méthanol vert, conception conceptuelle",
@@ -575,7 +575,7 @@ const T = {
     cvEducation: "Formación", cvExperience: "Experiencia", cvSkills: "Software y métodos",
     workTitle: "Proyectos",
     workBlurb: "Estudios de diseño, trabajo de laboratorio y análisis de seguridad realizados en ambas universidades. Cada ficha indica las herramientas y el resultado.",
-    tagDesign: "Diseño de procesos", tagResearch: "Investigación en catálisis", tagSafety: "Equipos y puesta en marcha",
+    tagDesign: "Diseño de procesos", tagResearch: "Investigación en catálisis", tagSafety: "Equipos y puesta en marcha", tagOutreach: "Gestión de proyecto y divulgación",
     p1: "Metanol verde a partir del CO₂ del biogás e hidrógeno de electrólisis: simulación en Aspen Plus, especificación de equipos, P&ID del reactor y evaluación económica a diez años con análisis de riesgo Montecarlo. USD 200,6 M de valor presente neto.",
     p2: "Seis meses en el laboratorio de catálisis CICAT de la Universidad Industrial de Santander, con toda la síntesis a mi cargo: seis catalizadores de níquel preparados y caracterizados de principio a fin, cuatro configuraciones Ni/TiO₂-Al₂O₃ y dos referencias al 10 % de níquel, probadas de 250 a 300 °C. Primer premio, formato póster, Simposio Nacional Colombiano de Catálisis 2025.",
     p3: "Cinco meses desde la selección de tecnología hasta el arranque en vivo: torre de tiro forzado en contracorriente con empaque de ABS impreso en 3D, 73,1% de eficiencia térmica y un equipo de cinco con 300 USD de presupuesto. Lideré el equipo y asumí el modelado y el ensamblaje.",
@@ -595,7 +595,7 @@ const T = {
     hobby3Detail: "Arquitectura y pintura · en el fondo el mismo interés que el diseño de procesos: estructura, proporción y decidir qué dejar fuera.",
     hobby4Detail: "Estudiar ingeniería en español y francés, y leer la literatura en inglés, hace que trabajar en equipos multiculturales sea natural.",
     p4: "Unidad de síntesis de amoniaco de 2 700 t/día diseñada para Technip Energies, cliente del proyecto durante seis meses. Simulación, PFD, dimensionamiento, P&ID, seguridad y un CAPEX de 187 M$ con 25% de TIR.",
-    p5: "Descripción corta del proyecto · qué hiciste, con qué, y la cifra que importó.",
+    p5: "Escape game pedagógico construido con cinco estudiantes de la ENSIC para 120 alumnos del Collège Grandville. Ocho desafíos científicos, veinticuatro soportes impresos y cinco jornadas de animación, con un gasto de 902,62 € financiado por la asociación del colegio.",
     blogTitle: "Notas y escritos",
     post1: "Por qué mi primer análisis pinch estaba mal",
     post1Sub: "Tres errores de datos que movieron el punto de pliegue sin avisar.",
@@ -631,7 +631,7 @@ const T = {
     prj2: "Catalizadores para la metanación de CO₂",
     prj3: "Prototipo de torre de enfriamiento",
     prj4: "Unidad de síntesis de amoniaco · Proyecto industrial",
-    prj5: "Nuevo proyecto",
+    prj5: "EscapeScience · Escape game pedagógico",
     pub1t: "Póster · Catalizadores Ni/TiO₂/Al₂O₃ para la metanación de CO₂",
     pub1s: "Simposio Nacional Colombiano de Catálisis, 2025 · 1er premio",
     pub2t: "Informe técnico · Planta de metanol verde, diseño conceptual",

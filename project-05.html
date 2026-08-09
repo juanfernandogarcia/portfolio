@@ -83,7 +83,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
   </div>
   </sc-if>
 
-  <div class="gs pphero" style="height:250px;border-bottom:2px solid #201e1d;overflow:hidden"><image-slot id="p05-hero" shape="rect" fit="cover" placeholder="Hero image"></image-slot></div>
+  <div class="gs pphero" style="height:250px;border-bottom:2px solid #201e1d;overflow:hidden"><image-slot id="pesc-hero" src="media/pesc/pesc-hero.webp" shape="rect" fit="cover" placeholder="Hero image"></image-slot></div>
 
   <div class="psec" style="background:#ffd100;padding:20px 18px 22px;border-bottom:2px solid #201e1d">
     <div style="font:600 10px/1 'Archivo';letter-spacing:.2em;text-transform:uppercase">{{ kicker }}</div>
@@ -142,14 +142,14 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
   <div style="display:{{ galADisplay }}">
   <div class="gal" style="position:relative;margin:20px 18px 0;border:2px solid #201e1d;background:#201e1d">
     <div ref="{{ galARef }}" onScroll="{{ onGalAScroll }}" class="strip" style="display:flex;overflow:hidden">
-        <div class="gs" style="display:{{ a1Show }};order:{{ a1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a1" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a2Show }};order:{{ a2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a2" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a3Show }};order:{{ a3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a3" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a4Show }};order:{{ a4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a4" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a5Show }};order:{{ a5Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a5" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a6Show }};order:{{ a6Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a6" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a7Show }};order:{{ a7Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a7" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ a8Show }};order:{{ a8Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-a8" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a1Show }};order:{{ a1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a1" src="media/pesc/pesc-a1.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a2Show }};order:{{ a2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a2" src="media/pesc/pesc-a2.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a3Show }};order:{{ a3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a3" src="media/pesc/pesc-a3.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a4Show }};order:{{ a4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a4" src="media/pesc/pesc-a4.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a5Show }};order:{{ a5Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a5" src="media/pesc/pesc-a5.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a6Show }};order:{{ a6Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a6" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a7Show }};order:{{ a7Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a7" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a8Show }};order:{{ a8Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a8" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ av1Show }};order:{{ av1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ av1Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av1Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ av1Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
@@ -188,14 +188,14 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
   <div style="display:{{ galBDisplay }}">
   <div class="gal" style="position:relative;margin:20px 18px 0;border:2px solid #201e1d;background:#201e1d">
     <div ref="{{ galBRef }}" onScroll="{{ onGalBScroll }}" class="strip" style="display:flex;overflow:hidden">
-        <div class="gs" style="display:{{ b1Show }};order:{{ b1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g1" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b2Show }};order:{{ b2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g2" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b3Show }};order:{{ b3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g3" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b4Show }};order:{{ b4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g4" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b5Show }};order:{{ b5Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g5" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b6Show }};order:{{ b6Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g6" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b7Show }};order:{{ b7Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g7" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
-        <div class="gs" style="display:{{ b8Show }};order:{{ b8Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="p05-g8" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b1Show }};order:{{ b1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g1" src="media/pesc/pesc-g1.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b2Show }};order:{{ b2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g2" src="media/pesc/pesc-g2.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b3Show }};order:{{ b3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g3" src="media/pesc/pesc-g3.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b4Show }};order:{{ b4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g4" src="media/pesc/pesc-g4.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b5Show }};order:{{ b5Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g5" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b6Show }};order:{{ b6Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g6" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b7Show }};order:{{ b7Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g7" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b8Show }};order:{{ b8Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g8" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
         <div class="gs" style="display:{{ bv1Show }};order:{{ bv1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ bv1Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv1Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ bv1Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
@@ -300,7 +300,7 @@ function savePending(map) {
   try { localStorage.setItem(PENDING_KEY, JSON.stringify(map)); } catch (e) {}
 }
 
-const DEFAULT_ORDER = {};
+const DEFAULT_ORDER = {"pesc-a":["pesc-a1","pesc-a4","pesc-a2","pesc-a3"],"pesc-b":[]};
 
 function storedOrder() {
   try { const v = localStorage.getItem(ORDER_KEY); if (v) return JSON.parse(v) || {}; } catch (e) {}
@@ -330,7 +330,7 @@ const UI = {
   es: { videoAdd: "Video", galAdd: "Suelta una foto aquí", addPhoto: "Foto", addVideo: "Video", delPhoto: "Quitar", moveL: "Izquierda", moveR: "Derecha" }
 };
 
-const SLUG = "p05";
+const SLUG = "pesc";
 
 const NEIGH = {
   en: { prevL: "Previous project", nextL: "Back to main", prevT: "Ammonia Synthesis Unit · Industrial Project", nextT: "Portfolio" },
@@ -349,71 +349,71 @@ const T = {
     "shareCopy": "Copy link",
     "shareCopied": "Link copied",
     "shareEmail": "Email",
-    "lede": "One or two lines summarising what the project was and what it achieved.",
-    "metaYear": "Year",
-    "metaDur": "Duration",
-    "metaPlace": "Institution",
     "toolsL": "Tools",
     "skillsL": "Skills",
-    "kpiN1": "—",
-    "kpi1": "First key figure",
-    "kpiN2": "—",
-    "kpi2": "Second key figure",
-    "s1": "Context",
-    "s2": "Approach",
-    "s3": "Design and construction",
-    "s4": "Execution",
-    "s5": "Results",
-    "s6": "What it taught me",
     "videoNote": "Video slide, add your media file to the site folder",
     "devL": "Skills developed",
-    "devLede": "What this project built, beyond the deliverable itself.",
+    "cvL": "Download CV",
+    "homeL": "Portfolio",
+    "nextL": "Next project",
+    "role": "Chemical Engineering student · Available for internships",
+    "nextT": "Portfolio",
+    "kicker": "Opening project · ENSIC × Collège Grandville · 2026",
+    "title": "EscapeScience · Educational Escape Game",
+    "lede": "An educational escape game built with five other ENSIC students for the final year pupils of the Collège Grandville in Liverdun, where eight scientific challenges strung along a journey through time replaced the last weeks of revision before the Brevet.",
+    "metaYear": "2025 – 2026",
+    "metaDur": "8 months",
+    "metaPlace": "Collège Grandville, Liverdun",
+    "kpiN1": "120 pupils",
+    "kpi1": "in 30 groups, welcomed over five days of animation with one hour per group",
+    "kpiN2": "8 challenges",
+    "kpi2": "one per chapter of the syllabus, from Prehistory to contemporary Formula 1",
+    "s1": "Context",
+    "s2": "Project management",
+    "s3": "Challenges and supports",
+    "s4": "Deployment",
+    "s5": "Results",
+    "s6": "What it taught me",
     "d1t": "Technical and academic",
     "d2t": "Project and cost management",
     "d3t": "Leadership and communication",
     "d4t": "Adaptability and problem solving",
+    "devLede": "What the project built in me, beyond the game itself.",
     "closeK": "Outcome",
-    "closeT": "Summarise the outcome of the project in one sentence.",
-    "nextL": "Next project",
-    "role": "Chemical Engineering student · Available for internships",
-    "cvL": "Download CV",
-    "homeL": "Portfolio",
-    "kicker": "Project · Institution · Year",
-    "title": "New project",
-    "nextT": "Green Methanol Plant · Conceptual Design",
-    "t1": "Text pending. Describe this part of the project here.",
-    "t2": "Text pending. Describe this part of the project here.",
-    "t3": "Text pending. Describe this part of the project here.",
-    "t4": "Text pending. Describe this part of the project here.",
-    "t5": "Text pending. Describe this part of the project here.",
-    "t6": "Text pending. Describe this part of the project here.",
-    "t7": "Text pending. Describe this part of the project here.",
-    "tool1": "Tool 1",
-    "tool2": "Tool 2",
-    "tool3": "Tool 3",
-    "tool4": "Tool 4",
-    "sk1": "Skill 1",
-    "sk2": "Skill 2",
-    "sk3": "Skill 3",
-    "sk4": "Skill 4",
-    "sk5": "Skill 5",
-    "sk6": "Skill 6",
-    "sk7": "Skill 7",
-    "sk8": "Skill 8",
-    "sk9": "Skill 9",
-    "sk10": "Skill 10",
-    "d1a": "Add a point.",
-    "d1b": "Add a point.",
-    "d1c": "Add a point.",
-    "d2a": "Add a point.",
-    "d2b": "Add a point.",
-    "d2c": "Add a point.",
-    "d3a": "Add a point.",
-    "d3b": "Add a point.",
-    "d3c": "Add a point.",
-    "d4a": "Add a point.",
-    "d4b": "Add a point.",
-    "d4c": "Add a point."
+    "closeT": "Eight scientific challenges designed, printed and run for 120 pupils across five days, inside a spend of 902,62 €, with the posters still hanging in the physics room.",
+    "t1": "The project came out of a request from the Collège Grandville in Liverdun, where the physics and chemistry teacher was looking for a way to make the last weeks of revision before the Brevet less repetitive. Under the supervision of our ENSIC tutor, six of us took the brief and turned it into an educational escape game for the 120 pupils of the final year, split into thirty groups with one hour each to get through the whole course.",
+    "t2": "We ran the eight months as a managed project rather than as a school assignment. The objectives were written in SMART form, the work was cut into lots going from framing to deployment, the responsibilities were spread with a RACI matrix, and the calendar was held in a Gantt chart of five phases, from the choice of the theme in October 2025 to the final presentation in June 2026. Every member owned one dimension of the project, coordination, scenario, scientific puzzles, material and logistics, testing, and for my part communication and documentation.",
+    "t3": "The scenario put the pupils in a research laboratory where an experiment goes wrong and throws them across time. Eight challenges brought them home, one per chapter of the physics and chemistry syllabus, each anchored in a period running from Prehistory to contemporary Formula 1 and each producing a coded answer that opened the next box. Every challenge received three printed supports, an A4 statement sheet, a large A1 resource sheet on PVC and a laminated A3 code sheet, twenty-four posters in all designed on Canva, plus props chosen to make the notion tangible, a Saturn V model for Apollo 11, an astronomical telescope for Galileo, a radio and a telephone for the 1990s, an iron helmet borrowed from the Musée de l'Histoire du Fer for chemical transformations and an acacia log for matter.",
+    "t4": "The deployment took the shape of five days of animation at the collège on 5, 6, 7, 11 and 12 May 2026, eight slots a day and thirty slots in all, each one run by a pair of students. A teaser video shown in class announced the event, decorative posters dressed the corridor and a shared spreadsheet centralised the performance of the thirty groups through the week. The material was installed collectively on the evening of 4 May, and the whole thing was presented to parents during the open day of the collège on 22 May.",
+    "t5": "Every planned deliverable was produced and the calendar held. The final spend came to 902,62 €, under the 1 000 € envelope of the framing note, with the professional printing of the posters alone at 367,39 €, and the whole amount was financed by the Foyer Socio-Éducatif of the collège, which accepted the request on the day it was sent. The teaching team, the pupils and the parents received the activity well, the six of us logged 696 hours of work, and the posters stayed at the collège, where they now serve as permanent visual support in the physics room.",
+    "t6": "Not everything held its first shape. Several puzzles turned out harder than expected during the internal tests and had to be simplified and reformulated with the tutor so that a group could still finish inside the hour. Because the activity took place earlier than planned, some chapters had not been covered in class yet, so we wrote extra clues and stayed close to the groups that needed them.",
+    "t7": "The material side taught the same lesson. Part of the decoration arrived later than promised, which ate into the time left for the final rehearsal, and several activities were redesigned around equipment we could borrow or already had rather than around equipment we would have liked. Coordinating six availabilities over eight months was the quiet difficulty of the project, and the weekly meetings were what kept it moving.",
+    "tool1": "Canva",
+    "tool2": "Gantt chart",
+    "tool3": "SMART and RACI",
+    "tool4": "Google Sheets",
+    "sk1": "Project management",
+    "sk2": "Gantt planning",
+    "sk3": "Budget and funding",
+    "sk4": "Pedagogical design",
+    "sk5": "Science communication",
+    "sk6": "Team of six",
+    "sk7": "Client relations",
+    "sk8": "Testing and iteration",
+    "sk9": "Logistics and material",
+    "sk10": "Public animation",
+    "d1a": "Turning syllabus notions into puzzles a fourteen year old can solve in a few minutes.",
+    "d1b": "Scientific accuracy checked against the official programme and validated by the teacher.",
+    "d1c": "Popularisation treated as a discipline, where the difficulty sits in the wording and not in the content.",
+    "d2a": "SMART objectives, work packages, RACI matrix and a Gantt chart followed over eight months.",
+    "d2b": "A spend of 902,62 € tracked line by line and kept under the planned envelope.",
+    "d2c": "Funding obtained from the Foyer Socio-Éducatif, with quotes compared in Nancy and invoices filed.",
+    "d3a": "Communication and documentation of the project, from the teaser video to the final report.",
+    "d3b": "Regular contact with the teacher and the tutor to validate every version of the challenges.",
+    "d3c": "Public presentation of the game to parents during the open day of the collège.",
+    "d4a": "Puzzles simplified after testing to match the real level of the pupils.",
+    "d4b": "Activities redesigned around the material actually available.",
+    "d4c": "Late deliveries absorbed without moving a single day of the deployment."
   },
   "fr": {
     "back": "Accueil",
@@ -425,71 +425,71 @@ const T = {
     "shareCopy": "Copier le lien",
     "shareCopied": "Lien copié",
     "shareEmail": "E-mail",
-    "lede": "Une ou deux lignes résumant le projet et ce qu’il a apporté.",
-    "metaYear": "Année",
-    "metaDur": "Durée",
-    "metaPlace": "Établissement",
     "toolsL": "Outils",
     "skillsL": "Compétences",
-    "kpiN1": "—",
-    "kpi1": "Premier chiffre clé",
-    "kpiN2": "—",
-    "kpi2": "Deuxième chiffre clé",
-    "s1": "Contexte",
-    "s2": "Approche",
-    "s3": "Conception et construction",
-    "s4": "Exécution",
-    "s5": "Résultats",
-    "s6": "Ce que le projet m’a appris",
     "videoNote": "Vidéo, ajoutez votre fichier au dossier du site",
     "devL": "Compétences développées",
-    "devLede": "Ce que ce projet a construit, au-delà du livrable.",
+    "cvL": "Télécharger le CV",
+    "homeL": "Portfolio",
+    "nextL": "Projet suivant",
+    "role": "Étudiant en génie chimique · Disponible pour un stage",
+    "nextT": "Portfolio",
+    "kicker": "Projet d'ouverture · ENSIC × Collège Grandville · 2026",
+    "title": "EscapeScience · Escape game pédagogique",
+    "lede": "Un escape game pédagogique construit avec cinq autres étudiants de l'ENSIC pour les élèves de 3e du Collège Grandville à Liverdun, où huit défis scientifiques enfilés sur un voyage dans le temps ont remplacé les dernières semaines de révision avant le Brevet.",
+    "metaYear": "2025 – 2026",
+    "metaDur": "8 mois",
+    "metaPlace": "Collège Grandville, Liverdun",
+    "kpiN1": "120 élèves",
+    "kpi1": "en 30 groupes, accueillis sur cinq journées d'animation avec une heure par groupe",
+    "kpiN2": "8 défis",
+    "kpi2": "un par chapitre du programme, de la Préhistoire à la Formule 1 contemporaine",
+    "s1": "Contexte",
+    "s2": "Gestion de projet",
+    "s3": "Défis et supports",
+    "s4": "Déploiement",
+    "s5": "Résultats",
+    "s6": "Ce que le projet m'a appris",
     "d1t": "Technique et académique",
     "d2t": "Gestion de projet et des coûts",
     "d3t": "Leadership et communication",
     "d4t": "Adaptabilité et résolution de problèmes",
+    "devLede": "Ce que le projet a construit chez moi, au-delà du jeu lui-même.",
     "closeK": "Résultat",
-    "closeT": "Résumez en une phrase le résultat du projet.",
-    "nextL": "Projet suivant",
-    "role": "Étudiant en génie chimique · Disponible pour un stage",
-    "cvL": "Télécharger le CV",
-    "homeL": "Portfolio",
-    "kicker": "Projet · Établissement · Année",
-    "title": "Nouveau projet",
-    "nextT": "Green Methanol Plant · Conceptual Design",
-    "t1": "Texte à venir. Décrivez ici cette partie du projet.",
-    "t2": "Texte à venir. Décrivez ici cette partie du projet.",
-    "t3": "Texte à venir. Décrivez ici cette partie du projet.",
-    "t4": "Texte à venir. Décrivez ici cette partie du projet.",
-    "t5": "Texte à venir. Décrivez ici cette partie du projet.",
-    "t6": "Texte à venir. Décrivez ici cette partie du projet.",
-    "t7": "Texte à venir. Décrivez ici cette partie du projet.",
-    "tool1": "Outil 1",
-    "tool2": "Outil 2",
-    "tool3": "Outil 3",
-    "tool4": "Outil 4",
-    "sk1": "Compétence 1",
-    "sk2": "Compétence 2",
-    "sk3": "Compétence 3",
-    "sk4": "Compétence 4",
-    "sk5": "Compétence 5",
-    "sk6": "Compétence 6",
-    "sk7": "Compétence 7",
-    "sk8": "Compétence 8",
-    "sk9": "Compétence 9",
-    "sk10": "Compétence 10",
-    "d1a": "Ajoutez un point.",
-    "d1b": "Ajoutez un point.",
-    "d1c": "Ajoutez un point.",
-    "d2a": "Ajoutez un point.",
-    "d2b": "Ajoutez un point.",
-    "d2c": "Ajoutez un point.",
-    "d3a": "Ajoutez un point.",
-    "d3b": "Ajoutez un point.",
-    "d3c": "Ajoutez un point.",
-    "d4a": "Ajoutez un point.",
-    "d4b": "Ajoutez un point.",
-    "d4c": "Ajoutez un point."
+    "closeT": "Huit défis scientifiques conçus, imprimés et animés pour 120 élèves sur cinq journées, pour une dépense de 902,62 €, avec les affiches toujours accrochées dans la salle de physique.",
+    "t1": "Le projet est né d'une demande du Collège Grandville à Liverdun, où le professeur de physique-chimie cherchait à rendre moins répétitives les dernières semaines de révision avant le Brevet. Sous la supervision de notre tutrice de l'ENSIC, nous avons été six à reprendre la demande pour en faire un escape game pédagogique destiné aux 120 élèves de 3e, répartis en trente groupes disposant chacun d'une heure pour parcourir l'ensemble du programme.",
+    "t2": "Nous avons mené ces huit mois comme un projet géré et non comme un devoir. Les objectifs ont été écrits sous forme SMART, le travail découpé en lots allant du cadrage au déploiement, les responsabilités réparties par une matrice RACI, et le calendrier tenu dans un diagramme de Gantt en cinq phases, du choix du thème en octobre 2025 à la présentation finale en juin 2026. Chaque membre portait une dimension du projet, coordination, scénario, énigmes scientifiques, matériel et logistique, tests, et pour ma part communication et documentation.",
+    "t3": "Le scénario plaçait les élèves dans un laboratoire de recherche où une expérience dérape et les projette à travers le temps. Huit défis les ramenaient à leur époque, un par chapitre du programme de physique-chimie, chacun ancré dans une période allant de la Préhistoire à la Formule 1 contemporaine et chacun produisant un code qui ouvrait la boîte suivante. Chaque défi a reçu trois supports imprimés, une fiche d'énoncé A4, une grande fiche ressource A1 sur PVC et une fiche code A3 plastifiée, soit vingt-quatre affiches conçues sur Canva, complétées par des accessoires choisis pour rendre la notion tangible, une maquette de Saturn V pour Apollo 11, une lunette astronomique pour Galilée, une radio et un téléphone pour les années 1990, un casque en fer emprunté au Musée de l'Histoire du Fer pour les transformations chimiques et une bûche en acacia pour la matière.",
+    "t4": "Le déploiement a pris la forme de cinq journées d'animation au collège les 5, 6, 7, 11 et 12 mai 2026, huit créneaux par jour et trente créneaux au total, chacun encadré par un binôme d'étudiants. Une vidéo teaser diffusée en classe a annoncé l'événement, des affiches décoratives ont habillé le couloir et un tableur partagé a centralisé les performances des trente groupes tout au long de la semaine. Le matériel a été installé collectivement le 4 mai au soir, et le dispositif a été présenté aux parents lors des portes ouvertes du collège le 22 mai.",
+    "t5": "Tous les livrables prévus ont été produits et le calendrier a tenu. La dépense finale s'est élevée à 902,62 €, sous l'enveloppe de 1 000 € fixée dans la note de cadrage, avec l'impression professionnelle des affiches à elle seule à 367,39 €, et l'ensemble a été financé par le Foyer Socio-Éducatif du collège, qui a accepté la demande le jour même de son envoi. L'équipe pédagogique, les élèves et les parents ont bien accueilli l'activité, les six membres ont cumulé 696 heures de travail, et les affiches sont restées au collège, où elles servent désormais de support visuel permanent dans la salle de physique.",
+    "t6": "Tout n'a pas gardé sa forme initiale. Plusieurs énigmes se sont révélées plus difficiles que prévu lors des tests internes et ont dû être simplifiées et reformulées avec le tuteur pour qu'un groupe puisse encore terminer dans l'heure. L'activité ayant eu lieu plus tôt que prévu, certains chapitres n'avaient pas encore été traités en classe, nous avons donc écrit des indices supplémentaires et accompagné de près les groupes qui en avaient besoin.",
+    "t7": "Le volet matériel a enseigné la même leçon. Une partie de la décoration est arrivée plus tard que promis, ce qui a réduit le temps restant pour la répétition finale, et plusieurs activités ont été repensées autour du matériel que nous pouvions emprunter ou dont nous disposions déjà plutôt qu'autour de celui que nous aurions souhaité. Coordonner six disponibilités sur huit mois a été la difficulté discrète du projet, et les réunions hebdomadaires sont ce qui l'a fait avancer.",
+    "tool1": "Canva",
+    "tool2": "Diagramme de Gantt",
+    "tool3": "SMART et RACI",
+    "tool4": "Google Sheets",
+    "sk1": "Gestion de projet",
+    "sk2": "Planification Gantt",
+    "sk3": "Budget et financement",
+    "sk4": "Conception pédagogique",
+    "sk5": "Vulgarisation scientifique",
+    "sk6": "Équipe de six",
+    "sk7": "Relation client",
+    "sk8": "Tests et itération",
+    "sk9": "Logistique et matériel",
+    "sk10": "Animation devant public",
+    "d1a": "Transformer des notions du programme en énigmes qu'un élève de quatorze ans résout en quelques minutes.",
+    "d1b": "Rigueur scientifique vérifiée face au programme officiel et validée par le professeur.",
+    "d1c": "Vulgarisation traitée comme une discipline, où la difficulté tient à la formulation et non au contenu.",
+    "d2a": "Objectifs SMART, lots de travail, matrice RACI et diagramme de Gantt suivis sur huit mois.",
+    "d2b": "Une dépense de 902,62 € suivie ligne par ligne et maintenue sous l'enveloppe prévue.",
+    "d2c": "Financement obtenu auprès du Foyer Socio-Éducatif, devis comparés à Nancy et factures transmises.",
+    "d3a": "Communication et documentation du projet, de la vidéo teaser au rapport final.",
+    "d3b": "Contact régulier avec le professeur et la tutrice pour valider chaque version des défis.",
+    "d3c": "Présentation publique du jeu aux parents lors des portes ouvertes du collège.",
+    "d4a": "Énigmes simplifiées après les tests pour coller au niveau réel des élèves.",
+    "d4b": "Activités repensées autour du matériel réellement disponible.",
+    "d4c": "Livraisons tardives absorbées sans déplacer un seul jour de déploiement."
   },
   "es": {
     "back": "Inicio",
@@ -501,71 +501,71 @@ const T = {
     "shareCopy": "Copiar enlace",
     "shareCopied": "Enlace copiado",
     "shareEmail": "Correo",
-    "lede": "Una o dos líneas que resuman el proyecto y lo que logró.",
-    "metaYear": "Año",
-    "metaDur": "Duración",
-    "metaPlace": "Institución",
     "toolsL": "Herramientas",
     "skillsL": "Habilidades",
-    "kpiN1": "—",
-    "kpi1": "Primera cifra clave",
-    "kpiN2": "—",
-    "kpi2": "Segunda cifra clave",
-    "s1": "Contexto",
-    "s2": "Enfoque",
-    "s3": "Diseño y construcción",
-    "s4": "Ejecución",
-    "s5": "Resultados",
-    "s6": "Lo que me dejó el proyecto",
     "videoNote": "Video, añade tu archivo a la carpeta del sitio",
     "devL": "Habilidades desarrolladas",
-    "devLede": "Lo que dejó este proyecto, más allá del entregable.",
+    "cvL": "Descargar CV",
+    "homeL": "Portafolio",
+    "nextL": "Siguiente proyecto",
+    "role": "Estudiante de Ingeniería Química · Disponible para prácticas",
+    "nextT": "Portafolio",
+    "kicker": "Proyecto de apertura · ENSIC × Collège Grandville · 2026",
+    "title": "EscapeScience · Escape game pedagógico",
+    "lede": "Un escape game pedagógico construido con otros cinco estudiantes de la ENSIC para los alumnos de 3e del Collège Grandville en Liverdun, donde ocho desafíos científicos enlazados en un viaje por el tiempo sustituyeron las últimas semanas de repaso antes del Brevet.",
+    "metaYear": "2025 – 2026",
+    "metaDur": "8 meses",
+    "metaPlace": "Collège Grandville, Liverdun",
+    "kpiN1": "120 alumnos",
+    "kpi1": "en 30 grupos, recibidos en cinco jornadas de animación con una hora por grupo",
+    "kpiN2": "8 desafíos",
+    "kpi2": "uno por capítulo del programa, de la Prehistoria a la Fórmula 1 contemporánea",
+    "s1": "Contexto",
+    "s2": "Gestión del proyecto",
+    "s3": "Desafíos y soportes",
+    "s4": "Despliegue",
+    "s5": "Resultados",
+    "s6": "Lo que me dejó el proyecto",
     "d1t": "Técnicas y académicas",
     "d2t": "Gestión de proyecto y costos",
     "d3t": "Liderazgo y comunicación",
     "d4t": "Adaptabilidad y solución de problemas",
+    "devLede": "Lo que el proyecto construyó en mí, más allá del juego.",
     "closeK": "Resultado",
-    "closeT": "Resume en una frase el resultado del proyecto.",
-    "nextL": "Siguiente proyecto",
-    "role": "Estudiante de Ingeniería Química · Disponible para prácticas",
-    "cvL": "Descargar CV",
-    "homeL": "Portafolio",
-    "kicker": "Proyecto · Institución · Año",
-    "title": "Nuevo proyecto",
-    "nextT": "Green Methanol Plant · Conceptual Design",
-    "t1": "Texto pendiente. Describe aquí esta parte del proyecto.",
-    "t2": "Texto pendiente. Describe aquí esta parte del proyecto.",
-    "t3": "Texto pendiente. Describe aquí esta parte del proyecto.",
-    "t4": "Texto pendiente. Describe aquí esta parte del proyecto.",
-    "t5": "Texto pendiente. Describe aquí esta parte del proyecto.",
-    "t6": "Texto pendiente. Describe aquí esta parte del proyecto.",
-    "t7": "Texto pendiente. Describe aquí esta parte del proyecto.",
-    "tool1": "Herramienta 1",
-    "tool2": "Herramienta 2",
-    "tool3": "Herramienta 3",
-    "tool4": "Herramienta 4",
-    "sk1": "Habilidad 1",
-    "sk2": "Habilidad 2",
-    "sk3": "Habilidad 3",
-    "sk4": "Habilidad 4",
-    "sk5": "Habilidad 5",
-    "sk6": "Habilidad 6",
-    "sk7": "Habilidad 7",
-    "sk8": "Habilidad 8",
-    "sk9": "Habilidad 9",
-    "sk10": "Habilidad 10",
-    "d1a": "Añade un punto.",
-    "d1b": "Añade un punto.",
-    "d1c": "Añade un punto.",
-    "d2a": "Añade un punto.",
-    "d2b": "Añade un punto.",
-    "d2c": "Añade un punto.",
-    "d3a": "Añade un punto.",
-    "d3b": "Añade un punto.",
-    "d3c": "Añade un punto.",
-    "d4a": "Añade un punto.",
-    "d4b": "Añade un punto.",
-    "d4c": "Añade un punto."
+    "closeT": "Ocho desafíos científicos diseñados, impresos y animados para 120 alumnos durante cinco jornadas, con un gasto de 902,62 €, y afiches que siguen colgados en la sala de física.",
+    "t1": "El proyecto nació de una petición del Collège Grandville de Liverdun, donde el profesor de física y química buscaba una forma de hacer menos repetitivas las últimas semanas de repaso antes del Brevet. Bajo la supervisión de nuestra tutora de la ENSIC, fuimos seis quienes tomamos el encargo y lo convertimos en un escape game pedagógico para los 120 alumnos de 3e, repartidos en treinta grupos con una hora cada uno para recorrer todo el programa.",
+    "t2": "Llevamos esos ocho meses como un proyecto gestionado y no como un trabajo de clase. Los objetivos se escribieron en forma SMART, el trabajo se dividió en lotes que iban del encuadre al despliegue, las responsabilidades se repartieron con una matriz RACI y el calendario se sostuvo en un diagrama de Gantt de cinco fases, desde la elección del tema en octubre de 2025 hasta la presentación final en junio de 2026. Cada integrante llevaba una dimensión del proyecto, coordinación, guion, enigmas científicos, material y logística, pruebas, y en mi caso comunicación y documentación.",
+    "t3": "El guion situaba a los alumnos en un laboratorio de investigación donde un experimento se descontrola y los lanza a través del tiempo. Ocho desafíos los traían de vuelta, uno por capítulo del programa de física y química, cada uno anclado en una época que iba de la Prehistoria a la Fórmula 1 contemporánea y cada uno produciendo un código que abría la caja siguiente. Cada desafío recibió tres soportes impresos, una ficha de enunciado A4, una ficha de recursos A1 en PVC y una ficha de código A3 plastificada, veinticuatro afiches en total diseñados en Canva, más objetos escogidos para hacer tangible la noción, una maqueta del Saturn V para el Apolo 11, un telescopio para Galileo, una radio y un teléfono para los años noventa, un casco de hierro prestado por el Musée de l'Histoire du Fer para las transformaciones químicas y un tronco de acacia para la materia.",
+    "t4": "El despliegue tomó la forma de cinco jornadas de animación en el colegio los días 5, 6, 7, 11 y 12 de mayo de 2026, ocho turnos por día y treinta turnos en total, cada uno conducido por una pareja de estudiantes. Un video teaser proyectado en clase anunció el evento, afiches decorativos vistieron el pasillo y una hoja de cálculo compartida centralizó el desempeño de los treinta grupos durante toda la semana. El material se instaló de forma colectiva la tarde del 4 de mayo, y el dispositivo se presentó a los padres en la jornada de puertas abiertas del colegio el 22 de mayo.",
+    "t5": "Todos los entregables previstos se produjeron y el calendario se respetó. El gasto final fue de 902,62 €, por debajo del sobre de 1 000 € fijado en la nota de encuadre, con la impresión profesional de los afiches en 367,39 €, y la totalidad la financió el Foyer Socio-Éducatif del colegio, que aceptó la solicitud el mismo día en que se envió. El equipo docente, los alumnos y los padres recibieron bien la actividad, entre los seis acumulamos 696 horas de trabajo, y los afiches se quedaron en el colegio, donde hoy sirven de apoyo visual permanente en la sala de física.",
+    "t6": "No todo mantuvo su forma inicial. Varios enigmas resultaron más difíciles de lo previsto en las pruebas internas y hubo que simplificarlos y reformularlos con el tutor para que un grupo pudiera terminar dentro de la hora. Como la actividad se adelantó, algunos capítulos aún no se habían visto en clase, así que escribimos pistas adicionales y acompañamos de cerca a los grupos que lo necesitaban.",
+    "t7": "El lado material enseñó la misma lección. Parte de la decoración llegó más tarde de lo prometido, lo que redujo el tiempo disponible para el ensayo final, y varias actividades se rediseñaron alrededor del material que podíamos pedir prestado o que ya teníamos y no del que hubiéramos querido. Coordinar seis disponibilidades durante ocho meses fue la dificultad silenciosa del proyecto, y las reuniones semanales fueron lo que lo mantuvo en marcha.",
+    "tool1": "Canva",
+    "tool2": "Diagrama de Gantt",
+    "tool3": "SMART y RACI",
+    "tool4": "Google Sheets",
+    "sk1": "Gestión de proyecto",
+    "sk2": "Planificación Gantt",
+    "sk3": "Presupuesto y financiación",
+    "sk4": "Diseño pedagógico",
+    "sk5": "Divulgación científica",
+    "sk6": "Equipo de seis",
+    "sk7": "Relación con el cliente",
+    "sk8": "Pruebas e iteración",
+    "sk9": "Logística y material",
+    "sk10": "Animación ante público",
+    "d1a": "Convertir nociones del programa en enigmas que un alumno de catorce años resuelve en pocos minutos.",
+    "d1b": "Rigor científico contrastado con el programa oficial y validado por el profesor.",
+    "d1c": "Divulgación tratada como disciplina, donde la dificultad está en la redacción y no en el contenido.",
+    "d2a": "Objetivos SMART, lotes de trabajo, matriz RACI y diagrama de Gantt seguidos durante ocho meses.",
+    "d2b": "Un gasto de 902,62 € seguido línea por línea y mantenido bajo el sobre previsto.",
+    "d2c": "Financiación obtenida del Foyer Socio-Éducatif, con presupuestos comparados en Nancy y facturas entregadas.",
+    "d3a": "Comunicación y documentación del proyecto, del video teaser al informe final.",
+    "d3b": "Contacto regular con el profesor y la tutora para validar cada versión de los desafíos.",
+    "d3c": "Presentación pública del juego a los padres en las puertas abiertas del colegio.",
+    "d4a": "Enigmas simplificados tras las pruebas para ajustarse al nivel real de los alumnos.",
+    "d4b": "Actividades rediseñadas alrededor del material realmente disponible.",
+    "d4c": "Entregas tardías absorbidas sin mover un solo día del despliegue."
   }
 };
 
@@ -662,7 +662,7 @@ class Component extends DCLogic {
     if (back) { this.unhide(back); return; }
     const free = this.videoKeys(vgroup).find(k => !this.state.vids[k] && !this.state.blobs[k]);
     if (!free) return;
-    if (this.state.hidden[free]) this.unhide(free);
+    if (this.state.hidden[free]) { this.unhide(free); return; }
     const el = which === "A" ? this.fileA.current : this.fileB.current;
     if (el) el.click();
   }
@@ -689,16 +689,13 @@ class Component extends DCLogic {
     ev.target.value = "";
   }
 
+  // Every frame moves, photo, video and the still empty boxes alike.
   reorder(which, dir) {
     const fr = which === "A" ? this._frA : this._frB;
-    const cur = this.curIndex(which);
-    if (!fr) return;
-    const live = fr.filter(x => x.kind !== "empty" && x.kind !== "hint" && x.kind !== "wait");
-    const me = fr[Math.min(cur, fr.length - 1)];
-    if (!me || me.kind === "empty" || me.kind === "hint" || me.kind === "wait") return;
-    const i = live.indexOf(me), j = i + dir;
-    if (i < 0 || j < 0 || j >= live.length) return;
-    const keys = live.map(x => x.key);
+    if (!fr || fr.length < 2) return;
+    const i = Math.min(this.curIndex(which), fr.length - 1), j = i + dir;
+    if (j < 0 || j >= fr.length) return;
+    const keys = fr.map(x => x.key);
     keys.splice(j, 0, keys.splice(i, 1)[0]);
     const gkey = SLUG + "-" + (which === "A" ? "a" : "b");
     this.setState(s => {
@@ -706,13 +703,15 @@ class Component extends DCLogic {
       ord[gkey] = keys;
       saveOrder(ord);
       const nx = { order: ord };
-      const at = fr.indexOf(live[j]) >= 0 ? Math.max(0, Math.min(fr.length - 1, cur + dir)) : cur;
-      if (which === "A") nx.gA = at; else nx.gB = at;
+      if (which === "A") nx.gA = j; else nx.gB = j;
       return nx;
-    });
+    }, () => this.glideTo(which, j));
   }
 
   addFrame(which) {
+    const pool = which === "A" ? "a" : "g";
+    const back = this.poolIds(pool).find(id => this.state.hidden[id]);
+    if (back) { this.unhide(back); return; }
     this.setState(s => (which === "A" ? { extraA: s.extraA + 1 } : { extraB: s.extraB + 1 }));
   }
 
@@ -722,7 +721,30 @@ class Component extends DCLogic {
     const fx = fr && fr[Math.min(cur, fr.length - 1)];
     if (!fx) return;
     if (fx.kind === "empty") {
-      this.setState(s => (which === "A" ? { extraA: Math.max(0, s.extraA - 1) } : { extraB: Math.max(0, s.extraB - 1) }));
+      this.setState(s => {
+        const hid = Object.assign({}, s.hidden);
+        hid[fx.id] = true;
+        saveHidden(hid);
+        const nx = { hidden: hid };
+        nx[which === "A" ? "extraA" : "extraB"] = Math.max(0, (which === "A" ? s.extraA : s.extraB) - 1);
+        if (which === "A") nx.gA = Math.max(0, cur - 1); else nx.gB = Math.max(0, cur - 1);
+        return nx;
+      });
+      return;
+    }
+    if (fx.kind === "hint") {
+      const vgroup = which === "A" ? "a" : "b";
+      this.setState(s => {
+        const hid = Object.assign({}, s.hidden);
+        for (const v of this.videoKeys(vgroup)) if (!s.vids[v] && !s.blobs[v]) hid[v] = true;
+        saveHidden(hid);
+        const pend = Object.assign({}, s.pending);
+        delete pend[fx.key];
+        savePending(pend);
+        const nx = { hidden: hid, pending: pend };
+        if (which === "A") nx.gA = Math.max(0, cur - 1); else nx.gB = Math.max(0, cur - 1);
+        return nx;
+      });
       return;
     }
     if (fx.kind === "vid") {
@@ -781,7 +803,7 @@ class Component extends DCLogic {
     const ids = this.poolIds(pool);
     const live = [];
     for (const id of ids) {
-      if (this.state.fills[id] && !this.state.hidden[id]) live.push({ kind: "img", n: ids.indexOf(id) + 1, id: id, key: "i:" + id });
+      if (this.state.fills[id] && !this.state.hidden[id]) live.push({ kind: "img", n: ids.indexOf(id) + 1, id: id, key: id });
     }
     for (const [n, v] of this.videoKeys(vgroup).entries()) {
       const blob = this.state.blobs[v];
@@ -799,7 +821,7 @@ class Component extends DCLogic {
     }
     const nReal = live.length;
     if (this.editor) {
-      const freeVid = this.videoKeys(vgroup).find(v => !this.state.vids[v] && !this.state.blobs[v]);
+      const freeVid = this.videoKeys(vgroup).find(v => !this.state.vids[v] && !this.state.blobs[v] && !this.state.hidden[v]);
       if (freeVid) {
         const pend = this.state.pending[freeVid];
         live.push({
@@ -810,6 +832,15 @@ class Component extends DCLogic {
         });
       }
     }
+    if (this.editor) {
+      let empties = (nReal ? 0 : 1) + (extra || 0);
+      for (const id of ids) {
+        if (empties <= 0) break;
+        if (this.state.fills[id] || this.state.hidden[id]) continue;
+        live.push({ kind: "empty", n: ids.indexOf(id) + 1, id: id, key: id });
+        empties--;
+      }
+    }
     const saved = this.state.order[SLUG + "-" + (pool === "a" ? "a" : "b")];
     if (Array.isArray(saved)) {
       live.sort((x, y) => {
@@ -817,16 +848,7 @@ class Component extends DCLogic {
         return (a < 0 ? 999 : a) - (b < 0 ? 999 : b);
       });
     }
-    const out = live.slice();
-    if (!this.editor) return out;
-    let empties = extra || (nReal ? 0 : 1);
-    for (const id of ids) {
-      if (empties <= 0) break;
-      if (this.state.fills[id] || this.state.hidden[id]) continue;
-      out.push({ kind: "empty", n: ids.indexOf(id) + 1, id: id, key: "e:" + id });
-      empties--;
-    }
-    return out;
+    return live;
   }
 
   step(which, d, n) {
@@ -1162,7 +1184,7 @@ class Component extends DCLogic {
       copyLabel: this.state.copied ? t.shareCopied : t.shareCopy,
       copyBg: this.state.copied ? "#ffd100" : "transparent",
       shareNative: () => this.native(),
-      shareMail: () => { window.location.href = "mailto:?subject=" + encodeURIComponent("Cooling Tower Prototype, Juan Fernando Garcia") + "&body=" + encodeURIComponent(this.url()); }
+      shareMail: () => { window.location.href = "mailto:?subject=" + encodeURIComponent("EscapeScience, Juan Fernando Garcia") + "&body=" + encodeURIComponent(this.url()); }
     });
   }
 }

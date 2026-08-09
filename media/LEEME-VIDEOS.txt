@@ -75,3 +75,14 @@ En el editor, los botones "◀ Izquierda" y "Derecha ▶" mueven el elemento
 que estés viendo — fotos, videos y también el recuadro vacío de video.
 Coloca el recuadro vacío donde quieras que salga el video ANTES de subir
 el archivo: cuando el .mp4 llegue con ese nombre, aparecerá justo ahí.
+
+
+Proyecto 05 · EscapeScience (slug pesc)
+  site/media/pesc/pesc-a-v1.mp4
+  site/media/pesc/pesc-a-v2.mp4
+  site/media/pesc/pesc-a-v3.mp4
+  site/media/pesc/pesc-a-v4.mp4
+  site/media/pesc/pesc-b-v1.mp4
+  site/media/pesc/pesc-b-v2.mp4
+  site/media/pesc/pesc-b-v3.mp4
+  site/media/pesc/pesc-b-v4.mp4
