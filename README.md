@@ -6,7 +6,7 @@ Static site served by GitHub Pages.
 - `project-01.html` … `project-05.html` — one page per project (03 = cooling tower, the rest are blank templates)
 - `project.html` — redirect kept for old links
 - `media/` — images baked out of the design files; the portrait is preloaded for a fast, stable first paint
-- `cv.pdf` — CV download target
+- `cv-es.pdf`, `cv-en.pdf`, `cv-fr.pdf` — CV downloads (the language sheet picks one)
 - `_ds/` — design system stylesheet and bundle
 - `.nojekyll` — required so GitHub Pages serves the `_ds/` folder
 

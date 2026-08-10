@@ -66,6 +66,22 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
     </div>
   </div>
 
+  <sc-if value="{{ cvOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:rgba(32,30,29,.72);display:flex;align-items:flex-end;justify-content:center">
+    <div style="width:100%;max-width:720px;background:#f3f2f2;border-top:2px solid #201e1d">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:2px solid #201e1d">
+        <div style="font:800 18px/1 'Archivo';letter-spacing:-.01em">{{ cvPickTitle }}</div>
+        <button onClick="{{ closeCv }}" aria-label="Close" style="all:unset;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:2px solid #201e1d;font:700 15px/1 'Archivo'" style-hover="background:#ffd100">✕</button>
+      </div>
+      <div style="display:grid;gap:8px;padding:16px 18px 22px">
+        <a href="cv-es.pdf" download="Juan Fernando Garcia Navas - CV Espanol.pdf" onClick="{{ closeCv }}" style="text-decoration:none;box-sizing:border-box;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#201e1d;color:#ffd100;font:800 17px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#3d3937">{{ cvPickEs }} <span style="font-size:16px">↓</span></a>
+        <a href="cv-en.pdf" download="Juan Fernando Garcia Navas - CV English.pdf" onClick="{{ closeCv }}" style="text-decoration:none;box-sizing:border-box;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#201e1d;color:#ffd100;font:800 17px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#3d3937">{{ cvPickEn }} <span style="font-size:16px">↓</span></a>
+        <a href="cv-fr.pdf" download="Juan Fernando Garcia Navas - CV Francais.pdf" onClick="{{ closeCv }}" style="text-decoration:none;box-sizing:border-box;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#201e1d;color:#ffd100;font:800 17px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#3d3937">{{ cvPickFr }} <span style="font-size:16px">↓</span></a>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
   <sc-if value="{{ shareOpen }}" hint-placeholder-val="{{ false }}">
   <div style="position:fixed;inset:0;z-index:60;background:rgba(32,30,29,.72);display:flex;align-items:flex-end;justify-content:center">
     <div style="width:100%;max-width:720px;background:#f3f2f2;border-top:2px solid #201e1d">
@@ -152,22 +168,18 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
         <div class="gs" style="display:{{ av1Show }};order:{{ av1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ av1Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av1Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ av1Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
-          
         </div>
         <div class="gs" style="display:{{ av2Show }};order:{{ av2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ av2Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av2Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ av2Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
-          
         </div>
         <div class="gs" style="display:{{ av3Show }};order:{{ av3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ av3Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av3Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ av3Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
-          
         </div>
         <div class="gs" style="display:{{ av4Show }};order:{{ av4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
           <sc-if value="{{ av4Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av4Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
           <sc-if value="{{ av4Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
-          
         </div>
     </div>
     <button onClick="{{ gaPrev }}" aria-label="Previous" style="all:unset;cursor:pointer;position:absolute;top:50%;left:0;transform:translateY(-50%);width:40px;height:52px;display:{{ galAArrows }};align-items:center;justify-content:center;background:rgba(32,30,29,.85);color:#ffd100;font:800 17px/1 'Archivo';border-right:2px solid #ffd100" style-hover="background:#201e1d">‹</button>
@@ -179,7 +191,6 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
       </sc-for>
     </div>
   </div>
-  
   </div>
 
   <div id="build" class="psec sec" style="padding:22px 18px 8px"><div style="font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">03 · {{ s3 }}</div><p style="font:400 15px/1.6 'Archivo';margin:12px 0 0;text-align:justify;hyphens:auto">{{ t3 }}</p></div>
@@ -233,7 +244,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2p
       <a href="mailto:juanf.garcia.navas@gmail.com" style="display:block;font:800 19px/1.2 'Archivo';color:#ffd100;text-decoration:none;margin-top:16px;word-break:break-all">juanf.garcia.navas@gmail.com</a>
       <a href="tel:+33768718450" style="display:block;font:600 14px/1.3 'Archivo';color:#f3f2f2;text-decoration:none;margin-top:8px">+33 7 68 71 84 50</a>
       <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">
-        <a href="cv.pdf" download="" style="text-decoration:none;background:#ffd100;color:#201e1d;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">{{ cvL }} ↓</a>
+        <button onClick="{{ openCv }}" style="all:unset;cursor:pointer;box-sizing:border-box;background:#ffd100;color:#201e1d;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">{{ cvL }} ↓</button>
         <a href="https://www.linkedin.com/in/juan-fernando-garcia-navas-384146287/" target="_blank" rel="noopener" style="text-decoration:none;border:2px solid #f3f2f2;color:#f3f2f2;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">LinkedIn ↗</a>
         <a href="index.html" style="text-decoration:none;border:2px solid #f3f2f2;color:#f3f2f2;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">{{ homeL }}</a>
       </div>
@@ -257,7 +268,7 @@ function savePending(map) {
   try { localStorage.setItem(PENDING_KEY, JSON.stringify(map)); } catch (e) {}
 }
 
-const DEFAULT_ORDER = {"p01-a":["i:p01-a1","i:p01-a2","i:p01-a4","i:p01-a3"]};
+const DEFAULT_ORDER = {"p01-a":["i:p01-a1","i:p01-a2","i:p01-a4","i:p01-a3"],"pp-a":["i:pp-a1","i:pp-a2","i:pp-a3","pp-a-v1"],"pp-b":["i:pp-g2","i:pp-g3","i:pp-g1","pp-b-v1"],"p02-a":["i:p02-a2","p02-a-v1","i:p02-a3","i:p02-a5","i:p02-a1","i:p02-a4"],"p02-b":["i:p02-g1","p02-b-v1","i:p02-g2","i:p02-g3","i:p02-g4"],"pesc-a":["pesc-a1","pesc-a4","pesc-a2","pesc-a3"]};
 
 function storedOrder() {
   try { const v = localStorage.getItem(ORDER_KEY); if (v) return JSON.parse(v) || {}; } catch (e) {}
@@ -333,6 +344,10 @@ const T = {
     "closeT": "A plant designed, costed and defended: USD 200.6 M net present value over ten years, payback in the third year, and a 0.45% probability of loss.",
     "nextL": "Next project",
     "role": "Chemical Engineering student · Available for internships",
+    "cvPickTitle": "Download my CV",
+    "cvPickEs": "Download CV in Spanish",
+    "cvPickEn": "Download CV in English",
+    "cvPickFr": "Download CV in French",
     "cvL": "Download CV",
     "homeL": "Portfolio",
     "kicker": "Process design · UIS · 2024",
@@ -407,6 +422,10 @@ const T = {
     "closeT": "Une usine conçue, chiffrée et soutenue : 200,6 M USD de valeur actuelle nette sur dix ans, rentable dès la troisième année, avec 0,45% de probabilité de perte.",
     "nextL": "Projet suivant",
     "role": "Étudiant en génie chimique · Disponible pour un stage",
+    "cvPickTitle": "Télécharger mon CV",
+    "cvPickEs": "Télécharger le CV en espagnol",
+    "cvPickEn": "Télécharger le CV en anglais",
+    "cvPickFr": "Télécharger le CV en français",
     "cvL": "Télécharger le CV",
     "homeL": "Portfolio",
     "kicker": "Conception de procédés · UIS · 2024",
@@ -481,6 +500,10 @@ const T = {
     "closeT": "Una planta diseñada, costeada y sustentada: USD 200,6 M de valor presente neto a diez años, retorno desde el tercer año y 0,45% de probabilidad de pérdida.",
     "nextL": "Siguiente proyecto",
     "role": "Estudiante de Ingeniería Química · Disponible para prácticas",
+    "cvPickTitle": "Descargar mi CV",
+    "cvPickEs": "Descargar CV en español",
+    "cvPickEn": "Descargar CV en inglés",
+    "cvPickFr": "Descargar CV en francés",
     "cvL": "Descargar CV",
     "homeL": "Portafolio",
     "kicker": "Diseño de procesos · UIS · 2024",
@@ -521,7 +544,7 @@ const T = {
 };
 
 class Component extends DCLogic {
-  state = { lang: storedLang("en"), shareOpen: false, copied: false, gA: 0, gB: 0, fills: {}, vids: {}, extraA: 0, extraB: 0, hidden: storedHidden(), nFilled: -1, order: storedOrder(), blobs: {}, pending: storedPending() };
+  state = { lang: storedLang("en"), cvOpen: false, shareOpen: false, copied: false, gA: 0, gB: 0, fills: {}, vids: {}, extraA: 0, extraB: 0, hidden: storedHidden(), nFilled: -1, order: storedOrder(), blobs: {}, pending: storedPending() };
   editor = false;
   galA = React.createRef();
   galB = React.createRef();
@@ -1109,6 +1132,9 @@ class Component extends DCLogic {
       setFr: () => this.setLang("fr"),
       setEs: () => this.setLang("es"),
       enBg: e.bg, enFg: e.fg, frBg: f.bg, frFg: f.fg, esBg: s.bg, esFg: s.fg,
+      cvOpen: this.state.cvOpen,
+      openCv: () => this.setState({ cvOpen: true }),
+      closeCv: () => this.setState({ cvOpen: false }),
       shareOpen: this.state.shareOpen,
       openShare: () => this.setState({ shareOpen: true }),
       closeShare: () => this.setState({ shareOpen: false }),
