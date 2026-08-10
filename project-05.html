@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&amp;display=swap">
+<link rel="stylesheet" href="_ds/modernist-18f78c01-60db-465f-9d67-dca81d30df1b/styles.css">
+<script src="_ds/modernist-18f78c01-60db-465f-9d67-dca81d30df1b/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#c9c6c2;font-family:"Archivo",system-ui,sans-serif;color:#201e1d;-webkit-font-smoothing:antialiased}
+a{color:#201e1d}a:hover{color:#7a5c00}
+::selection{background:#ffd100;color:#201e1d}
+button:focus-visible,a:focus-visible{outline:2px solid #ffd100;outline-offset:2px}
+.pf{max-width:720px;margin:0 auto;background:#f3f2f2;border-left:2px solid #201e1d;border-right:2px solid #201e1d;min-height:100vh}
+@media (max-width:760px){.pf{border-left:0;border-right:0}
+.ptopbar{flex-wrap:wrap;height:auto !important;min-height:50px;padding-top:8px;padding-bottom:8px;row-gap:8px}
+.plang{margin-left:auto}
+.ptopbar a{font-size:12px !important;height:30px !important;padding:0 9px !important;letter-spacing:0 !important}}
+@media (min-width:900px){
+.pf{max-width:none;border-left:0;border-right:0}
+.pphero{height:420px !important}
+.psec{padding-left:44px !important;padding-right:44px !important}
+.gal{max-width:640px;margin-left:auto !important;margin-right:auto !important}
+.galcap{padding-left:44px !important;padding-right:44px !important;text-align:center}
+}
+.gs{background:#d7d3d3}
+.strip{scrollbar-width:none;-ms-overflow-style:none;touch-action:pan-y}
+.strip::-webkit-scrollbar{height:0;width:0}
+.sec{scroll-margin-top:112px}
+@media (max-width:760px){.galn{top:auto !important;bottom:10px !important;right:8px !important}}
+.kpigrid{display:grid;grid-template-columns:1fr;gap:14px 24px;align-items:start}
+@media (min-width:600px){.kpigrid{grid-template-columns:1fr 1fr}}
+.dgrid{display:grid;gap:0}
+.dgrid{row-gap:22px;margin-top:20px;align-items:stretch}
+@media (min-width:900px){.dgrid{grid-template-columns:1fr 1fr;column-gap:48px;row-gap:26px}}
+</style>
+</helmet>
+
+<div class="pf">
+
+  <div style="position:sticky;top:0;z-index:20;background:#201e1d;color:#f3f2f2">
+    <div class="ptopbar" style="display:flex;align-items:center;justify-content:space-between;height:50px;padding:0 16px">
+      <div style="display:flex;align-items:center;gap:12px;min-width:0">
+        <a href="index.html" style="text-decoration:none;color:#ffd100;font:800 16px/1 'Archivo';letter-spacing:-.01em;white-space:nowrap;display:inline-flex;align-items:center;height:34px;padding:0 11px;border:2px solid #ffd100" style-hover="background:#3d3937">← {{ back }}</a>
+        <a href="index.html#work" style="text-decoration:none;color:#f3f2f2;font:800 16px/1 'Archivo';letter-spacing:-.01em;white-space:nowrap;display:inline-flex;align-items:center;height:34px;padding:0 11px;border:2px solid #f3f2f2" style-hover="background:#3d3937;color:#ffd100">{{ projL }}</a>
+      </div>
+      <div class="plang" style="display:flex;border:2px solid #f3f2f2;height:32px">
+        <button onClick="{{ setEn }}" style="all:unset;cursor:pointer;padding:0 9px;display:flex;align-items:center;font:600 11px/1 'Archivo';background:{{ enBg }};color:{{ enFg }}">EN</button>
+        <button onClick="{{ setFr }}" style="all:unset;cursor:pointer;padding:0 9px;display:flex;align-items:center;font:600 11px/1 'Archivo';border-left:2px solid #f3f2f2;background:{{ frBg }};color:{{ frFg }}">FR</button>
+        <button onClick="{{ setEs }}" style="all:unset;cursor:pointer;padding:0 9px;display:flex;align-items:center;font:600 11px/1 'Archivo';border-left:2px solid #f3f2f2;background:{{ esBg }};color:{{ esFg }}">ES</button>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-top:2px solid #f3f2f2">
+      <a href="#contact" style="text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;height:46px;border-right:2px solid #f3f2f2;color:#f3f2f2;font:600 12px/1 'Archivo';letter-spacing:.06em;text-transform:uppercase" style-hover="background:#3d3937"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16"></rect><path d="m2 6 10 7 10-7"></path></svg>{{ contactLabel }}</a>
+      <button onClick="{{ openShare }}" style="all:unset;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;height:46px;color:#f3f2f2;font:600 12px/1 'Archivo';letter-spacing:.06em;text-transform:uppercase" style-hover="background:#3d3937"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="M8.59 13.51l6.83 3.98"></path><path d="M15.41 6.51L8.59 10.49"></path></svg>{{ shareLabel }}</button>
+    </div>
+  </div>
+
+  <sc-if value="{{ cvOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:rgba(32,30,29,.72);display:flex;align-items:flex-end;justify-content:center">
+    <div style="width:100%;max-width:720px;background:#f3f2f2;border-top:2px solid #201e1d">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:2px solid #201e1d">
+        <div style="font:800 18px/1 'Archivo';letter-spacing:-.01em">{{ cvPickTitle }}</div>
+        <button onClick="{{ closeCv }}" aria-label="Close" style="all:unset;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:2px solid #201e1d;font:700 15px/1 'Archivo'" style-hover="background:#ffd100">✕</button>
+      </div>
+      <div style="display:grid;gap:8px;padding:16px 18px 22px">
+        <a href="cv-es.pdf" download="Juan Fernando Garcia Navas - CV Espanol.pdf" onClick="{{ closeCv }}" style="text-decoration:none;box-sizing:border-box;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#201e1d;color:#ffd100;font:800 17px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#3d3937">{{ cvPickEs }} <span style="font-size:16px">↓</span></a>
+        <a href="cv-en.pdf" download="Juan Fernando Garcia Navas - CV English.pdf" onClick="{{ closeCv }}" style="text-decoration:none;box-sizing:border-box;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#201e1d;color:#ffd100;font:800 17px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#3d3937">{{ cvPickEn }} <span style="font-size:16px">↓</span></a>
+        <a href="cv-fr.pdf" download="Juan Fernando Garcia Navas - CV Francais.pdf" onClick="{{ closeCv }}" style="text-decoration:none;box-sizing:border-box;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#201e1d;color:#ffd100;font:800 17px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#3d3937">{{ cvPickFr }} <span style="font-size:16px">↓</span></a>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ shareOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:rgba(32,30,29,.72);display:flex;align-items:flex-end;justify-content:center">
+    <div style="width:100%;max-width:720px;background:#f3f2f2;border-top:2px solid #201e1d">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:2px solid #201e1d">
+        <div style="font:800 18px/1 'Archivo';letter-spacing:-.01em">{{ shareTitle }}</div>
+        <button onClick="{{ closeShare }}" aria-label="Close" style="all:unset;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:2px solid #201e1d;font:700 15px/1 'Archivo'" style-hover="background:#ffd100">✕</button>
+      </div>
+      <div style="padding:14px 18px 0;font:400 11px/1.4 'Archivo';color:#7d7979;word-break:break-all">{{ shareUrl }}</div>
+      <div style="display:grid;gap:8px;padding:12px 18px 22px">
+        <button onClick="{{ shareNative }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#201e1d;color:#ffd100;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#3d3937">{{ shareMore }} <span style="font-size:17px">↗</span></button>
+        <button onClick="{{ shareMail }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:2px solid #201e1d;color:#201e1d;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#ffd100">{{ shareEmail }} <span style="font-size:17px">✉</span></button>
+        <button onClick="{{ copyLink }}" style="all:unset;cursor:pointer;width:100%;box-sizing:border-box;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border:2px solid #201e1d;background:{{ copyBg }};color:#201e1d;font:800 19px/1 'Archivo';letter-spacing:-.01em" style-hover="background:#ffd100">{{ copyLabel }} <span style="font-size:17px">⧉</span></button>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <div class="gs pphero" style="height:250px;border-bottom:2px solid #201e1d;overflow:hidden"><image-slot id="pesc-hero" src="media/pesc-hero.webp" shape="rect" fit="cover" placeholder="Hero image"></image-slot></div>
+
+  <div class="psec" style="background:#ffd100;padding:20px 18px 22px;border-bottom:2px solid #201e1d">
+    <div style="font:600 10px/1 'Archivo';letter-spacing:.2em;text-transform:uppercase">{{ kicker }}</div>
+    <h1 style="font:800 clamp(28px,8vw,40px)/1.02 'Archivo';letter-spacing:-.03em;margin:12px 0 0">{{ title }}</h1>
+    <p style="font:400 15px/1.5 'Archivo';margin:12px 0 0;max-width:640px;text-wrap:pretty">{{ lede }}</p>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:16px">
+      <span style="font:600 10px/1 'Archivo';letter-spacing:.08em;text-transform:uppercase;border:2px solid #201e1d;padding:7px 9px">{{ metaYear }}</span>
+      <span style="font:600 10px/1 'Archivo';letter-spacing:.08em;text-transform:uppercase;border:2px solid #201e1d;padding:7px 9px">{{ metaDur }}</span>
+      <span style="font:600 10px/1 'Archivo';letter-spacing:.08em;text-transform:uppercase;border:2px solid #201e1d;padding:7px 9px">{{ metaPlace }}</span>
+    </div>
+  </div>
+
+  <div class="psec" style="padding:16px 18px 18px;border-bottom:2px solid #201e1d">
+    <div class="kpigrid">
+      <div><div style="font:800 clamp(17px,4.6vw,24px)/1 'Archivo';color:#7a5c00;white-space:nowrap">{{ kpiN1 }}</div><div style="font:600 13px/1.4 'Archivo';color:#605d5d;margin-top:8px">{{ kpi1 }}</div></div>
+      <div><div style="font:800 clamp(17px,4.6vw,24px)/1 'Archivo';color:#7a5c00;white-space:nowrap">{{ kpiN2 }}</div><div style="font:600 13px/1.4 'Archivo';color:#605d5d;margin-top:8px">{{ kpi2 }}</div></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:16px">
+      <a href="#ctx" style="text-decoration:none;color:#201e1d;display:flex;align-items:center;height:40px;padding:0 12px;font:600 12px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">01 · {{ s1 }}</a>
+      <a href="#tech" style="text-decoration:none;color:#201e1d;display:flex;align-items:center;height:40px;padding:0 12px;font:600 12px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">02 · {{ s2 }}</a>
+      <a href="#build" style="text-decoration:none;color:#201e1d;display:flex;align-items:center;height:40px;padding:0 12px;font:600 12px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">03 · {{ s3 }}</a>
+      <a href="#comm" style="text-decoration:none;color:#201e1d;display:flex;align-items:center;height:40px;padding:0 12px;font:600 12px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">04 · {{ s4 }}</a>
+      <a href="#res" style="text-decoration:none;color:#201e1d;display:flex;align-items:center;height:40px;padding:0 12px;font:600 12px/1 'Archivo';border:2px solid #201e1d" style-hover="background:#ffd100">05 · {{ s5 }}</a>
+      <a href="#adapt" style="text-decoration:none;color:#201e1d;display:flex;align-items:center;height:40px;padding:0 12px;font:600 12px/1 'Archivo';background:#ffd100;border:2px solid #201e1d" style-hover="background:#201e1d;color:#ffd100">06 · {{ s6 }}</a>
+      <a href="#skills" style="text-decoration:none;color:#201e1d;display:flex;align-items:center;height:40px;padding:0 12px;font:600 12px/1 'Archivo';background:#ffd100;border:2px solid #201e1d" style-hover="background:#201e1d;color:#ffd100">07 · {{ devL }}</a>
+    </div>
+  </div>
+
+  <div class="psec" style="padding:22px 18px 26px;border-bottom:2px solid #201e1d">
+    <div style="font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">{{ toolsL }}</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px">
+      <a href="#build" style="text-decoration:none;color:#201e1d;font:600 12px/1 'Archivo';background:#ffd100;border:2px solid #201e1d;padding:9px 12px" style-hover="background:#201e1d;color:#ffd100">{{ tool1 }}</a>
+      <a href="#build" style="text-decoration:none;color:#201e1d;font:600 12px/1 'Archivo';background:#ffd100;border:2px solid #201e1d;padding:9px 12px" style-hover="background:#201e1d;color:#ffd100">{{ tool2 }}</a>
+      <a href="#tech" style="text-decoration:none;color:#201e1d;font:600 12px/1 'Archivo';background:#ffd100;border:2px solid #201e1d;padding:9px 12px" style-hover="background:#201e1d;color:#ffd100">{{ tool3 }}</a>
+      <a href="#comm" style="text-decoration:none;color:#201e1d;font:600 12px/1 'Archivo';background:#ffd100;border:2px solid #201e1d;padding:9px 12px" style-hover="background:#201e1d;color:#ffd100">{{ tool4 }}</a>
+    </div>
+    <div style="font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00;margin-top:24px">{{ skillsL }}</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px">
+      <a href="#skills" style="text-decoration:none;color:#201e1d;font:600 12px/1 'Archivo';border:2px solid #201e1d;padding:9px 12px" style-hover="background:#ffd100">{{ sk1 }}</a>
+      <a href="#build" style="text-decoration:none;color:#201e1d;font:600 12px/1 'Archivo';border:2px solid #201e1d;padding:9px 12px" style-hover="background:#ffd100">{{ sk2 }}</a>
+      <a href="#comm" style="text-decoration:none;color:#201e1d;font:600 12px/1 'Archivo';border:2px solid #201e1d;padding:9px 12px" style-hover="background:#ffd100">{{ sk3 }}</a>
+      <a href="#comm" style="text-decoration:none;color:#201e1d;font:600 12px/1 'Archivo';border:2px solid #201e1d;padding:9px 12px" style-hover="background:#ffd100">{{ sk4 }}</a>
+      <a href="#ctx" style="text-decoration:none;color:#201e1d;font:600 12px/1 'Archivo';border:2px solid #201e1d;padding:9px 12px" style-hover="background:#ffd100">{{ sk5 }}</a>
+      <a href="#res" style="text-decoration:none;color:#201e1d;font:600 12px/1 'Archivo';border:2px solid #201e1d;padding:9px 12px" style-hover="background:#ffd100">{{ sk6 }}</a>
+      <a href="#skills" style="text-decoration:none;color:#201e1d;font:600 12px/1 'Archivo';border:2px solid #201e1d;padding:9px 12px" style-hover="background:#ffd100">{{ sk7 }}</a>
+      <a href="#res" style="text-decoration:none;color:#201e1d;font:600 12px/1 'Archivo';border:2px solid #201e1d;padding:9px 12px" style-hover="background:#ffd100">{{ sk8 }}</a>
+      <a href="#adapt" style="text-decoration:none;color:#201e1d;font:600 12px/1 'Archivo';border:2px solid #201e1d;padding:9px 12px" style-hover="background:#ffd100">{{ sk9 }}</a>
+      <a href="#adapt" style="text-decoration:none;color:#201e1d;font:600 12px/1 'Archivo';border:2px solid #201e1d;padding:9px 12px" style-hover="background:#ffd100">{{ sk10 }}</a>
+    </div>
+  </div>
+
+  <div id="ctx" class="psec sec" style="padding:24px 18px 8px"><div style="font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">01 · {{ s1 }}</div><p style="font:400 15px/1.6 'Archivo';margin:12px 0 0;text-align:justify;hyphens:auto">{{ t1 }}</p></div>
+
+  <div id="tech" class="psec sec" style="padding:22px 18px 8px"><div style="font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">02 · {{ s2 }}</div><p style="font:400 15px/1.6 'Archivo';margin:12px 0 0;text-align:justify;hyphens:auto">{{ t2 }}</p></div>
+
+  <div style="display:{{ galADisplay }}">
+  <div class="gal" style="position:relative;margin:20px 18px 0;border:2px solid #201e1d;background:#201e1d">
+    <div ref="{{ galARef }}" onScroll="{{ onGalAScroll }}" class="strip" style="display:flex;overflow:hidden">
+        <div class="gs" style="display:{{ a1Show }};order:{{ a1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a1" src="media/pesc-a1.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a2Show }};order:{{ a2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a2" src="media/pesc-a2.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a3Show }};order:{{ a3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a3" src="media/pesc-a3.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a4Show }};order:{{ a4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a4" src="media/pesc-a4.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a5Show }};order:{{ a5Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a5" src="media/pesc-a5.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a6Show }};order:{{ a6Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a6" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a7Show }};order:{{ a7Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a7" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ a8Show }};order:{{ a8Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-a8" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ av1Show }};order:{{ av1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
+          <sc-if value="{{ av1Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av1Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ av1Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+        </div>
+        <div class="gs" style="display:{{ av2Show }};order:{{ av2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
+          <sc-if value="{{ av2Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av2Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ av2Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+        </div>
+        <div class="gs" style="display:{{ av3Show }};order:{{ av3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
+          <sc-if value="{{ av3Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av3Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ av3Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+        </div>
+        <div class="gs" style="display:{{ av4Show }};order:{{ av4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
+          <sc-if value="{{ av4Play }}" hint-placeholder-val="{{ false }}"><video src="{{ av4Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ av4Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+        </div>
+    </div>
+    <button onClick="{{ gaPrev }}" aria-label="Previous" style="all:unset;cursor:pointer;position:absolute;top:50%;left:0;transform:translateY(-50%);width:40px;height:52px;display:{{ galAArrows }};align-items:center;justify-content:center;background:rgba(32,30,29,.85);color:#ffd100;font:800 17px/1 'Archivo';border-right:2px solid #ffd100" style-hover="background:#201e1d">‹</button>
+    <button onClick="{{ gaNext }}" aria-label="Next" style="all:unset;cursor:pointer;position:absolute;top:50%;right:0;transform:translateY(-50%);width:40px;height:52px;display:{{ galAArrows }};align-items:center;justify-content:center;background:rgba(32,30,29,.85);color:#ffd100;font:800 17px/1 'Archivo';border-left:2px solid #ffd100" style-hover="background:#201e1d">›</button>
+    <div class="galn" style="position:absolute;top:8px;right:8px;background:rgba(32,30,29,.85);color:#f3f2f2;font:600 10px/1 'Archivo';letter-spacing:.1em;padding:7px 9px;pointer-events:none">{{ galACount }}</div>
+    <div style="position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:6px">
+      <sc-for list="{{ dotsA }}" as="d" hint-placeholder-count="1">
+        <button onClick="{{ d.go }}" aria-label="Slide" style="all:unset;cursor:pointer;width:24px;height:24px;display:flex;align-items:center;justify-content:center"><span style="display:block;width:8px;height:8px;background:{{ d.bg }};box-shadow:0 0 0 1px rgba(32,30,29,.6)"></span></button>
+      </sc-for>
+    </div>
+  </div>
+  </div>
+
+  <div id="build" class="psec sec" style="padding:22px 18px 8px"><div style="font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">03 · {{ s3 }}</div><p style="font:400 15px/1.6 'Archivo';margin:12px 0 0;text-align:justify;hyphens:auto">{{ t3 }}</p></div>
+
+  <div style="display:{{ galBDisplay }}">
+  <div class="gal" style="position:relative;margin:20px 18px 0;border:2px solid #201e1d;background:#201e1d">
+    <div ref="{{ galBRef }}" onScroll="{{ onGalBScroll }}" class="strip" style="display:flex;overflow:hidden">
+        <div class="gs" style="display:{{ b1Show }};order:{{ b1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g1" src="media/pesc-g1.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b2Show }};order:{{ b2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g2" src="media/pesc-g2.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b3Show }};order:{{ b3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g3" src="media/pesc-g3.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b4Show }};order:{{ b4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g4" src="media/pesc-g4.webp" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b5Show }};order:{{ b5Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g5" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b6Show }};order:{{ b6Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g6" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b7Show }};order:{{ b7Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g7" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ b8Show }};order:{{ b8Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative"><image-slot id="pesc-g8" shape="rect" fit="cover" placeholder="{{ galAdd }}"></image-slot></div>
+        <div class="gs" style="display:{{ bv1Show }};order:{{ bv1Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
+          <sc-if value="{{ bv1Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv1Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ bv1Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+        </div>
+        <div class="gs" style="display:{{ bv2Show }};order:{{ bv2Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
+          <sc-if value="{{ bv2Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv2Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ bv2Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+        </div>
+        <div class="gs" style="display:{{ bv3Show }};order:{{ bv3Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
+          <sc-if value="{{ bv3Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv3Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ bv3Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+        </div>
+        <div class="gs" style="display:{{ bv4Show }};order:{{ bv4Order }};flex:none;width:100%;aspect-ratio:4/2.7;overflow:hidden;position:relative">
+          <sc-if value="{{ bv4Play }}" hint-placeholder-val="{{ false }}"><video src="{{ bv4Src }}" controls="{{ vidOn }}" playsInline="{{ vidOn }}" preload="metadata" style="display:block;width:100%;height:100%;object-fit:contain;background:#000"></video></sc-if>
+          <sc-if value="{{ bv4Wait }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#201e1d;display:flex;align-items:center;justify-content:center"><div style="width:52px;height:52px;border:2px solid #ffd100;display:flex;align-items:center;justify-content:center;color:#ffd100;font:400 17px/1 'Archivo'">▶</div></div></sc-if>
+        </div>
+    </div>
+    <button onClick="{{ gbPrev }}" aria-label="Previous" style="all:unset;cursor:pointer;position:absolute;top:50%;left:0;transform:translateY(-50%);width:40px;height:52px;display:{{ galBArrows }};align-items:center;justify-content:center;background:rgba(32,30,29,.85);color:#ffd100;font:800 17px/1 'Archivo';border-right:2px solid #ffd100" style-hover="background:#201e1d">‹</button>
+    <button onClick="{{ gbNext }}" aria-label="Next" style="all:unset;cursor:pointer;position:absolute;top:50%;right:0;transform:translateY(-50%);width:40px;height:52px;display:{{ galBArrows }};align-items:center;justify-content:center;background:rgba(32,30,29,.85);color:#ffd100;font:800 17px/1 'Archivo';border-left:2px solid #ffd100" style-hover="background:#201e1d">›</button>
+    <div class="galn" style="position:absolute;top:8px;right:8px;background:rgba(32,30,29,.85);color:#f3f2f2;font:600 10px/1 'Archivo';letter-spacing:.1em;padding:7px 9px;pointer-events:none">{{ galBCount }}</div>
+    <div style="position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:6px">
+      <sc-for list="{{ dotsB }}" as="d" hint-placeholder-count="1">
+        <button onClick="{{ d.go }}" aria-label="Slide" style="all:unset;cursor:pointer;width:24px;height:24px;display:flex;align-items:center;justify-content:center"><span style="display:block;width:8px;height:8px;background:{{ d.bg }};box-shadow:0 0 0 1px rgba(32,30,29,.6)"></span></button>
+      </sc-for>
+    </div>
+  </div>
+  </div>
+
+  <div id="comm" class="psec sec" style="padding:22px 18px 8px"><div style="font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">04 · {{ s4 }}</div><p style="font:400 15px/1.6 'Archivo';margin:12px 0 0;text-align:justify;hyphens:auto">{{ t4 }}</p></div>
+
+  <div id="res" class="psec sec" style="padding:22px 18px 8px"><div style="font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">05 · {{ s5 }}</div><p style="font:400 15px/1.6 'Archivo';margin:12px 0 0;text-align:justify;hyphens:auto">{{ t5 }}</p></div>
+
+  <div id="adapt" class="psec sec" style="padding:22px 18px 26px"><div style="font:800 17px/1.2 'Archivo';letter-spacing:-.01em;color:#7a5c00">06 · {{ s6 }}</div><p style="font:400 15px/1.6 'Archivo';margin:12px 0 0;text-align:justify;hyphens:auto">{{ t6 }}</p><p style="font:400 15px/1.6 'Archivo';margin:14px 0 0;text-align:justify;hyphens:auto">{{ t7 }}</p></div>
+
+  <div id="skills" class="psec sec" style="padding:22px 18px 22px">
+    <div style="font:800 20px/1.2 'Archivo';letter-spacing:-.015em;color:#7a5c00">07 · {{ devL }}</div>
+    <p style="font:400 15px/1.6 'Archivo';margin:12px 0 0;text-align:justify;hyphens:auto">{{ devLede }}</p>
+    <div class="dgrid">
+    <div style="height:100%;box-sizing:border-box;padding-bottom:22px;border-bottom:1px solid #d7d3d3">
+      <div style="font:800 15px/1.25 'Archivo';letter-spacing:-.01em;color:#201e1d">{{ d1t }}</div>
+      <ul style="margin:8px 0 0;padding-left:18px;font:400 15px/1.6 'Archivo';color:#3d3937"><li>{{ d1a }}</li><li style="margin-top:4px">{{ d1b }}</li><li style="margin-top:4px">{{ d1c }}</li></ul>
+    </div>
+    <div style="height:100%;box-sizing:border-box;padding-bottom:22px;border-bottom:1px solid #d7d3d3">
+      <div style="font:800 15px/1.25 'Archivo';letter-spacing:-.01em;color:#201e1d">{{ d2t }}</div>
+      <ul style="margin:8px 0 0;padding-left:18px;font:400 15px/1.6 'Archivo';color:#3d3937"><li>{{ d2a }}</li><li style="margin-top:4px">{{ d2b }}</li><li style="margin-top:4px">{{ d2c }}</li></ul>
+    </div>
+    <div style="height:100%;box-sizing:border-box;padding-bottom:22px;border-bottom:1px solid #d7d3d3">
+      <div style="font:800 15px/1.25 'Archivo';letter-spacing:-.01em;color:#201e1d">{{ d3t }}</div>
+      <ul style="margin:8px 0 0;padding-left:18px;font:400 15px/1.6 'Archivo';color:#3d3937"><li>{{ d3a }}</li><li style="margin-top:4px">{{ d3b }}</li><li style="margin-top:4px">{{ d3c }}</li></ul>
+    </div>
+    <div style="height:100%;box-sizing:border-box;padding-bottom:22px;border-bottom:1px solid #d7d3d3">
+      <div style="font:800 15px/1.25 'Archivo';letter-spacing:-.01em;color:#201e1d">{{ d4t }}</div>
+      <ul style="margin:8px 0 0;padding-left:18px;font:400 15px/1.6 'Archivo';color:#3d3937"><li>{{ d4a }}</li><li style="margin-top:4px">{{ d4b }}</li><li style="margin-top:4px">{{ d4c }}</li></ul>
+    </div>
+    </div>
+  </div>
+
+  <div class="psec" style="background:#ffd100;border-top:2px solid #201e1d;padding:26px 18px 30px">
+    <div style="font: 800 clamp(26px,6vw,38px)/1 'Archivo'; letter-spacing: -.02em; text-transform: uppercase; font-size: 25px">{{ closeK }}</div>
+    <div style="font:800 clamp(22px,5vw,30px)/1.15 'Archivo';letter-spacing:-.02em;margin-top:12px;max-width:820px;text-wrap:pretty">{{ closeT }}</div>
+  </div>
+
+  <div class="psec" style="display:grid;grid-template-columns:1fr 1fr;background:#201e1d;border-top:2px solid #f3f2f2">
+    <a href="project-04.html" style="display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;color:#f3f2f2;padding:22px 18px 24px;border-right:1px solid #4a4645;" style-hover="background:#3d3937"><span style="font:800 22px/1 'Archivo';color:#ffd100;flex:none">←</span><span style=""><span style="font:600 12px/1 'Archivo';letter-spacing:.18em;text-transform:uppercase;color:#ffd100">{{ prevL }}</span><br><span style="font:800 17px/1.15 'Archivo';display:inline-block;margin-top:8px">{{ prevT }}</span></span></a>
+    <a href="index.html#work" style="display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;color:#f3f2f2;padding:22px 18px 24px;" style-hover="background:#3d3937"><span style="text-align:right;"><span style="font:600 12px/1 'Archivo';letter-spacing:.18em;text-transform:uppercase;color:#ffd100">{{ nextL }}</span><br><span style="font:800 17px/1.15 'Archivo';display:inline-block;margin-top:8px">{{ nextT }}</span></span><span style="font:800 22px/1 'Archivo';color:#ffd100;flex:none">→</span></a>
+  </div>
+
+  <section id="contact" style="scroll-margin-top:100px">
+    <div class="psec" style="background:#201e1d;color:#f3f2f2;padding:28px 18px 32px;border-top:2px solid #f3f2f2">
+      <div style="font: 600 10px/1 'Archivo'; letter-spacing: .2em; text-transform: uppercase; color: #ffd100; font-size: 15px">{{ contactLabel }}</div>
+      <div style="font:800 24px/1.1 'Archivo';letter-spacing:-.02em;margin-top:12px">Juan Fernando Garcia</div>
+      <div style="font:400 13px/1.45 'Archivo';color:#bab6b6;margin-top:6px">{{ role }}</div>
+      <a href="mailto:juanf.garcia.navas@gmail.com" style="display:block;font:800 19px/1.2 'Archivo';color:#ffd100;text-decoration:none;margin-top:16px;word-break:break-all">juanf.garcia.navas@gmail.com</a>
+      <a href="tel:+33768718450" style="display:block;font:600 14px/1.3 'Archivo';color:#f3f2f2;text-decoration:none;margin-top:8px">+33 7 68 71 84 50</a>
+      <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">
+        <button onClick="{{ openCv }}" style="all:unset;cursor:pointer;box-sizing:border-box;background:#ffd100;color:#201e1d;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">{{ cvL }} ↓</button>
+        <a href="https://www.linkedin.com/in/juan-fernando-garcia-navas-384146287/" target="_blank" rel="noopener" style="text-decoration:none;border:2px solid #f3f2f2;color:#f3f2f2;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">LinkedIn ↗</a>
+        <a href="index.html" style="text-decoration:none;border:2px solid #f3f2f2;color:#f3f2f2;font:600 12px/1 'Archivo';padding:0 14px;height:46px;display:flex;align-items:center">{{ homeL }}</a>
+      </div>
+      <div style="font:400 11px/1.5 'Archivo';color:#9b9797;margin-top:24px">© 2026 Juan Fernando Garcia</div>
+    </div>
+  </section>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:900}}">
+const HIDDEN_KEY = "jfg-gal-hidden";
+const ORDER_KEY = "jfg-gal-order";
+const PENDING_KEY = "jfg-gal-pending";
+
+function storedPending() {
+  try { return JSON.parse(localStorage.getItem(PENDING_KEY) || "{}") || {}; } catch (e) { return {}; }
+}
+
+function savePending(map) {
+  try { localStorage.setItem(PENDING_KEY, JSON.stringify(map)); } catch (e) {}
+}
+
+const DEFAULT_ORDER = {"p01-a":["i:p01-a1","i:p01-a2","i:p01-a4","i:p01-a3"],"pp-a":["i:pp-a1","i:pp-a2","i:pp-a3","pp-a-v1"],"pp-b":["i:pp-g2","i:pp-g3","i:pp-g1","pp-b-v1"],"p02-a":["i:p02-a2","p02-a-v1","i:p02-a3","i:p02-a5","i:p02-a1","i:p02-a4"],"p02-b":["i:p02-g1","p02-b-v1","i:p02-g2","i:p02-g3","i:p02-g4"],"pesc-a":["pesc-a1","pesc-a4","pesc-a2","pesc-a3"]};
+
+function storedOrder() {
+  try { const v = localStorage.getItem(ORDER_KEY); if (v) return JSON.parse(v) || {}; } catch (e) {}
+  return JSON.parse(JSON.stringify(DEFAULT_ORDER));
+}
+
+function saveOrder(map) {
+  try { localStorage.setItem(ORDER_KEY, JSON.stringify(map)); } catch (e) {}
+}
+
+function storedHidden() {
+  try { return JSON.parse(localStorage.getItem(HIDDEN_KEY) || "{}") || {}; } catch (e) { return {}; }
+}
+
+function saveHidden(map) {
+  try { localStorage.setItem(HIDDEN_KEY, JSON.stringify(map)); } catch (e) {}
+}
+
+function storedLang(fallback) {
+  try { const v = localStorage.getItem("jfg-lang"); if (v && T[v]) return v; } catch (e) {}
+  return T[fallback] ? fallback : "en";
+}
+
+const UI = {
+  en: { videoAdd: "Video slide", galAdd: "Drop a photo here", addPhoto: "Photo", addVideo: "Video", delPhoto: "Remove", moveL: "Move left", moveR: "Move right" },
+  fr: { videoAdd: "Séquence vidéo", galAdd: "Déposez une photo ici", addPhoto: "Photo", addVideo: "Vidéo", delPhoto: "Retirer", moveL: "Vers la gauche", moveR: "Vers la droite" },
+  es: { videoAdd: "Video", galAdd: "Suelta una foto aquí", addPhoto: "Foto", addVideo: "Video", delPhoto: "Quitar", moveL: "Izquierda", moveR: "Derecha" }
+};
+
+const SLUG = "pesc";
+
+const NEIGH = {
+  en: { prevL: "Previous project", nextL: "Back to main", prevT: "Ammonia Synthesis Unit · Industrial Project", nextT: "Portfolio" },
+  fr: { prevL: "Projet précédent", nextL: "Retour à l'accueil", prevT: "Unité de synthèse d'ammoniac · Projet industriel", nextT: "Portfolio" },
+  es: { prevL: "Proyecto anterior", nextL: "Volver al principal", prevT: "Unidad de síntesis de amoniaco · Proyecto industrial", nextT: "Portafolio" }
+};
+
+const T = {
+  "en": {
+    "back": "Main",
+    "projL": "Back to Projects",
+    "contactLabel": "Contact",
+    "shareLabel": "Share",
+    "shareMore": "Share",
+    "shareTitle": "Share this project",
+    "shareCopy": "Copy link",
+    "shareCopied": "Link copied",
+    "shareEmail": "Email",
+    "toolsL": "Tools",
+    "skillsL": "Skills",
+    "videoNote": "Video slide, add your media file to the site folder",
+    "devL": "Skills developed",
+    "cvPickTitle": "Download my CV",
+    "cvPickEs": "Download CV in Spanish",
+    "cvPickEn": "Download CV in English",
+    "cvPickFr": "Download CV in French",
+    "cvL": "Download CV",
+    "homeL": "Portfolio",
+    "nextL": "Next project",
+    "role": "Chemical Engineering student · Available for internships",
+    "nextT": "Portfolio",
+    "kicker": "Opening project · ENSIC × Collège Grandville · 2026",
+    "title": "EscapeScience · Educational Escape Game",
+    "lede": "An educational escape game built with five other ENSIC students for the final year pupils of the Collège Grandville in Liverdun, where eight scientific challenges strung along a journey through time replaced the last weeks of revision before the Brevet.",
+    "metaYear": "2025 – 2026",
+    "metaDur": "8 months",
+    "metaPlace": "Collège Grandville, Liverdun",
+    "kpiN1": "120 pupils",
+    "kpi1": "in 30 groups, welcomed over five days of animation with one hour per group",
+    "kpiN2": "8 challenges",
+    "kpi2": "one per chapter of the syllabus, from Prehistory to contemporary Formula 1",
+    "s1": "Context",
+    "s2": "Project management",
+    "s3": "Challenges and supports",
+    "s4": "Deployment",
+    "s5": "Results",
+    "s6": "What it taught me",
+    "d1t": "Technical and academic",
+    "d2t": "Project and cost management",
+    "d3t": "Leadership and communication",
+    "d4t": "Adaptability and problem solving",
+    "devLede": "What the project built in me, beyond the game itself.",
+    "closeK": "Outcome",
+    "closeT": "Eight scientific challenges designed, printed and run for 120 pupils across five days, inside a spend of 902,62 €, with the posters still hanging in the physics room.",
+    "t1": "The project came out of a request from the Collège Grandville in Liverdun, where the physics and chemistry teacher was looking for a way to make the last weeks of revision before the Brevet less repetitive. Under the supervision of our ENSIC tutor, six of us took the brief and turned it into an educational escape game for the 120 pupils of the final year, split into thirty groups with one hour each to get through the whole course.",
+    "t2": "We ran the eight months as a managed project rather than as a school assignment. The objectives were written in SMART form, the work was cut into lots going from framing to deployment, the responsibilities were spread with a RACI matrix, and the calendar was held in a Gantt chart of five phases, from the choice of the theme in October 2025 to the final presentation in June 2026. Every member owned one dimension of the project, coordination, scenario, scientific puzzles, material and logistics, testing, and for my part communication and documentation.",
+    "t3": "The scenario put the pupils in a research laboratory where an experiment goes wrong and throws them across time. Eight challenges brought them home, one per chapter of the physics and chemistry syllabus, each anchored in a period running from Prehistory to contemporary Formula 1 and each producing a coded answer that opened the next box. Every challenge received three printed supports, an A4 statement sheet, a large A1 resource sheet on PVC and a laminated A3 code sheet, twenty-four posters in all designed on Canva, plus props chosen to make the notion tangible, a Saturn V model for Apollo 11, an astronomical telescope for Galileo, a radio and a telephone for the 1990s, an iron helmet borrowed from the Musée de l'Histoire du Fer for chemical transformations and an acacia log for matter.",
+    "t4": "The deployment took the shape of five days of animation at the collège on 5, 6, 7, 11 and 12 May 2026, eight slots a day and thirty slots in all, each one run by a pair of students. A teaser video shown in class announced the event, decorative posters dressed the corridor and a shared spreadsheet centralised the performance of the thirty groups through the week. The material was installed collectively on the evening of 4 May, and the whole thing was presented to parents during the open day of the collège on 22 May.",
+    "t5": "Every planned deliverable was produced and the calendar held. The final spend came to 902,62 €, under the 1 000 € envelope of the framing note, with the professional printing of the posters alone at 367,39 €, and the whole amount was financed by the Foyer Socio-Éducatif of the collège, which accepted the request on the day it was sent. The teaching team, the pupils and the parents received the activity well, the six of us logged 696 hours of work, and the posters stayed at the collège, where they now serve as permanent visual support in the physics room.",
+    "t6": "Not everything held its first shape. Several puzzles turned out harder than expected during the internal tests and had to be simplified and reformulated with the tutor so that a group could still finish inside the hour. Because the activity took place earlier than planned, some chapters had not been covered in class yet, so we wrote extra clues and stayed close to the groups that needed them.",
+    "t7": "The material side taught the same lesson. Part of the decoration arrived later than promised, which ate into the time left for the final rehearsal, and several activities were redesigned around equipment we could borrow or already had rather than around equipment we would have liked. Coordinating six availabilities over eight months was the quiet difficulty of the project, and the weekly meetings were what kept it moving.",
+    "tool1": "Canva",
+    "tool2": "Gantt chart",
+    "tool3": "SMART and RACI",
+    "tool4": "Google Sheets",
+    "sk1": "Project management",
+    "sk2": "Gantt planning",
+    "sk3": "Budget and funding",
+    "sk4": "Pedagogical design",
+    "sk5": "Science communication",
+    "sk6": "Team of six",
+    "sk7": "Client relations",
+    "sk8": "Testing and iteration",
+    "sk9": "Logistics and material",
+    "sk10": "Public animation",
+    "d1a": "Turning syllabus notions into puzzles a fourteen year old can solve in a few minutes.",
+    "d1b": "Scientific accuracy checked against the official programme and validated by the teacher.",
+    "d1c": "Popularisation treated as a discipline, where the difficulty sits in the wording and not in the content.",
+    "d2a": "SMART objectives, work packages, RACI matrix and a Gantt chart followed over eight months.",
+    "d2b": "A spend of 902,62 € tracked line by line and kept under the planned envelope.",
+    "d2c": "Funding obtained from the Foyer Socio-Éducatif, with quotes compared in Nancy and invoices filed.",
+    "d3a": "Communication and documentation of the project, from the teaser video to the final report.",
+    "d3b": "Regular contact with the teacher and the tutor to validate every version of the challenges.",
+    "d3c": "Public presentation of the game to parents during the open day of the collège.",
+    "d4a": "Puzzles simplified after testing to match the real level of the pupils.",
+    "d4b": "Activities redesigned around the material actually available.",
+    "d4c": "Late deliveries absorbed without moving a single day of the deployment."
+  },
+  "fr": {
+    "back": "Accueil",
+    "projL": "Retour aux projets",
+    "contactLabel": "Contact",
+    "shareLabel": "Partager",
+    "shareMore": "Partager",
+    "shareTitle": "Partager ce projet",
+    "shareCopy": "Copier le lien",
+    "shareCopied": "Lien copié",
+    "shareEmail": "E-mail",
+    "toolsL": "Outils",
+    "skillsL": "Compétences",
+    "videoNote": "Vidéo, ajoutez votre fichier au dossier du site",
+    "devL": "Compétences développées",
+    "cvPickTitle": "Télécharger mon CV",
+    "cvPickEs": "Télécharger le CV en espagnol",
+    "cvPickEn": "Télécharger le CV en anglais",
+    "cvPickFr": "Télécharger le CV en français",
+    "cvL": "Télécharger le CV",
+    "homeL": "Portfolio",
+    "nextL": "Projet suivant",
+    "role": "Étudiant en génie chimique · Disponible pour un stage",
+    "nextT": "Portfolio",
+    "kicker": "Projet d'ouverture · ENSIC × Collège Grandville · 2026",
+    "title": "EscapeScience · Escape game pédagogique",
+    "lede": "Un escape game pédagogique construit avec cinq autres étudiants de l'ENSIC pour les élèves de 3e du Collège Grandville à Liverdun, où huit défis scientifiques enfilés sur un voyage dans le temps ont remplacé les dernières semaines de révision avant le Brevet.",
+    "metaYear": "2025 – 2026",
+    "metaDur": "8 mois",
+    "metaPlace": "Collège Grandville, Liverdun",
+    "kpiN1": "120 élèves",
+    "kpi1": "en 30 groupes, accueillis sur cinq journées d'animation avec une heure par groupe",
+    "kpiN2": "8 défis",
+    "kpi2": "un par chapitre du programme, de la Préhistoire à la Formule 1 contemporaine",
+    "s1": "Contexte",
+    "s2": "Gestion de projet",
+    "s3": "Défis et supports",
+    "s4": "Déploiement",
+    "s5": "Résultats",
+    "s6": "Ce que le projet m'a appris",
+    "d1t": "Technique et académique",
+    "d2t": "Gestion de projet et des coûts",
+    "d3t": "Leadership et communication",
+    "d4t": "Adaptabilité et résolution de problèmes",
+    "devLede": "Ce que le projet a construit chez moi, au-delà du jeu lui-même.",
+    "closeK": "Résultat",
+    "closeT": "Huit défis scientifiques conçus, imprimés et animés pour 120 élèves sur cinq journées, pour une dépense de 902,62 €, avec les affiches toujours accrochées dans la salle de physique.",
+    "t1": "Le projet est né d'une demande du Collège Grandville à Liverdun, où le professeur de physique-chimie cherchait à rendre moins répétitives les dernières semaines de révision avant le Brevet. Sous la supervision de notre tutrice de l'ENSIC, nous avons été six à reprendre la demande pour en faire un escape game pédagogique destiné aux 120 élèves de 3e, répartis en trente groupes disposant chacun d'une heure pour parcourir l'ensemble du programme.",
+    "t2": "Nous avons mené ces huit mois comme un projet géré et non comme un devoir. Les objectifs ont été écrits sous forme SMART, le travail découpé en lots allant du cadrage au déploiement, les responsabilités réparties par une matrice RACI, et le calendrier tenu dans un diagramme de Gantt en cinq phases, du choix du thème en octobre 2025 à la présentation finale en juin 2026. Chaque membre portait une dimension du projet, coordination, scénario, énigmes scientifiques, matériel et logistique, tests, et pour ma part communication et documentation.",
+    "t3": "Le scénario plaçait les élèves dans un laboratoire de recherche où une expérience dérape et les projette à travers le temps. Huit défis les ramenaient à leur époque, un par chapitre du programme de physique-chimie, chacun ancré dans une période allant de la Préhistoire à la Formule 1 contemporaine et chacun produisant un code qui ouvrait la boîte suivante. Chaque défi a reçu trois supports imprimés, une fiche d'énoncé A4, une grande fiche ressource A1 sur PVC et une fiche code A3 plastifiée, soit vingt-quatre affiches conçues sur Canva, complétées par des accessoires choisis pour rendre la notion tangible, une maquette de Saturn V pour Apollo 11, une lunette astronomique pour Galilée, une radio et un téléphone pour les années 1990, un casque en fer emprunté au Musée de l'Histoire du Fer pour les transformations chimiques et une bûche en acacia pour la matière.",
+    "t4": "Le déploiement a pris la forme de cinq journées d'animation au collège les 5, 6, 7, 11 et 12 mai 2026, huit créneaux par jour et trente créneaux au total, chacun encadré par un binôme d'étudiants. Une vidéo teaser diffusée en classe a annoncé l'événement, des affiches décoratives ont habillé le couloir et un tableur partagé a centralisé les performances des trente groupes tout au long de la semaine. Le matériel a été installé collectivement le 4 mai au soir, et le dispositif a été présenté aux parents lors des portes ouvertes du collège le 22 mai.",
+    "t5": "Tous les livrables prévus ont été produits et le calendrier a tenu. La dépense finale s'est élevée à 902,62 €, sous l'enveloppe de 1 000 € fixée dans la note de cadrage, avec l'impression professionnelle des affiches à elle seule à 367,39 €, et l'ensemble a été financé par le Foyer Socio-Éducatif du collège, qui a accepté la demande le jour même de son envoi. L'équipe pédagogique, les élèves et les parents ont bien accueilli l'activité, les six membres ont cumulé 696 heures de travail, et les affiches sont restées au collège, où elles servent désormais de support visuel permanent dans la salle de physique.",
+    "t6": "Tout n'a pas gardé sa forme initiale. Plusieurs énigmes se sont révélées plus difficiles que prévu lors des tests internes et ont dû être simplifiées et reformulées avec le tuteur pour qu'un groupe puisse encore terminer dans l'heure. L'activité ayant eu lieu plus tôt que prévu, certains chapitres n'avaient pas encore été traités en classe, nous avons donc écrit des indices supplémentaires et accompagné de près les groupes qui en avaient besoin.",
+    "t7": "Le volet matériel a enseigné la même leçon. Une partie de la décoration est arrivée plus tard que promis, ce qui a réduit le temps restant pour la répétition finale, et plusieurs activités ont été repensées autour du matériel que nous pouvions emprunter ou dont nous disposions déjà plutôt qu'autour de celui que nous aurions souhaité. Coordonner six disponibilités sur huit mois a été la difficulté discrète du projet, et les réunions hebdomadaires sont ce qui l'a fait avancer.",
+    "tool1": "Canva",
+    "tool2": "Diagramme de Gantt",
+    "tool3": "SMART et RACI",
+    "tool4": "Google Sheets",
+    "sk1": "Gestion de projet",
+    "sk2": "Planification Gantt",
+    "sk3": "Budget et financement",
+    "sk4": "Conception pédagogique",
+    "sk5": "Vulgarisation scientifique",
+    "sk6": "Équipe de six",
+    "sk7": "Relation client",
+    "sk8": "Tests et itération",
+    "sk9": "Logistique et matériel",
+    "sk10": "Animation devant public",
+    "d1a": "Transformer des notions du programme en énigmes qu'un élève de quatorze ans résout en quelques minutes.",
+    "d1b": "Rigueur scientifique vérifiée face au programme officiel et validée par le professeur.",
+    "d1c": "Vulgarisation traitée comme une discipline, où la difficulté tient à la formulation et non au contenu.",
+    "d2a": "Objectifs SMART, lots de travail, matrice RACI et diagramme de Gantt suivis sur huit mois.",
+    "d2b": "Une dépense de 902,62 € suivie ligne par ligne et maintenue sous l'enveloppe prévue.",
+    "d2c": "Financement obtenu auprès du Foyer Socio-Éducatif, devis comparés à Nancy et factures transmises.",
+    "d3a": "Communication et documentation du projet, de la vidéo teaser au rapport final.",
+    "d3b": "Contact régulier avec le professeur et la tutrice pour valider chaque version des défis.",
+    "d3c": "Présentation publique du jeu aux parents lors des portes ouvertes du collège.",
+    "d4a": "Énigmes simplifiées après les tests pour coller au niveau réel des élèves.",
+    "d4b": "Activités repensées autour du matériel réellement disponible.",
+    "d4c": "Livraisons tardives absorbées sans déplacer un seul jour de déploiement."
+  },
+  "es": {
+    "back": "Inicio",
+    "projL": "Volver a proyectos",
+    "contactLabel": "Contacto",
+    "shareLabel": "Compartir",
+    "shareMore": "Compartir",
+    "shareTitle": "Comparte este proyecto",
+    "shareCopy": "Copiar enlace",
+    "shareCopied": "Enlace copiado",
+    "shareEmail": "Correo",
+    "toolsL": "Herramientas",
+    "skillsL": "Habilidades",
+    "videoNote": "Video, añade tu archivo a la carpeta del sitio",
+    "devL": "Habilidades desarrolladas",
+    "cvPickTitle": "Descargar mi CV",
+    "cvPickEs": "Descargar CV en español",
+    "cvPickEn": "Descargar CV en inglés",
+    "cvPickFr": "Descargar CV en francés",
+    "cvL": "Descargar CV",
+    "homeL": "Portafolio",
+    "nextL": "Siguiente proyecto",
+    "role": "Estudiante de Ingeniería Química · Disponible para prácticas",
+    "nextT": "Portafolio",
+    "kicker": "Proyecto de apertura · ENSIC × Collège Grandville · 2026",
+    "title": "EscapeScience · Escape game pedagógico",
+    "lede": "Un escape game pedagógico construido con otros cinco estudiantes de la ENSIC para los alumnos de 3e del Collège Grandville en Liverdun, donde ocho desafíos científicos enlazados en un viaje por el tiempo sustituyeron las últimas semanas de repaso antes del Brevet.",
+    "metaYear": "2025 – 2026",
+    "metaDur": "8 meses",
+    "metaPlace": "Collège Grandville, Liverdun",
+    "kpiN1": "120 alumnos",
+    "kpi1": "en 30 grupos, recibidos en cinco jornadas de animación con una hora por grupo",
+    "kpiN2": "8 desafíos",
+    "kpi2": "uno por capítulo del programa, de la Prehistoria a la Fórmula 1 contemporánea",
+    "s1": "Contexto",
+    "s2": "Gestión del proyecto",
+    "s3": "Desafíos y soportes",
+    "s4": "Despliegue",
+    "s5": "Resultados",
+    "s6": "Lo que me dejó el proyecto",
+    "d1t": "Técnicas y académicas",
+    "d2t": "Gestión de proyecto y costos",
+    "d3t": "Liderazgo y comunicación",
+    "d4t": "Adaptabilidad y solución de problemas",
+    "devLede": "Lo que el proyecto construyó en mí, más allá del juego.",
+    "closeK": "Resultado",
+    "closeT": "Ocho desafíos científicos diseñados, impresos y animados para 120 alumnos durante cinco jornadas, con un gasto de 902,62 €, y afiches que siguen colgados en la sala de física.",
+    "t1": "El proyecto nació de una petición del Collège Grandville de Liverdun, donde el profesor de física y química buscaba una forma de hacer menos repetitivas las últimas semanas de repaso antes del Brevet. Bajo la supervisión de nuestra tutora de la ENSIC, fuimos seis quienes tomamos el encargo y lo convertimos en un escape game pedagógico para los 120 alumnos de 3e, repartidos en treinta grupos con una hora cada uno para recorrer todo el programa.",
+    "t2": "Llevamos esos ocho meses como un proyecto gestionado y no como un trabajo de clase. Los objetivos se escribieron en forma SMART, el trabajo se dividió en lotes que iban del encuadre al despliegue, las responsabilidades se repartieron con una matriz RACI y el calendario se sostuvo en un diagrama de Gantt de cinco fases, desde la elección del tema en octubre de 2025 hasta la presentación final en junio de 2026. Cada integrante llevaba una dimensión del proyecto, coordinación, guion, enigmas científicos, material y logística, pruebas, y en mi caso comunicación y documentación.",
+    "t3": "El guion situaba a los alumnos en un laboratorio de investigación donde un experimento se descontrola y los lanza a través del tiempo. Ocho desafíos los traían de vuelta, uno por capítulo del programa de física y química, cada uno anclado en una época que iba de la Prehistoria a la Fórmula 1 contemporánea y cada uno produciendo un código que abría la caja siguiente. Cada desafío recibió tres soportes impresos, una ficha de enunciado A4, una ficha de recursos A1 en PVC y una ficha de código A3 plastificada, veinticuatro afiches en total diseñados en Canva, más objetos escogidos para hacer tangible la noción, una maqueta del Saturn V para el Apolo 11, un telescopio para Galileo, una radio y un teléfono para los años noventa, un casco de hierro prestado por el Musée de l'Histoire du Fer para las transformaciones químicas y un tronco de acacia para la materia.",
+    "t4": "El despliegue tomó la forma de cinco jornadas de animación en el colegio los días 5, 6, 7, 11 y 12 de mayo de 2026, ocho turnos por día y treinta turnos en total, cada uno conducido por una pareja de estudiantes. Un video teaser proyectado en clase anunció el evento, afiches decorativos vistieron el pasillo y una hoja de cálculo compartida centralizó el desempeño de los treinta grupos durante toda la semana. El material se instaló de forma colectiva la tarde del 4 de mayo, y el dispositivo se presentó a los padres en la jornada de puertas abiertas del colegio el 22 de mayo.",
+    "t5": "Todos los entregables previstos se produjeron y el calendario se respetó. El gasto final fue de 902,62 €, por debajo del sobre de 1 000 € fijado en la nota de encuadre, con la impresión profesional de los afiches en 367,39 €, y la totalidad la financió el Foyer Socio-Éducatif del colegio, que aceptó la solicitud el mismo día en que se envió. El equipo docente, los alumnos y los padres recibieron bien la actividad, entre los seis acumulamos 696 horas de trabajo, y los afiches se quedaron en el colegio, donde hoy sirven de apoyo visual permanente en la sala de física.",
+    "t6": "No todo mantuvo su forma inicial. Varios enigmas resultaron más difíciles de lo previsto en las pruebas internas y hubo que simplificarlos y reformularlos con el tutor para que un grupo pudiera terminar dentro de la hora. Como la actividad se adelantó, algunos capítulos aún no se habían visto en clase, así que escribimos pistas adicionales y acompañamos de cerca a los grupos que lo necesitaban.",
+    "t7": "El lado material enseñó la misma lección. Parte de la decoración llegó más tarde de lo prometido, lo que redujo el tiempo disponible para el ensayo final, y varias actividades se rediseñaron alrededor del material que podíamos pedir prestado o que ya teníamos y no del que hubiéramos querido. Coordinar seis disponibilidades durante ocho meses fue la dificultad silenciosa del proyecto, y las reuniones semanales fueron lo que lo mantuvo en marcha.",
+    "tool1": "Canva",
+    "tool2": "Diagrama de Gantt",
+    "tool3": "SMART y RACI",
+    "tool4": "Google Sheets",
+    "sk1": "Gestión de proyecto",
+    "sk2": "Planificación Gantt",
+    "sk3": "Presupuesto y financiación",
+    "sk4": "Diseño pedagógico",
+    "sk5": "Divulgación científica",
+    "sk6": "Equipo de seis",
+    "sk7": "Relación con el cliente",
+    "sk8": "Pruebas e iteración",
+    "sk9": "Logística y material",
+    "sk10": "Animación ante público",
+    "d1a": "Convertir nociones del programa en enigmas que un alumno de catorce años resuelve en pocos minutos.",
+    "d1b": "Rigor científico contrastado con el programa oficial y validado por el profesor.",
+    "d1c": "Divulgación tratada como disciplina, donde la dificultad está en la redacción y no en el contenido.",
+    "d2a": "Objetivos SMART, lotes de trabajo, matriz RACI y diagrama de Gantt seguidos durante ocho meses.",
+    "d2b": "Un gasto de 902,62 € seguido línea por línea y mantenido bajo el sobre previsto.",
+    "d2c": "Financiación obtenida del Foyer Socio-Éducatif, con presupuestos comparados en Nancy y facturas entregadas.",
+    "d3a": "Comunicación y documentación del proyecto, del video teaser al informe final.",
+    "d3b": "Contacto regular con el profesor y la tutora para validar cada versión de los desafíos.",
+    "d3c": "Presentación pública del juego a los padres en las puertas abiertas del colegio.",
+    "d4a": "Enigmas simplificados tras las pruebas para ajustarse al nivel real de los alumnos.",
+    "d4b": "Actividades rediseñadas alrededor del material realmente disponible.",
+    "d4c": "Entregas tardías absorbidas sin mover un solo día del despliegue."
+  }
+};
+
+class Component extends DCLogic {
+  state = { lang: storedLang("en"), cvOpen: false, shareOpen: false, copied: false, gA: 0, gB: 0, fills: {}, vids: {}, extraA: 0, extraB: 0, hidden: storedHidden(), nFilled: -1, order: storedOrder(), blobs: {}, pending: storedPending() };
+  editor = false;
+  galA = React.createRef();
+  galB = React.createRef();
+  fileA = React.createRef();
+  fileB = React.createRef();
+
+  goSlide(which, i) { this.glideTo(which, i); }
+
+  frameCount(which) {
+    const el = which === "A" ? this.galA.current : this.galB.current;
+    if (!el) return 1;
+    const w = el.clientWidth || 1;
+    return Math.max(1, Math.round(el.scrollWidth / w));
+  }
+
+  // The index the strip is on or heading to. Never derived from a partial
+  // scroll offset, so a gesture can only ever move one frame.
+  liveIndex(which) {
+    const p = this["_pend" + which];
+    if (p != null) return p;
+    return which === "A" ? this.state.gA : this.state.gB;
+  }
+
+  // Single easeOutCubic glide for arrows, dots and the release of a swipe.
+  glideTo(which, i) {
+    const el = which === "A" ? this.galA.current : this.galB.current;
+    if (!el) return;
+    const w = el.clientWidth || 1;
+    const from = el.scrollLeft, dist = i * w - from;
+    this["_pend" + which] = i;
+    this["_lock" + which] = true;
+    if (this["_raf" + which]) cancelAnimationFrame(this["_raf" + which]);
+    if (Math.abs(dist) < 1) { this.settleAt(which, i); return; }
+    const dur = 280;
+    const t0 = performance.now();
+    const step = now => {
+      const p = Math.min(1, (now - t0) / dur);
+      el.scrollLeft = from + dist * (1 - Math.pow(1 - p, 3));
+      if (p < 1) this["_raf" + which] = requestAnimationFrame(step);
+      else { this["_raf" + which] = 0; this.settleAt(which, i); }
+    };
+    this["_raf" + which] = requestAnimationFrame(step);
+    clearTimeout(this["_gt2" + which]);
+    this["_gt2" + which] = setTimeout(() => {
+      if (!this["_raf" + which]) return;
+      cancelAnimationFrame(this["_raf" + which]);
+      this["_raf" + which] = 0;
+      this.settleAt(which, i);
+    }, dur + 220);
+  }
+
+  settleAt(which, i) {
+    const el = which === "A" ? this.galA.current : this.galB.current;
+    if (el) el.scrollLeft = i * (el.clientWidth || 1);
+    this["_pend" + which] = null;
+    clearTimeout(this["_gt2" + which]);
+    clearTimeout(this["_lt" + which]);
+    this["_lt" + which] = setTimeout(() => { this["_lock" + which] = false; }, 90);
+    this.setState(which === "A" ? { gA: i } : { gB: i });
+    this.autoPlay(which);
+  }
+
+  curIndex(which) {
+    return Math.max(0, this.liveIndex(which));
+  }
+
+  slotFilled(id) {
+    const el = document.getElementById(id);
+    if (!el || !el.shadowRoot) return false;
+    const img = el.shadowRoot.querySelector("img");
+    return !!(img && img.getAttribute("src"));
+  }
+
+  poolIds(pool) {
+    const out = [];
+    for (let i = 1; i <= 8; i++) out.push(SLUG + "-" + pool + i);
+    return out;
+  }
+
+  videoKeys(vgroup) {
+    const out = [];
+    for (let n = 1; n <= 4; n++) out.push(SLUG + "-" + vgroup + "-v" + n);
+    return out;
+  }
+
+  pickVideo(which) {
+    const vgroup = which === "A" ? "a" : "b";
+    const back = this.videoKeys(vgroup).find(k => this.state.hidden[k] && (this.state.vids[k] || this.state.blobs[k]));
+    if (back) { this.unhide(back); return; }
+    const free = this.videoKeys(vgroup).find(k => !this.state.vids[k] && !this.state.blobs[k]);
+    if (!free) return;
+    if (this.state.hidden[free]) { this.unhide(free); return; }
+    const el = which === "A" ? this.fileA.current : this.fileB.current;
+    if (el) el.click();
+  }
+
+  onFile(which, ev) {
+    const file = ev.target && ev.target.files && ev.target.files[0];
+    if (!file) return;
+    const vgroup = which === "A" ? "a" : "b";
+    const keys = this.videoKeys(vgroup);
+    const slot = keys.find(k => !this.state.vids[k] && !this.state.blobs[k]);
+    if (!slot) return;
+    const url = URL.createObjectURL(file);
+    this.setState(s => {
+      const nb = Object.assign({}, s.blobs);
+      nb[slot] = { url: url, name: file.name };
+      const hid = Object.assign({}, s.hidden);
+      delete hid[slot];
+      saveHidden(hid);
+      const pend = Object.assign({}, s.pending);
+      pend[slot] = file.name;
+      savePending(pend);
+      return { blobs: nb, hidden: hid, pending: pend };
+    });
+    ev.target.value = "";
+  }
+
+  // Every frame moves, photo, video and the still empty boxes alike.
+  reorder(which, dir) {
+    const fr = which === "A" ? this._frA : this._frB;
+    if (!fr || fr.length < 2) return;
+    const i = Math.min(this.curIndex(which), fr.length - 1), j = i + dir;
+    if (j < 0 || j >= fr.length) return;
+    const keys = fr.map(x => x.key);
+    keys.splice(j, 0, keys.splice(i, 1)[0]);
+    const gkey = SLUG + "-" + (which === "A" ? "a" : "b");
+    this.setState(s => {
+      const ord = Object.assign({}, s.order);
+      ord[gkey] = keys;
+      saveOrder(ord);
+      const nx = { order: ord };
+      if (which === "A") nx.gA = j; else nx.gB = j;
+      return nx;
+    }, () => this.glideTo(which, j));
+  }
+
+  addFrame(which) {
+    const pool = which === "A" ? "a" : "g";
+    const back = this.poolIds(pool).find(id => this.state.hidden[id]);
+    if (back) { this.unhide(back); return; }
+    this.setState(s => (which === "A" ? { extraA: s.extraA + 1 } : { extraB: s.extraB + 1 }));
+  }
+
+  delFrame(which) {
+    const fr = which === "A" ? this._frA : this._frB;
+    const cur = this.curIndex(which);
+    const fx = fr && fr[Math.min(cur, fr.length - 1)];
+    if (!fx) return;
+    if (fx.kind === "empty") {
+      this.setState(s => {
+        const hid = Object.assign({}, s.hidden);
+        hid[fx.id] = true;
+        saveHidden(hid);
+        const nx = { hidden: hid };
+        nx[which === "A" ? "extraA" : "extraB"] = Math.max(0, (which === "A" ? s.extraA : s.extraB) - 1);
+        if (which === "A") nx.gA = Math.max(0, cur - 1); else nx.gB = Math.max(0, cur - 1);
+        return nx;
+      });
+      return;
+    }
+    if (fx.kind === "hint") {
+      const vgroup = which === "A" ? "a" : "b";
+      this.setState(s => {
+        const hid = Object.assign({}, s.hidden);
+        for (const v of this.videoKeys(vgroup)) if (!s.vids[v] && !s.blobs[v]) hid[v] = true;
+        saveHidden(hid);
+        const pend = Object.assign({}, s.pending);
+        delete pend[fx.key];
+        savePending(pend);
+        const nx = { hidden: hid, pending: pend };
+        if (which === "A") nx.gA = Math.max(0, cur - 1); else nx.gB = Math.max(0, cur - 1);
+        return nx;
+      });
+      return;
+    }
+    if (fx.kind === "vid") {
+      this.setState(s => {
+        const hid = Object.assign({}, s.hidden);
+        const nb = Object.assign({}, s.blobs);
+        if (nb[fx.key]) delete nb[fx.key]; else hid[fx.key] = true;
+        saveHidden(hid);
+        const pend = Object.assign({}, s.pending);
+        delete pend[fx.key];
+        savePending(pend);
+        const nx = { hidden: hid, blobs: nb, pending: pend };
+        if (which === "A") nx.gA = Math.max(0, cur - 1); else nx.gB = Math.max(0, cur - 1);
+        return nx;
+      });
+      return;
+    }
+    if (fx.kind !== "img") return;
+    this.setState(s => {
+      const hid = Object.assign({}, s.hidden);
+      hid[fx.id] = true;
+      saveHidden(hid);
+      const nx = { hidden: hid };
+      if (which === "A") nx.gA = Math.max(0, cur - 1); else nx.gB = Math.max(0, cur - 1);
+      return nx;
+    });
+    this.dropImage(fx.id);
+  }
+
+  dropImage(id) {
+    const el = document.getElementById(id);
+    if (el) el.removeAttribute("src");
+    const w = window.omelette && window.omelette.writeFile;
+    if (!w) return;
+    fetch(".image-slots.state.json?cb=" + Date.now())
+      .then(r => (r.ok ? r.json() : {}))
+      .then(data => {
+        const next = Object.assign({}, data || {});
+        delete next[id];
+        return w(".image-slots.state.json", JSON.stringify(next));
+      })
+      .catch(() => {});
+  }
+
+  unhide(id) {
+    if (!this.state.hidden[id]) return;
+    this.setState(s => {
+      const hid = Object.assign({}, s.hidden);
+      delete hid[id];
+      saveHidden(hid);
+      return { hidden: hid };
+    });
+  }
+
+  frames(pool, vgroup, extra) {
+    const ids = this.poolIds(pool);
+    const live = [];
+    for (const id of ids) {
+      if (this.state.fills[id] && !this.state.hidden[id]) live.push({ kind: "img", n: ids.indexOf(id) + 1, id: id, key: id });
+    }
+    for (const [n, v] of this.videoKeys(vgroup).entries()) {
+      const blob = this.state.blobs[v];
+      if (!blob && !this.state.vids[v]) continue;
+      if (this.state.hidden[v]) continue;
+      live.push({ kind: "vid", n: n + 1, key: v, src: blob ? blob.url : "media/" + SLUG + "/" + v + ".mp4" });
+    }
+    const savedKeys = this.state.order[SLUG + "-" + (pool === "a" ? "a" : "b")] || [];
+    if (!this.editor) {
+      for (const [n, v] of this.videoKeys(vgroup).entries()) {
+        if (this.state.vids[v] || this.state.blobs[v] || this.state.hidden[v]) continue;
+        if (savedKeys.indexOf(v) < 0) continue;
+        live.push({ kind: "wait", n: n + 1, key: v });
+      }
+    }
+    const nReal = live.length;
+    if (this.editor) {
+      const freeVid = this.videoKeys(vgroup).find(v => !this.state.vids[v] && !this.state.blobs[v] && !this.state.hidden[v]);
+      if (freeVid) {
+        const pend = this.state.pending[freeVid];
+        live.push({
+          kind: "hint",
+          n: this.videoKeys(vgroup).indexOf(freeVid) + 1,
+          key: freeVid,
+          name: pend ? pend + " → media/" + SLUG + "/" + freeVid + ".mp4" : "media/" + SLUG + "/" + freeVid + ".mp4"
+        });
+      }
+    }
+    if (this.editor) {
+      let empties = (nReal ? 0 : 1) + (extra || 0);
+      for (const id of ids) {
+        if (empties <= 0) break;
+        if (this.state.fills[id] || this.state.hidden[id]) continue;
+        live.push({ kind: "empty", n: ids.indexOf(id) + 1, id: id, key: id });
+        empties--;
+      }
+    }
+    const saved = this.state.order[SLUG + "-" + (pool === "a" ? "a" : "b")];
+    if (Array.isArray(saved)) {
+      live.sort((x, y) => {
+        const a = saved.indexOf(x.key), b = saved.indexOf(y.key);
+        return (a < 0 ? 999 : a) - (b < 0 ? 999 : b);
+      });
+    }
+    return live;
+  }
+
+  step(which, d, n) {
+    if (!n || n < 2) return;
+    const cur = this.curIndex(which);
+    this.goSlide(which, (cur + d + n) % n);
+  }
+
+  galScroll(which) {
+    if (this["_lock" + which]) return;
+    const key = "_gt" + which;
+    clearTimeout(this[key]);
+    this[key] = setTimeout(() => {
+      const el = which === "A" ? this.galA.current : this.galB.current;
+      if (!el || !el.clientWidth) return;
+      const i = Math.max(0, Math.round(el.scrollLeft / el.clientWidth));
+      const cur = which === "A" ? this.state.gA : this.state.gB;
+      if (i !== cur) this.setState(which === "A" ? { gA: i } : { gB: i });
+    }, 90);
+  }
+
+  url() { return (typeof location !== "undefined" && location.href) || ""; }
+  setLang(l) {
+    try { localStorage.setItem("jfg-lang", l); } catch (e) {}
+    this.setState({ lang: l });
+  }
+  native() {
+    if (navigator.share) {
+      navigator.share({ title: document.title || "Project", url: this.url() }).catch(() => {});
+    } else { this.copy(); }
+  }
+  pop(u) { window.open(u, "_blank", "noopener,noreferrer,width=600,height=640"); }
+  copy() {
+    const done = () => {
+      this.setState({ copied: true });
+      clearTimeout(this._ct);
+      this._ct = setTimeout(() => this.setState({ copied: false }), 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(this.url()).then(done).catch(done);
+    } else { done(); }
+  }
+
+  // Own the horizontal swipe instead of relying on native touch scrolling:
+  // any component inside a frame (the image viewer, for one) can set
+  // touch-action and kill the gesture, so the strip is dragged by hand.
+  // A touch on the bottom strip of a video belongs to the native controls
+  // (scrub bar, volume); everywhere else on the video is swipe territory.
+  onVideoControls(t) {
+    const v = t && t.target && t.target.closest && t.target.closest("video");
+    if (!v) return false;
+    return t.clientY > v.getBoundingClientRect().bottom - 56;
+  }
+
+  // Trackpads and horizontal mouse wheels: one gesture, one frame.
+  bindWheel(which) {
+    const el = which === "A" ? this.galA.current : this.galB.current;
+    if (!el || el._wheelBound) return;
+    el._wheelBound = true;
+    let acc = 0, cool = false;
+    el.addEventListener("wheel", e => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      if (cool) return;
+      acc += e.deltaX;
+      if (Math.abs(acc) < 30) return;
+      const n = this.frameCount(which);
+      const i = Math.max(0, Math.min(n - 1, this.liveIndex(which) + (acc > 0 ? 1 : -1)));
+      acc = 0; cool = true;
+      clearTimeout(this["_wc" + which]);
+      this["_wc" + which] = setTimeout(() => { cool = false; acc = 0; }, 420);
+      this.glideTo(which, i);
+    }, { passive: false });
+  }
+
+  // Landing on a video starts it; landing elsewhere leaves it paused.
+  autoPlay(which) {
+    const el = which === "A" ? this.galA.current : this.galB.current;
+    if (!el) return;
+    const w = el.clientWidth || 1;
+    const cur = Math.round(el.scrollLeft / w);
+    if (this["_ap" + which] === cur) return;
+    this["_ap" + which] = cur;
+    for (const v of el.querySelectorAll("video")) {
+      const fr = v.closest(".gs");
+      const at = fr ? (parseInt(getComputedStyle(fr).order, 10) || 0) : 0;
+      if (at !== cur) continue;
+      const p = v.play();
+      if (p && p.catch) p.catch(() => { v.muted = true; const q = v.play(); if (q && q.catch) q.catch(() => {}); });
+    }
+  }
+
+  // The strip has overflow hidden and touch-action pan-y, so the browser
+  // never scrolls it: the drag is ours from the first pixel and momentum
+  // can never carry past one frame. Follow the finger, commit on release,
+  // and move at most one frame, in the direction of the swipe.
+  bindSwipe(which) {
+    const el = which === "A" ? this.galA.current : this.galB.current;
+    if (!el || el._swipeBound) return;
+    el._swipeBound = true;
+    let x0 = 0, y0 = 0, base = 0, idx = 0, n = 1, mode = 0, lastX = 0, lastT = 0, vx = 0;
+    const start = e => {
+      if (e.touches.length !== 1 || this.onVideoControls(e.touches[0])) { mode = 2; return; }
+      if (this["_raf" + which]) { cancelAnimationFrame(this["_raf" + which]); this["_raf" + which] = 0; }
+      clearTimeout(this["_gt2" + which]);
+      const w = el.clientWidth || 1;
+      n = this.frameCount(which);
+      idx = Math.max(0, Math.min(n - 1, this.liveIndex(which)));
+      base = idx * w;
+      el.scrollLeft = base;
+      const t = e.touches[0];
+      x0 = lastX = t.clientX; y0 = t.clientY;
+      lastT = performance.now(); vx = 0; mode = 0;
+    };
+    const move = e => {
+      if (mode === 2 || e.touches.length !== 1) return;
+      const t = e.touches[0], dx = t.clientX - x0, dy = t.clientY - y0;
+      if (mode === 0) {
+        if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+        mode = Math.abs(dx) > Math.abs(dy) ? 1 : 2;
+        if (mode !== 1) return;
+        this["_lock" + which] = true;
+      }
+      e.preventDefault();
+      const now = performance.now(), dt = now - lastT;
+      if (dt > 4) { vx = 0.6 * ((t.clientX - lastX) / dt) + 0.4 * vx; lastX = t.clientX; lastT = now; }
+      // Never expose more than the immediate neighbour in the swipe
+      // direction; past that the drag rubber-bands.
+      const w = el.clientWidth || 1, max = (n - 1) * w;
+      const lo = Math.max(0, Math.min(max, (idx - 1) * w));
+      const hi = Math.max(0, Math.min(max, (idx + 1) * w));
+      let next = base - dx;
+      if (next < lo) next = lo + (next - lo) * 0.3;
+      else if (next > hi) next = hi + (next - hi) * 0.3;
+      el.scrollLeft = next;
+    };
+    const end = e => {
+      if (mode !== 1) { mode = 0; return; }
+      mode = 0;
+      const w = el.clientWidth || 1;
+      const dx = (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : lastX) - x0;
+      const th = w * 0.18;
+      let target = idx;
+      if (dx <= -th || (vx <= -0.25 && dx < -10)) target = idx + 1;
+      else if (dx >= th || (vx >= 0.25 && dx > 10)) target = idx - 1;
+      this.glideTo(which, Math.max(0, Math.min(n - 1, target)));
+    };
+    el.addEventListener("touchstart", start, { passive: true });
+    el.addEventListener("touchmove", move, { passive: false });
+    el.addEventListener("touchend", end);
+    el.addEventListener("touchcancel", end);
+  }
+
+  // Pause immediately on every slide change (the observer below is the
+  // backstop for page scrolling). Pausing keeps currentTime, so swiping
+  // back to a video resumes where it stopped.
+  pauseOffscreen() {
+    for (const el of [this.galA.current, this.galB.current]) {
+      if (!el) continue;
+      const w = el.clientWidth || 1;
+      const cur = Math.round(el.scrollLeft / w);
+      for (const v of el.querySelectorAll("video")) {
+        const frame = v.closest(".gs");
+        const at = frame ? (parseInt(getComputedStyle(frame).order, 10) || 0) : 0;
+        if (at !== cur && !v.paused) v.pause();
+      }
+    }
+  }
+
+  // A video that scrolls out of view pauses and keeps its position, so
+  // swiping back resumes where it stopped.
+  watchVideos() {
+    if (!window.IntersectionObserver) return;
+    if (!this._vio) {
+      this._vio = new IntersectionObserver(entries => {
+        for (const en of entries) if (!en.isIntersecting && !en.target.paused) en.target.pause();
+      }, { threshold: 0.55 });
+      this._vseen = new WeakSet();
+    }
+    for (const v of document.querySelectorAll(".strip video")) {
+      if (this._vseen.has(v)) continue;
+      this._vseen.add(v);
+      this._vio.observe(v);
+    }
+  }
+
+  componentDidMount() {
+    this.flash = () => {
+      const id = (location.hash || "").slice(1);
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el || !el.animate) return;
+      el.animate(
+        [{ opacity: 1 }, { opacity: 0.32, offset: 0.22 }, { opacity: 1 }],
+        { duration: 800, easing: "ease-out" }
+      );
+    };
+    this.onNavClick = e => {
+      const a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const id = a.getAttribute("href").slice(1);
+      if (id && id === (location.hash || "").slice(1)) this.flash();
+    };
+    window.addEventListener("hashchange", this.flash);
+    document.addEventListener("click", this.onNavClick);
+
+    this.scan = () => {
+      const f = {};
+      for (const pool of ["a", "g"]) for (const id of this.poolIds(pool)) f[id] = this.slotFilled(id);
+      const cur = this.state.fills;
+      const n = Object.keys(f).filter(k => f[k]).length;
+      if (Object.keys(f).some(k => f[k] !== cur[k])) {
+        this.setState(s => {
+          const grew = s.nFilled >= 0 ? Math.max(0, n - s.nFilled) : 0;
+          return {
+            fills: f,
+            nFilled: n,
+            extraA: Math.max(0, s.extraA - grew),
+            extraB: Math.max(0, s.extraB - grew)
+          };
+        });
+      }
+    };
+    this.scan();
+    this._si = setInterval(this.scan, 800);
+
+
+    this._probes = [];
+    for (const v of this.videoKeys("a").concat(this.videoKeys("b"))) {
+      const p = document.createElement("video");
+      p.preload = "metadata";
+      p.muted = true;
+      p.onloadedmetadata = () => {
+        this.setState(st => {
+          if (st.vids[v]) return null;
+          const nv = Object.assign({}, st.vids);
+          nv[v] = true;
+          return { vids: nv };
+        });
+      };
+      p.src = "media/" + SLUG + "/" + v + ".mp4";
+      this._probes.push(p);
+    }
+
+    this.bindSwipe("A");
+    this.bindSwipe("B");
+    this.bindWheel("A");
+    this.bindWheel("B");
+    this.watchVideos();
+  }
+
+  componentDidUpdate() {
+    this.bindSwipe("A");
+    this.bindSwipe("B");
+    this.bindWheel("A");
+    this.bindWheel("B");
+    this.watchVideos();
+    this.pauseOffscreen();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("hashchange", this.flash);
+    document.removeEventListener("click", this.onNavClick);
+    if (this._si) clearInterval(this._si);
+    if (this._probes) for (const p of this._probes) { p.onloadedmetadata = null; p.removeAttribute("src"); }
+    if (this._vio) this._vio.disconnect();
+    if (this._rafA) cancelAnimationFrame(this._rafA);
+    if (this._rafB) cancelAnimationFrame(this._rafB);
+  }
+
+  renderVals() {
+    const L = this.state.lang, t = T[L];
+    const sw = c => L === c ? { bg: "#ffd100", fg: "#201e1d" } : { bg: "transparent", fg: "#f3f2f2" };
+    const e = sw("en"), f = sw("fr"), s = sw("es");
+    const fA = this.frames("a", "a", this.state.extraA), fB = this.frames("g", "b", this.state.extraB);
+    this._frA = fA; this._frB = fB;
+    const gA = Math.min(this.state.gA, Math.max(0, fA.length - 1));
+    const gB = Math.min(this.state.gB, Math.max(0, fB.length - 1));
+    const dots = (arr, cur, which) => arr.length < 2 ? [] : arr.map((_, i) => ({
+      bg: i === cur ? "#ffd100" : "#f3f2f2",
+      go: () => this.goSlide(which, i)
+    }));
+    const shows = { vidOn: true };
+    for (const [pre, arr] of [["a", fA], ["b", fB]]) {
+      for (let i = 1; i <= 8; i++) {
+        const f = arr.find(x => (x.kind === "img" || x.kind === "empty") && x.n === i);
+        shows[pre + i + "Show"] = f ? "block" : "none";
+        shows[pre + i + "Order"] = f ? arr.indexOf(f) : 0;
+      }
+      for (let n = 1; n <= 4; n++) {
+        const f = arr.find(x => x.n === n && (x.kind === "vid" || x.kind === "hint" || x.kind === "wait"));
+        shows[pre + "v" + n + "Show"] = f ? "block" : "none";
+        shows[pre + "v" + n + "Order"] = f ? arr.indexOf(f) : 0;
+        shows[pre + "v" + n + "Play"] = !!(f && f.kind === "vid");
+        shows[pre + "v" + n + "Hint"] = !!(f && f.kind === "hint");
+        shows[pre + "v" + n + "Wait"] = !!(f && f.kind === "wait");
+        shows[pre + "v" + n + "Src"] = (f && f.src) || "";
+        shows[pre + "v" + n + "Name"] = (f && f.name) || "";
+      }
+    }
+    return Object.assign({}, t, UI[L] || UI.en, NEIGH[L] || NEIGH.en, shows, {
+      galARef: this.galA, galBRef: this.galB,
+      onGalAScroll: () => this.galScroll("A"),
+      onGalBScroll: () => this.galScroll("B"),
+      dotsA: dots(fA, gA, "A"), dotsB: dots(fB, gB, "B"),
+      galAArrows: fA.length > 1 ? "flex" : "none",
+      galBArrows: fB.length > 1 ? "flex" : "none",
+      galADisplay: fA.length ? "block" : "none",
+      galBDisplay: fB.length ? "block" : "none",
+      editorTools: this.editor ? "flex" : "none",
+      addA: () => this.addFrame("A"), delA: () => this.delFrame("A"),
+      addB: () => this.addFrame("B"), delB: () => this.delFrame("B"),
+      addVidA: () => this.pickVideo("A"), addVidB: () => this.pickVideo("B"),
+      fileARef: this.fileA, fileBRef: this.fileB,
+      onFileA: e => this.onFile("A", e), onFileB: e => this.onFile("B", e),
+      moveABack: () => this.reorder("A", -1), moveAFwd: () => this.reorder("A", 1),
+      moveBBack: () => this.reorder("B", -1), moveBFwd: () => this.reorder("B", 1),
+      galACount: (gA + 1) + " / " + fA.length,
+      galBCount: (gB + 1) + " / " + fB.length,
+      gaPrev: () => this.step("A", -1, fA.length),
+      gaNext: () => this.step("A", 1, fA.length),
+      gbPrev: () => this.step("B", -1, fB.length),
+      gbNext: () => this.step("B", 1, fB.length),
+      setEn: () => this.setLang("en"),
+      setFr: () => this.setLang("fr"),
+      setEs: () => this.setLang("es"),
+      enBg: e.bg, enFg: e.fg, frBg: f.bg, frFg: f.fg, esBg: s.bg, esFg: s.fg,
+      cvOpen: this.state.cvOpen,
+      openCv: () => this.setState({ cvOpen: true }),
+      closeCv: () => this.setState({ cvOpen: false }),
+      shareOpen: this.state.shareOpen,
+      openShare: () => this.setState({ shareOpen: true }),
+      closeShare: () => this.setState({ shareOpen: false }),
+      shareUrl: this.url(),
+      copyLink: () => this.copy(),
+      copyLabel: this.state.copied ? t.shareCopied : t.shareCopy,
+      copyBg: this.state.copied ? "#ffd100" : "transparent",
+      shareNative: () => this.native(),
+      shareMail: () => { window.location.href = "mailto:?subject=" + encodeURIComponent("EscapeScience, Juan Fernando Garcia") + "&body=" + encodeURIComponent(this.url()); }
+    });
+  }
+}
+
+</script>
+</body>
+</html>
