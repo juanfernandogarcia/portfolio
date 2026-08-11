@@ -751,10 +751,11 @@ const T = {
 };
 
 const FILM_MAX = 30;
-const FILM_ORDER = Array.from({ length: FILM_MAX }, (_, i) => i + 1);
+const FILM_DEFAULT = {"n":8,"order":[9,2,1,5,8,4,7,6,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,11,3,10]};
+const FILM_ORDER = FILM_DEFAULT.order.slice();
 
 class Component extends DCLogic {
-  state = Object.assign({ filmN: 3, filmOrder: FILM_ORDER, filmCur: 0, filmSel: null, filmMode: false }, { lang: storedLang(this.props.defaultLang), active: "profile", hobby: 0, cvOpen: false, shareOpen: false, copied: false, filled: [false, false, false, false, false] });
+  state = Object.assign({ filmN: FILM_DEFAULT.n, filmOrder: FILM_ORDER, filmCur: 0, filmSel: null, filmMode: false }, { lang: storedLang(this.props.defaultLang), active: "profile", hobby: 0, cvOpen: false, shareOpen: false, copied: false, filled: [false, false, false, false, false] });
 
   setLang(l) {
     try { localStorage.setItem("jfg-lang", l); } catch (e) {}
@@ -875,7 +876,9 @@ class Component extends DCLogic {
         return { n: Math.min(v.n || 0, FILM_MAX), order: order };
       }
     } catch (e) {}
-    return { n: 3, order: full };
+    const d = FILM_DEFAULT.order.filter(x => full.indexOf(x) >= 0);
+    for (const i of full) if (d.indexOf(i) < 0) d.push(i);
+    return { n: Math.min(FILM_DEFAULT.n, FILM_MAX), order: d };
   }
 
   filmSave(next) {
